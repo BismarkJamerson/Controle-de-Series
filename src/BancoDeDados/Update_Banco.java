@@ -54,11 +54,19 @@ public class Update_Banco {
     }
         public void Update_Series(Series Ser) {
         try {
-            String sql = "UPDATE Series SET Status = ? WHERE ID_Status = ?  ";
+            String sql = "UPDATE Series SET Nome = ?, Duracao = ?, Favorito = ?, Nota = ?, Imagem = ?, Dublado = ?, Legendado = ? WHERE ID_Series = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setString(1, Sta.getStatus()); 
-        ps.setInt(2, Sta.getId());
+        ps.setString(1, Ser.getNome());
+        ps.setString(2, Ser.getDuracao());
+        ps.setBoolean(3, Ser.isFavorito());
+        ps.setInt(4,Ser.getNota());
+        ps.setString(5, Ser.getImagem());
+        ps.setBoolean(6, Ser.isDublado());
+        ps.setBoolean(7, Ser.isLegendado());
+        ps.setInt(8, Ser.getId());
+        
             ps.execute();
+            
 
         } catch (SQLException ex) {
             ex.getMessage();
