@@ -1,5 +1,8 @@
 package BancoDeDados;
 
+import Classes.Categoria;
+import Classes.Classificacao_Etaria;
+import Classes.Estudio;
 import Classes.Historico_Usuario;
 import Classes.Links;
 import Classes.Nacionalidade;
@@ -125,4 +128,51 @@ public class Update_Banco {
             System.out.println(ex);
         }
     }
+        
+        public void Update_Estudio(Estudio Est) {
+        try {
+            String sql = "UPDATE Estudio SET Nome_Estudio = ? WHERE ID_Estudio = ? ";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+        ps.setString(1, Est.getNome_Estudio());
+        ps.setInt(2, Est.getId());
+        
+            ps.execute();
+            
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }
+    }
+        public void Update_Classificacao_Etaria(Classificacao_Etaria ClE) {
+        try {
+            String sql = "UPDATE Classificacao_Etaria SET Classificacao_Etaria = ? WHERE ID_Classificacao = ?  ";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+        ps.setString(1, ClE.getClassificacao_Etaria());
+        ps.setInt(2, ClE.getId());
+        
+            ps.execute();
+            
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }
+    }
+        public void Update_Categoria(Categoria Cat) {
+        try {
+            String sql = "UPDATE Categoria SET Nome_Categoria = ? WHERE ID_Categoria = ?  ";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+        ps.setString(1, Cat.getNome_Categoria());
+        ps.setInt(2, Cat.getId());
+        
+            ps.execute();
+            
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }
+    }
+        
 }
