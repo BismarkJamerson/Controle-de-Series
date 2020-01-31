@@ -113,7 +113,7 @@ public class Update_Banco {
     }
         public void Update_Historico_Usuario(Historico_Usuario His) {
         try {
-            String sql = "UPDATE Historico_Usuario SET Episodio_Atual = ?, Temporada_Atual = ?, Tempo_Atual = ? WHERE ID_Series = ?  ";
+            String sql = "UPDATE Historico_Usuario SET Episodio_Atual = ?, Temporada_Atual = ?, Tempo_Atual = ? WHERE ID_Catalogo_Usuario = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
         ps.setInt(1, His.getEpisodio_Atual());
         ps.setInt(2, His.getTemporada_Atual());
