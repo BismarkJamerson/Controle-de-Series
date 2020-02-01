@@ -215,9 +215,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb_Erro">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="---------"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb_ErroNull">
     </Component>

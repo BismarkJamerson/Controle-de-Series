@@ -75,8 +75,6 @@ public class cadastro_User extends javax.swing.JFrame {
 
         bt_Exit.setText("Exit");
 
-        lb_Erro.setText("---------");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,26 +162,26 @@ public class cadastro_User extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CadastrarActionPerformed
-        if(tb_Login != null && tb_Dica != null && tb_ConfSenha != null && tb_Senha != null)
+      
+        if(tb_Login.getText().length()>= 5 && tb_Dica.getText().length() >=5 && tb_ConfSenha.getText().length() >=5 && tb_Senha.getText().length() >= 5)
         {
           if(tb_ConfSenha.equals(tb_Senha))
             {
               
             }
           else{
-              lb_Erro.setText("Confirmação Incorreta.");
+              tb_ConfSenha.setText("");
+              lb_Erro.setText("Incorreto!");
               }
              
-        }else
+        }else if (tb_Login.getText().equals("") || tb_Dica.getText().equals("") || tb_ConfSenha.getText().equals("") || tb_Senha.getText().equals(""))
         {
-            lb_ErroNull.setText("Campo (*) não pode ser vazio.");
+            lb_ErroNull.setText("Campos (*) não podem ser vazio.");
+        } else 
+        {
+            lb_ErroNull.setText("Campos devem ter mais de 6 carácteres.");
         }
-        
-        
-            
-        
-        
-        
+             
     }//GEN-LAST:event_bt_CadastrarActionPerformed
 
     /**
@@ -241,4 +239,5 @@ public class cadastro_User extends javax.swing.JFrame {
     private javax.swing.JTextPane tb_Login;
     private javax.swing.JTextPane tb_Senha;
     // End of variables declaration//GEN-END:variables
+
 }
