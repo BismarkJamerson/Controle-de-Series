@@ -5,6 +5,7 @@
  */
 package Telas;
 import BancoDeDados.Insert_Banco;
+import BancoDeDados.Select_Banco;
 import BancoDeDados.conexao;
 import Classes.Temporada;
 import java.text.ParseException;
@@ -35,33 +36,33 @@ public class tela_Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
+        bt_Acessar = new javax.swing.JButton();
+        tb_Senha = new javax.swing.JPasswordField();
+        tb_Login = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         bt_Cadastrar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lb_Erro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Acessar");
-        jButton1.setToolTipText("");
-        jButton1.setName("bt_Login"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_Acessar.setText("Acessar");
+        bt_Acessar.setToolTipText("");
+        bt_Acessar.setName("bt_Login"); // NOI18N
+        bt_Acessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_AcessarActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setText("******");
-        jPasswordField1.setName("tb_Senha"); // NOI18N
+        tb_Senha.setText("******");
+        tb_Senha.setName("tb_Senha"); // NOI18N
 
-        jTextField1.setName("tb_Login"); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tb_Login.setName("tb_Login"); // NOI18N
+        tb_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tb_LoginActionPerformed(evt);
             }
         });
 
@@ -82,8 +83,7 @@ public class tela_Principal extends javax.swing.JFrame {
         jButton5.setText("Esqueceu senha?");
         jButton5.setName("bt_Recuperar"); // NOI18N
 
-        jLabel3.setText("LogErro");
-        jLabel3.setName("lb_LogErro"); // NOI18N
+        lb_Erro.setName("lb_LogErro"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,60 +96,68 @@ public class tela_Principal extends javax.swing.JFrame {
                 .addComponent(jButton5)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(lb_Erro)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jButton1))
+                        .addComponent(bt_Acessar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tb_Login)
+                        .addComponent(tb_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel3)
+                .addComponent(lb_Erro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tb_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tb_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(bt_Acessar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_Cadastrar)
                     .addComponent(jButton5))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        conexao conn = new conexao();
-        conn.getConnection();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bt_AcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_AcessarActionPerformed
+        String senha = new String(tb_Senha.getPassword());
+        String login = new String(tb_Login.getText());
+        Select_Banco select = new Select_Banco();
+            if(select.Select_Logar(login, senha))
+            {
+                
+            }else{
+                lb_Erro.setText("Loguin e/ou senha Incorreto");
+            }
+        
+        
+    }//GEN-LAST:event_bt_AcessarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tb_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_LoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tb_LoginActionPerformed
 
     private void bt_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CadastrarActionPerformed
-      bt_Cadastrar.setText("Gelson");
+      cadastro_User cadastrar = new cadastro_User();
+      cadastrar.setVisible(true);
+      this.setVisible(false);
     }//GEN-LAST:event_bt_CadastrarActionPerformed
 
     /**
@@ -188,13 +196,13 @@ public class tela_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Acessar;
     private javax.swing.JButton bt_Cadastrar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lb_Erro;
+    private javax.swing.JTextField tb_Login;
+    private javax.swing.JPasswordField tb_Senha;
     // End of variables declaration//GEN-END:variables
 }

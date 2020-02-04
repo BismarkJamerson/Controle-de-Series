@@ -16,12 +16,11 @@ public class Insert_Banco {
     
     public void Insert_Usuario(usuario use){
         try {
-        String sql = "INSERT INTO Usuario (ID_Usuario, Nome_Usuario, Login, Senha) VALUES (?,?,?,?) ";
+        String sql = "INSERT INTO Usuario (Nome_Usuario, Login, Senha) VALUES (?,?,?) ";
         PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setInt(1, use.getId());
-        ps.setString(2, use.getNome());
-        ps.setString(3, use.getLogin());
-        ps.setString(4, use.getSenha());
+        ps.setString(1, use.getNome());
+        ps.setString(2, use.getLogin());
+        ps.setString(3, use.getSenha());
         
         ps.execute();
         }catch (SQLException ex) {
