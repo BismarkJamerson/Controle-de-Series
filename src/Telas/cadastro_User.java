@@ -40,7 +40,6 @@ public class cadastro_User extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         bt_Cadastrar = new javax.swing.JButton();
-        bt_Exit = new javax.swing.JButton();
         lb_Erro = new javax.swing.JLabel();
         lb_ErroNull = new javax.swing.JLabel();
         tb_Senha = new javax.swing.JPasswordField();
@@ -69,8 +68,6 @@ public class cadastro_User extends javax.swing.JFrame {
                 bt_CadastrarActionPerformed(evt);
             }
         });
-
-        bt_Exit.setText("Exit");
 
         tb_Senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,9 +106,7 @@ public class cadastro_User extends javax.swing.JFrame {
                         .addGap(63, 63, 63))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_Exit)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(69, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -160,13 +155,10 @@ public class cadastro_User extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(bt_Cadastrar)
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
-                    .addComponent(bt_Exit, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -190,7 +182,9 @@ public class cadastro_User extends javax.swing.JFrame {
               use.setNome(Dica);
               Insert_Banco in = new Insert_Banco();
               in.Insert_Usuario(use);
-             
+             tela_Logar log = new tela_Logar();
+             log.setVisible(true);
+             this.setVisible(false);
             }
           else{
               tb_ConfSenha.setText("");
@@ -253,7 +247,6 @@ public class cadastro_User extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Cadastrar;
-    private javax.swing.JButton bt_Exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
