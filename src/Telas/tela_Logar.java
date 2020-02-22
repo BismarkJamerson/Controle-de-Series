@@ -15,13 +15,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 
 /**
  *
  * @author bissm
  */
 public class tela_Logar extends javax.swing.JFrame {
-
+    
     
     public tela_Logar() {
         initComponents();
@@ -29,6 +30,8 @@ public class tela_Logar extends javax.swing.JFrame {
             lb_DicaTxt.setVisible(false);
             lb_Erro.setVisible(false);
     }
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -55,7 +58,6 @@ public class tela_Logar extends javax.swing.JFrame {
             }
         });
 
-        tb_Senha.setText("******");
         tb_Senha.setName("tb_Senha"); // NOI18N
 
         tb_Login.setName("tb_Login"); // NOI18N
@@ -100,9 +102,7 @@ public class tela_Logar extends javax.swing.JFrame {
                     .addComponent(lb_Erro, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jLabel1))
+                            .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -151,18 +151,12 @@ public class tela_Logar extends javax.swing.JFrame {
         Select_Banco select = new Select_Banco();
             if(select.Select_Logar(login, senha))
             {
-                select.Select_Usuario(login);
                 usuario use = new usuario();
-                    int id = use.getId();
-                    String dica = use.getNome();
-                    String log = use.getLogin();
-                    String sen = use.getSenha();
-                Sessao sessao = new Sessao();
-                sessao.Sessao(id, log, sen, dica);
-                
-                tela_Principal principal = new tela_Principal();
-                principal.setVisible(true);
-                this.setVisible(false);
+                use = select.Select_Usuario(login);
+                    Sessao.setId(use.getId());
+                    tela_Principal prin = Sessao.getPrin();
+                    prin.atualizar_Tela();
+                    this.setVisible(false);
                 
             }else{
                 lb_DicaTxt.setText(select.Select_Dica(login));
@@ -231,4 +225,6 @@ public class tela_Logar extends javax.swing.JFrame {
     private javax.swing.JTextField tb_Login;
     private javax.swing.JPasswordField tb_Senha;
     // End of variables declaration//GEN-END:variables
+
+
 }

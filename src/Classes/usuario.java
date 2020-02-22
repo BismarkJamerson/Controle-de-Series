@@ -2,7 +2,7 @@ package Classes;
 
 public class usuario {
     public int id;
-    public String nome;
+    public String dica_senha;
     public String login;
     public String senha;
 
@@ -10,9 +10,9 @@ public class usuario {
         
     }
 
-    public usuario(int id, String nome, String login, String senha) {
+    public usuario(int id, String dica, String login, String senha) {
         this.id = id;
-        this.nome = nome;
+        this.dica_senha = dica;
         this.login = login;
         this.senha = senha;
     }
@@ -26,12 +26,12 @@ public class usuario {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getDica_senha() {
+        return dica_senha;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDica_senha(String dica) {
+        this.dica_senha = dica;
     }
 
     public String getLogin() {

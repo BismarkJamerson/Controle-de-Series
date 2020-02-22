@@ -179,7 +179,7 @@ public class cadastro_User extends javax.swing.JFrame {
               usuario use = new usuario();
               use.setLogin(Login);
               use.setSenha(ConfSenha);
-              use.setNome(Dica);
+              use.setDica_senha(Dica);
               Insert_Banco in = new Insert_Banco();
               in.Insert_Usuario(use);
              tela_Logar log = new tela_Logar();

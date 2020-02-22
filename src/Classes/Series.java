@@ -12,15 +12,15 @@ public class Series {
     public String Imagem;
 
     public Series() {
+        
     }
 
-    public Series(int id, String nome, String Duracao, boolean Favorito, int Nota,String Imagem, boolean Dublado, boolean Legendado, int FK_Status, int FK_Categoria) {
+    public Series(int id, String nome, String Duracao, boolean Favorito, int Nota, boolean Dublado, boolean Legendado, int FK_Status, int FK_Categoria) {
         this.id = id;
         this.nome = nome;
         this.Duracao = Duracao;
         this.Favorito = Favorito;
         this.Nota = Nota;
-        this.Imagem = Imagem;
         this.Dublado = Dublado;
         this.Legendado = Legendado;
         this.FK_Status = FK_Status;

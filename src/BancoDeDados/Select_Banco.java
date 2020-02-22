@@ -47,7 +47,7 @@ public class Select_Banco {
         ResultSet rs = ps.executeQuery();
             while (rs.next()) 
             {
-              dica = rs.getString("Nome_Usuario");
+              dica = rs.getString("Dica_Senha");
               id = rs.getInt("ID_Usuario");
             }
         
@@ -72,7 +72,7 @@ public class Select_Banco {
             while (rs.next()) 
             {
               use.setId(rs.getInt("ID_Usuario"));
-              use.setNome(rs.getString("Nome_Usuario"));          
+              use.setDica_senha(rs.getString("Dica_Senha"));          
               use.setLogin(rs.getString("Login"));
               use.setSenha(rs.getString("Senha"));
             }

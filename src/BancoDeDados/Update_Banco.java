@@ -17,9 +17,9 @@ public class Update_Banco {
 
     public void Update_Usuario(usuario use) {
         try {
-            String sql = "UPDATE Usuario SET Nome_Usuario = ?, Login = ?, Senha = ? WHERE ID_Usuario = ?  ";
+            String sql = "UPDATE Usuario SET Dica_Senha = ?, Login = ?, Senha = ? WHERE ID_Usuario = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, use.getNome());
+            ps.setString(1, use.getDica_senha());
             ps.setString(2, use.getLogin());
             ps.setString(3, use.getSenha());
             ps.setInt(4, use.getId());

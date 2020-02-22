@@ -1,4 +1,7 @@
 package Classes;
+
+import java.sql.Date;
+
 public class Historico_Usuario {
     public int id;
     public int Episodio_Atual;
@@ -6,17 +9,27 @@ public class Historico_Usuario {
     public String Tempo_Atual;
     public int FK_Usuario;
     public int FK_Serie;
+    public Date Ultimo_Dia;
 
     public Historico_Usuario() {
     }
 
-    public Historico_Usuario(int id, int Episodio_Atual, int Temporada_Atual, String Tempo_Atual, int FK_Usuario, int FK_Serie) {
+    public Historico_Usuario(int id, int Episodio_Atual, int Temporada_Atual, String Tempo_Atual, int FK_Usuario, int FK_Serie, Date Ultimo_Dia) {
         this.id = id;
         this.Episodio_Atual = Episodio_Atual;
         this.Temporada_Atual = Temporada_Atual;
         this.Tempo_Atual = Tempo_Atual;
         this.FK_Usuario = FK_Usuario;
         this.FK_Serie = FK_Serie;
+        this.Ultimo_Dia = Ultimo_Dia;
+    }
+
+    public Date getUltimo_Dia() {
+        return Ultimo_Dia;
+    }
+
+    public void setUltimo_Dia(Date Ultimo_Dia) {
+        this.Ultimo_Dia = Ultimo_Dia;
     }
 
     public int getId() {
