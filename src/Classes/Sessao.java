@@ -8,6 +8,15 @@ public class Sessao {
     public static int id;
     public static tela_Principal prin;
     public static String login;
+    public static boolean confirm = false;
+
+    public static boolean isConfirm() {
+        return confirm;
+    }
+
+    public static void setConfirm(boolean confirm) {
+        Sessao.confirm = confirm;
+    }
 
     public static String getLogin() {
         return login;
@@ -17,13 +26,13 @@ public class Sessao {
         Sessao.login = login;
     }
     
-    public static usuario use;
+    public static Usuario use;
 
-    public static usuario getUse() {
+    public static Usuario getUse() {
         return use;
     }
 
-    public static void setUse(usuario use) {
+    public static void setUse(Usuario use) {
         Sessao.use = use;
     }
 

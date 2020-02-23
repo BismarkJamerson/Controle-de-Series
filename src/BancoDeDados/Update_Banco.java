@@ -7,16 +7,15 @@ import Classes.Historico_Usuario;
 import Classes.Links;
 import Classes.Nacionalidade;
 import Classes.Series;
-import Classes.Sessao;
 import Classes.Status;
 import Classes.Temporada;
-import Classes.usuario;
+import Classes.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Update_Banco {
 
-    public void Update_Usuario(usuario use) {
+    public void Update_Usuario(Usuario use) {
         try {
             String sql = "UPDATE Usuario SET Dica_Senha = ?, Login = ?, Senha = ? WHERE ID_Usuario = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);

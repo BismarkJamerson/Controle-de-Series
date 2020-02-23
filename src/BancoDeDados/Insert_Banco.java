@@ -8,13 +8,13 @@ import Classes.Nacionalidade;
 import Classes.Series;
 import Classes.Status;
 import Classes.Temporada;
-import Classes.usuario;
+import Classes.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Insert_Banco {
     
-    public void Insert_Usuario(usuario use){
+    public void Insert_Usuario(Usuario use){
         try {
         String sql = "INSERT INTO Usuario (Dica_Senha, Login, Senha) VALUES (?,?,?) ";
         PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);

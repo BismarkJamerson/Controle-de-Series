@@ -30,7 +30,7 @@ public class tela_Principal extends javax.swing.JFrame {
         bt_geren_ser = new javax.swing.JButton();
         bt_gerencLogin = new javax.swing.JButton();
         pn_Favorito = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lb_Favoritos = new javax.swing.JLabel();
         pn_Categorias = new javax.swing.JPanel();
         bt_Categoria = new javax.swing.JButton();
         pn_Principal = new javax.swing.JPanel();
@@ -73,7 +73,7 @@ public class tela_Principal extends javax.swing.JFrame {
                 .addComponent(bt_gerencLogin))
         );
 
-        jLabel1.setText("Favoritos");
+        lb_Favoritos.setText("Favoritos");
 
         javax.swing.GroupLayout pn_FavoritoLayout = new javax.swing.GroupLayout(pn_Favorito);
         pn_Favorito.setLayout(pn_FavoritoLayout);
@@ -81,14 +81,14 @@ public class tela_Principal extends javax.swing.JFrame {
             pn_FavoritoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_FavoritoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(lb_Favoritos)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn_FavoritoLayout.setVerticalGroup(
             pn_FavoritoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_FavoritoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lb_Favoritos)
                 .addContainerGap(334, Short.MAX_VALUE))
         );
 
@@ -244,8 +244,8 @@ public class tela_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Login;
     private javax.swing.JButton bt_geren_ser;
     private javax.swing.JButton bt_gerencLogin;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lb_Favoritos;
     private javax.swing.JPanel pn_Categorias;
     private javax.swing.JPanel pn_Favorito;
     private javax.swing.JPanel pn_Gerenciar;
@@ -265,11 +265,16 @@ public class tela_Principal extends javax.swing.JFrame {
         bt_Categoria.setEnabled(false);
         bt_geren_ser.setEnabled(false);
         bt_gerencLogin.setEnabled(false);
+        lb_Favoritos.setEnabled(false);
+            Sessao.setUse(null);
+            Sessao.setLogin(null);
+            
         }else{
         //logado
         bt_Categoria.setEnabled(true);
         bt_geren_ser.setEnabled(true);
         bt_gerencLogin.setEnabled(true);
+        lb_Favoritos.setEnabled(true);
         }
 
     }

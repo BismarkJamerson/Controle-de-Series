@@ -6,7 +6,7 @@
 package Telas;
 
 import BancoDeDados.Insert_Banco;
-import Classes.usuario;
+import Classes.Usuario;
 
 /**
  *
@@ -176,7 +176,7 @@ public class cadastro_User extends javax.swing.JFrame {
         {
           if(ConfSenha.equals(Senha))
             {
-              usuario use = new usuario();
+              Usuario use = new Usuario();
               use.setLogin(Login);
               use.setSenha(ConfSenha);
               use.setDica_senha(Dica);

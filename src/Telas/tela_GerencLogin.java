@@ -5,10 +5,11 @@
  */
 package Telas;
 
+import BancoDeDados.Delete_Banco;
 import BancoDeDados.Insert_Banco;
 import BancoDeDados.Update_Banco;
 import Classes.Sessao;
-import Classes.usuario;
+import Classes.Usuario;
 
 /**
  *
@@ -179,7 +180,9 @@ public class tela_GerencLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_DeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DeletarActionPerformed
-        // TODO add your handling code here:
+        tela_ConfirmDelete confDel = new tela_ConfirmDelete(this);
+        confDel.setVisible(true);
+
     }//GEN-LAST:event_bt_DeletarActionPerformed
 
     private void tb_ConfSenhaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tb_ConfSenhaKeyReleased
@@ -192,7 +195,7 @@ public class tela_GerencLogin extends javax.swing.JFrame {
       Login = tb_Login.getText();
       String Senha = new String (tb_Senha.getPassword());
       String ConfSenha = new String (tb_ConfSenha.getPassword());
-      usuario use = new usuario(Sessao.getId(),Dica, Login, Senha);
+      Usuario use = new Usuario(Sessao.getId(),Dica, Login, Senha);
 
       if(Login.length()>= 5 && Dica.length() >=5 && ConfSenha.length() >=5 && Senha.length() >= 5)
         {
@@ -200,7 +203,6 @@ public class tela_GerencLogin extends javax.swing.JFrame {
             {
               Update_Banco in = new Update_Banco();
               in.Update_Usuario(use);
-              System.out.println(use.getLogin()); 
               Sessao.setUse(use);
               lb_NomeLogin.setText(Sessao.getLogin());
               this.setVisible(false);
@@ -274,4 +276,17 @@ public class tela_GerencLogin extends javax.swing.JFrame {
     private javax.swing.JTextField tb_Login;
     private javax.swing.JPasswordField tb_Senha;
     // End of variables declaration//GEN-END:variables
+
+    public void deletar() {
+        if(Sessao.isConfirm()){
+            Usuario use = new Usuario();
+            use.setId(Sessao.getId());
+            Delete_Banco del = new Delete_Banco();
+            del.Excluir_Usuario(use);
+            this.setVisible(false);
+            Sessao.setId(0);
+            tela_Principal prin = Sessao.getPrin();
+            prin.atualizar_Tela();
+        }
+    }
 }

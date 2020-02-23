@@ -1,7 +1,7 @@
 package BancoDeDados;
 
 import Classes.Sessao;
-import Classes.usuario;
+import Classes.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,9 +61,9 @@ public class Select_Banco {
         } 
     }
       
-        public usuario Select_Usuario(String Login)
+        public Usuario Select_Usuario(String Login)
     {
-        usuario use = new usuario();
+        Usuario use = new Usuario();
         
         try {
         String sql = "SELECT * FROM Usuario WHERE Login = ?";

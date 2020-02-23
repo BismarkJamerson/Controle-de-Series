@@ -9,12 +9,12 @@ import Classes.Nacionalidade;
 import Classes.Series;
 import Classes.Status;
 import Classes.Temporada;
-import Classes.usuario;
+import Classes.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Delete_Banco {
-        public void Excluir_Usuario(usuario Use) {
+        public void Excluir_Usuario(Usuario Use) {
         try {
             String sql = "DELETE FROM Usuario WHERE ID_Usuario = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);

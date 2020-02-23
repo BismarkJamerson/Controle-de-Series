@@ -6,7 +6,7 @@
 package Telas;
 import BancoDeDados.Select_Banco;
 import Classes.Sessao;
-import Classes.usuario;
+import Classes.Usuario;
 
 
 /**
@@ -143,7 +143,7 @@ public class tela_Logar extends javax.swing.JFrame {
         Select_Banco select = new Select_Banco();
             if(select.Select_Logar(login, senha))
             {
-                usuario use = new usuario();
+                Usuario use = new Usuario();
                 use = select.Select_Usuario(login);
                     Sessao.setId(use.getId());
                     Sessao.setUse(use);
