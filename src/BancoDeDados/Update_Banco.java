@@ -7,6 +7,7 @@ import Classes.Historico_Usuario;
 import Classes.Links;
 import Classes.Nacionalidade;
 import Classes.Series;
+import Classes.Sessao;
 import Classes.Status;
 import Classes.Temporada;
 import Classes.usuario;
@@ -15,15 +16,16 @@ import java.sql.SQLException;
 
 public class Update_Banco {
 
-    public void Update_Usuario(usuario use) {
+    public void Update_Usuario(usuario use, Sessao ses) {
         try {
             String sql = "UPDATE Usuario SET Dica_Senha = ?, Login = ?, Senha = ? WHERE ID_Usuario = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, use.getDica_senha());
-            ps.setString(2, use.getLogin());
-            ps.setString(3, use.getSenha());
+            ps.setString(1, ses.getDica_senha());
+            ps.setString(2, ses.getLogin());
+            ps.setString(3, ses.getSenha());
             ps.setInt(4, use.getId());
             ps.execute();
+           
 
         } catch (SQLException ex) {
             ex.getMessage();

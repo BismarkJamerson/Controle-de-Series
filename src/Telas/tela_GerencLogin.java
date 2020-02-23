@@ -5,6 +5,11 @@
  */
 package Telas;
 
+import BancoDeDados.Insert_Banco;
+import BancoDeDados.Update_Banco;
+import Classes.Sessao;
+import Classes.usuario;
+
 /**
  *
  * @author bissm
@@ -17,6 +22,9 @@ public class tela_GerencLogin extends javax.swing.JFrame {
     public tela_GerencLogin() {
         initComponents();
         pn_Editar.setVisible(false);
+        usuario use = new usuario();
+        lb_NomeLogin.setText(use.getLogin());
+        lb_Id.setText(Integer.toString(use.getId()));
     }
 
     /**
@@ -30,21 +38,24 @@ public class tela_GerencLogin extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lb_NomeLogin = new javax.swing.JLabel();
+        lb_Id = new java.awt.Label();
+        bt_Editar = new javax.swing.JButton();
+        bt_Deletar = new javax.swing.JButton();
         label1 = new java.awt.Label();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         pn_Editar = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        tb_Dica = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        tb_Senha = new javax.swing.JPasswordField();
+        tb_ConfSenha = new javax.swing.JPasswordField();
         label2 = new java.awt.Label();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        tb_Login = new javax.swing.JTextField();
+        lb_ErroSenha = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        lb_Erro = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -59,18 +70,25 @@ public class tela_GerencLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Login de Usuário ");
+        lb_NomeLogin.setText("Login de Usuário ");
 
-        label1.setText("label1");
+        lb_Id.setText("label1");
 
-        jButton1.setText("Editar");
-
-        jButton2.setText("Deletar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bt_Editar.setText("Editar");
+        bt_Editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bt_EditarActionPerformed(evt);
             }
         });
+
+        bt_Deletar.setText("Deletar");
+        bt_Deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_DeletarActionPerformed(evt);
+            }
+        });
+
+        label1.setText("ID#");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,12 +99,14 @@ public class tela_GerencLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(lb_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_NomeLogin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_Deletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bt_Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,35 +115,45 @@ public class tela_GerencLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(bt_Editar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                        .addComponent(bt_Deletar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lb_NomeLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jTextField3.setText("jTextField3");
+        jLabel2.setText("Nova Senha*");
 
-        jLabel2.setText("Nova Senha");
+        jLabel3.setText("Confirmar Senha*");
 
-        jLabel3.setText("Confirmar Senha");
+        jLabel4.setText("Dica*");
 
-        jLabel4.setText("Dica");
+        tb_ConfSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_ConfSenhaActionPerformed(evt);
+            }
+        });
+        tb_ConfSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tb_ConfSenhaKeyReleased(evt);
+            }
+        });
 
-        jPasswordField1.setText("jPasswordField1");
+        label2.setText("Informe dica para te lembrar da senha.");
 
-        jPasswordField2.setText("jPasswordField2");
+        jLabel5.setText("Novo Login*");
 
-        label2.setText("Informe uma dica para te lembrar da senha.");
-
-        jLabel5.setText("Novo Login");
-
-        jTextField1.setText("jTextField1");
-
-        jLabel6.setText("jLabel6");
+        jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pn_EditarLayout = new javax.swing.GroupLayout(pn_Editar);
         pn_Editar.setLayout(pn_EditarLayout);
@@ -132,60 +162,74 @@ public class tela_GerencLogin extends javax.swing.JFrame {
             .addGroup(pn_EditarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_EditarLayout.createSequentialGroup()
+                    .addGroup(pn_EditarLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tb_Dica, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pn_EditarLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pn_EditarLayout.createSequentialGroup()
                         .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(pn_EditarLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(112, 112, 112))
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tb_ConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pn_EditarLayout.createSequentialGroup()
                                 .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
-                                .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addGap(69, 69, 69))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_EditarLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
+                                .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tb_Senha, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                    .addComponent(tb_Login))))
                         .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pn_EditarLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lb_ErroSenha))
+                            .addGroup(pn_EditarLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(lb_Erro)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pn_EditarLayout.setVerticalGroup(
             pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_EditarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_EditarLayout.createSequentialGroup()
+                .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pn_EditarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(pn_EditarLayout.createSequentialGroup()
+                        .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel5)
+                                .addComponent(tb_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lb_Erro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_EditarLayout.createSequentialGroup()
+                                .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(tb_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(tb_ConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(11, 11, 11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_EditarLayout.createSequentialGroup()
+                                .addComponent(lb_ErroSenha)
+                                .addGap(27, 27, 27)))
                         .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_EditarLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(27, 27, 27)))
-                .addGroup(pn_EditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(1, 1, 1)
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                            .addComponent(tb_Dica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(1, 1, 1)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,25 +242,67 @@ public class tela_GerencLogin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pn_Editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(pn_Editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pn_Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pn_Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bt_DeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DeletarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bt_DeletarActionPerformed
+
+    private void bt_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_EditarActionPerformed
+        pn_Editar.setVisible(true);
+    }//GEN-LAST:event_bt_EditarActionPerformed
+
+    private void tb_ConfSenhaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tb_ConfSenhaKeyReleased
+        
+    }//GEN-LAST:event_tb_ConfSenhaKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      String Dica, Login;
+      Dica = tb_Dica.getText();
+      Login = tb_Login.getText();
+      String Senha = new String (tb_Senha.getPassword());
+      String ConfSenha = new String (tb_ConfSenha.getPassword());
+
+      if(Login.length()>= 5 && Dica.length() >=5 && ConfSenha.length() >=5 && Senha.length() >= 5)
+        {
+          if(ConfSenha.equals(Senha))
+            {
+              Sessao ses = new Sessao(Dica, Login, Senha);
+              usuario use = new usuario();
+              Update_Banco in = new Update_Banco();
+              in.Update_Usuario(use, ses);
+               System.out.println(use.getLogin()); 
+              this.setVisible(false);
+            }
+          else{
+              tb_ConfSenha.setText("");
+              lb_ErroSenha.setText("Incorreto!");
+              }
+             
+        }else if (tb_Login.getText().equals("") || tb_Dica.getText().equals("") || tb_ConfSenha.getText().equals("") || tb_Senha.getText().equals(""))
+        {
+            lb_Erro.setText("Campo * obrigatorio!");
+        } else 
+        {
+            lb_Erro.setText("Mínimo de 6 carácteres!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tb_ConfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_ConfSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_ConfSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,22 +340,25 @@ public class tela_GerencLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Deletar;
+    private javax.swing.JButton bt_Editar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private java.awt.Label label1;
     private java.awt.Label label2;
+    private javax.swing.JLabel lb_Erro;
+    private javax.swing.JLabel lb_ErroSenha;
+    private java.awt.Label lb_Id;
+    private javax.swing.JLabel lb_NomeLogin;
     private javax.swing.JPanel pn_Editar;
+    private javax.swing.JPasswordField tb_ConfSenha;
+    private javax.swing.JTextField tb_Dica;
+    private javax.swing.JTextField tb_Login;
+    private javax.swing.JPasswordField tb_Senha;
     // End of variables declaration//GEN-END:variables
 }

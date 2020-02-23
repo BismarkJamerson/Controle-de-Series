@@ -28,7 +28,7 @@ public class tela_Principal extends javax.swing.JFrame {
 
         pn_Gerenciar = new javax.swing.JPanel();
         bt_geren_ser = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        bt_gerencLogin = new javax.swing.JButton();
         pn_Favorito = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pn_Categorias = new javax.swing.JPanel();
@@ -46,10 +46,10 @@ public class tela_Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Gerenc. Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_gerencLogin.setText("Gerenc. Login");
+        bt_gerencLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_gerencLoginActionPerformed(evt);
             }
         });
 
@@ -58,13 +58,11 @@ public class tela_Principal extends javax.swing.JFrame {
         pn_GerenciarLayout.setHorizontalGroup(
             pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_GerenciarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bt_geren_ser)
-                .addContainerGap())
-            .addGroup(pn_GerenciarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_geren_ser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bt_gerencLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pn_GerenciarLayout.setVerticalGroup(
             pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +70,7 @@ public class tela_Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_geren_ser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1))
+                .addComponent(bt_gerencLogin))
         );
 
         jLabel1.setText("Favoritos");
@@ -201,9 +199,10 @@ public class tela_Principal extends javax.swing.JFrame {
         login.setVisible(true);
     }//GEN-LAST:event_bt_LoginActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bt_gerencLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gerencLoginActionPerformed
+        tela_GerencLogin gL = new tela_GerencLogin();
+        gL.setVisible(true);
+    }//GEN-LAST:event_bt_gerencLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,7 +243,7 @@ public class tela_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Categoria;
     private javax.swing.JButton bt_Login;
     private javax.swing.JButton bt_geren_ser;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bt_gerencLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pn_Categorias;
@@ -265,10 +264,12 @@ public class tela_Principal extends javax.swing.JFrame {
         //Deslogado
         bt_Categoria.setEnabled(false);
         bt_geren_ser.setEnabled(false);
+        bt_gerencLogin.setEnabled(false);
         }else{
         //logado
         bt_Categoria.setEnabled(true);
         bt_geren_ser.setEnabled(true);
+        bt_gerencLogin.setEnabled(true);
         }
 
     }

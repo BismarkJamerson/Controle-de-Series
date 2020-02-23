@@ -16,6 +16,12 @@ public class usuario {
         this.login = login;
         this.senha = senha;
     }
+    public usuario(String dica, String login, String senha) {
+        this.dica_senha = dica;
+        this.login = login;
+        this.senha = senha;
+    }
+    
     
     
     public int getId() {
