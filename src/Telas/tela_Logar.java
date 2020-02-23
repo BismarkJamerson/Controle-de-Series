@@ -4,18 +4,10 @@
  * and open the template in the editor.
  */
 package Telas;
-import BancoDeDados.Insert_Banco;
 import BancoDeDados.Select_Banco;
-import BancoDeDados.conexao;
 import Classes.Sessao;
-import Classes.Temporada;
 import Classes.usuario;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JPanel;
+
 
 /**
  *
@@ -154,6 +146,7 @@ public class tela_Logar extends javax.swing.JFrame {
                 usuario use = new usuario();
                 use = select.Select_Usuario(login);
                     Sessao.setId(use.getId());
+                    Sessao.setUse(use);
                     tela_Principal prin = Sessao.getPrin();
                     prin.atualizar_Tela();
                     this.setVisible(false);

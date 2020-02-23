@@ -1,5 +1,6 @@
 package BancoDeDados;
 
+import Classes.Sessao;
 import Classes.usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,6 +76,7 @@ public class Select_Banco {
               use.setDica_senha(rs.getString("Dica_Senha"));          
               use.setLogin(rs.getString("Login"));
               use.setSenha(rs.getString("Senha"));
+              Sessao.setLogin(rs.getString("Login"));
             }
         
         } catch (SQLException ex) {
