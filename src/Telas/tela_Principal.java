@@ -34,6 +34,7 @@ public class tela_Principal extends javax.swing.JFrame {
         pn_Categorias = new javax.swing.JPanel();
         bt_Categoria = new javax.swing.JButton();
         pn_Principal = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         bt_Login = new javax.swing.JButton();
 
@@ -82,14 +83,14 @@ public class tela_Principal extends javax.swing.JFrame {
             .addGroup(pn_FavoritoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lb_Favoritos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         pn_FavoritoLayout.setVerticalGroup(
             pn_FavoritoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_FavoritoLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addComponent(lb_Favoritos)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
         bt_Categoria.setText("Categorias");
@@ -105,8 +106,8 @@ public class tela_Principal extends javax.swing.JFrame {
             pn_CategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_CategoriasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bt_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addComponent(bt_Categoria)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn_CategoriasLayout.setVerticalGroup(
             pn_CategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,15 +117,28 @@ public class tela_Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_PrincipalLayout = new javax.swing.GroupLayout(pn_Principal);
         pn_Principal.setLayout(pn_PrincipalLayout);
         pn_PrincipalLayout.setHorizontalGroup(
             pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(pn_PrincipalLayout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(jButton1)
+                .addContainerGap(420, Short.MAX_VALUE))
         );
         pn_PrincipalLayout.setVerticalGroup(
             pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
+            .addGroup(pn_PrincipalLayout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bt_Login.setText("Login");
@@ -138,16 +152,15 @@ public class tela_Principal extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(bt_Login)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(bt_Login)
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(bt_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,11 +168,11 @@ public class tela_Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pn_Favorito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pn_Favorito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -204,6 +217,11 @@ public class tela_Principal extends javax.swing.JFrame {
         gL.setVisible(true);
     }//GEN-LAST:event_bt_gerencLoginActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tela_GerenciarSerie i = new tela_GerenciarSerie();
+        i.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,6 +262,7 @@ public class tela_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Login;
     private javax.swing.JButton bt_geren_ser;
     private javax.swing.JButton bt_gerencLogin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lb_Favoritos;
     private javax.swing.JPanel pn_Categorias;
