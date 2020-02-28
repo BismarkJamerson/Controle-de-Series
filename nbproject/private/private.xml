@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Links.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Telas/tela_Principal.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Sessao.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Telas/tela_GerenciarSerie.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/BancoDeDados/Update_Banco.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/BancoDeDados/conexao.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Temporada.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Estudio.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Telas/tela_Logar.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/BancoDeDados/Delete_Banco.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/BancoDeDados/Select_Banco.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Series.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Nacionalidade.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/BancoDeDados/Insert_Banco.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Classificacao_Etaria.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Usuario.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Historico_Usuario.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Status.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Telas/cadastro_User.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Classes/Categoria.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Telas/tela_GerencLogin.java</file>
+            <file>file:/C:/Projeto/ControleDeSeries/src/Telas/tela_ConfirmDelete.java</file>
+        </group>
+    </open-files>
+</project-private>
