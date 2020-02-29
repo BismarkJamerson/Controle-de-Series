@@ -1,7 +1,9 @@
 package BancoDeDados;
 
+import Classes.Categoria;
 import Classes.Classificacao_Etaria;
 import Classes.Estudio;
+import Classes.Nacionalidade;
 import Classes.Sessao;
 import Classes.Status;
 import Classes.Usuario;
@@ -99,7 +101,7 @@ public class Select_Banco {
             return lista;
         }
     }
-    
+
     public List<Classificacao_Etaria> Select_Classificacao() {
         List<Classificacao_Etaria> lista = new ArrayList();
         try {
@@ -120,8 +122,8 @@ public class Select_Banco {
             return lista;
         }
     }
-    
-        public List<Estudio> Select_Estudio() {
+
+    public List<Estudio> Select_Estudio() {
         List<Estudio> lista = new ArrayList();
         try {
             String sql = "SELECT * FROM Estudio ORDER BY Nome_Estudio";
@@ -142,4 +144,45 @@ public class Select_Banco {
         }
     }
 
+    public List<Nacionalidade> Select_Nacionalidade() {
+        List<Nacionalidade> lista = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Nacionalidade ORDER BY ID_Nacionalidade";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Nacionalidade Nac = new Nacionalidade();
+                Nac.setId(rs.getInt("ID_Nacionalidade"));
+                Nac.setNacionalidade(rs.getString("Nacionalidade"));
+                lista.add(Nac);
+            }
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+        } finally {
+            return lista;
+        }
+    }
+
+    public List<Categoria> Select_Categoria() {
+        List<Categoria> lista = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Categoria ORDER BY Nome_Categoria";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Categoria Cat = new Categoria();
+                Cat.setId(rs.getInt("ID_Categoria"));
+                Cat.setNome_Categoria(rs.getString("Nome_Categoria"));
+                lista.add(Cat);
+            }
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+        } finally {
+            return lista;
+        }
+    }
 }

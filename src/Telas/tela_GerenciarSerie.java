@@ -5,9 +5,13 @@
  */
 package Telas;
 
+import BancoDeDados.Insert_Banco;
 import BancoDeDados.Select_Banco;
+import Classes.Categoria;
 import Classes.Classificacao_Etaria;
 import Classes.Estudio;
+import Classes.Nacionalidade;
+import Classes.Series;
 import Classes.Status;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +25,16 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     List<Status> lista_Status = new ArrayList();
     List<Classificacao_Etaria> lista_Classificacao = new ArrayList();
     List<Estudio> lista_Estudio = new ArrayList();
+    List<Nacionalidade> lista_Nacionalidade = new ArrayList();
+    List<Categoria> lista_Categoria = new ArrayList();
 
     public tela_GerenciarSerie() {
         initComponents();
         iniciar_Status();
         iniciar_Classificacao();
         iniciar_Estudio();
+        iniciar_Nacionalidade();
+        iniciar_Categoria();
 
     }
 
@@ -58,6 +66,10 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         cb_Classificacao = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         cb_Estudio = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        cb_Nacionalidade = new javax.swing.JComboBox<>();
+        cb_Categoria = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -110,6 +122,11 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         }
         tb_Duracao.setText("00:00");
         tb_Duracao.setToolTipText("");
+        tb_Duracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_DuracaoActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Confirmar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +147,22 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         jLabel6.setText("Estudio");
 
+        jLabel7.setText("Nacionalidade");
+
+        cb_Nacionalidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_NacionalidadeActionPerformed(evt);
+            }
+        });
+
+        cb_Categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_CategoriaActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Categoria");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -137,7 +170,6 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_Legendado)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,18 +192,33 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel3)
                                         .addComponent(jLabel4))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cb_Nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
                                             .addComponent(cb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel6)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addComponent(cb_Favorito)
-                    .addComponent(cb_Dublado))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                            .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGap(17, 17, 17)
+                                            .addComponent(cb_Nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_Favorito)
+                            .addComponent(cb_Dublado)
+                            .addComponent(cb_Legendado))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_Nacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +254,15 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                             .addComponent(cb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(74, 74, 74)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(cb_Nacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(9, 9, 9)
                         .addComponent(jButton1)
                         .addGap(65, 65, 65))))
         );
@@ -263,21 +318,25 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_NotaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String duracao = tb_Duracao.getText();
-        String nome = tb_Nome.getText();
-        boolean favorito = cb_Favorito.isSelected();
-        boolean dublado = cb_Dublado.isSelected();
-        boolean legendado = cb_Legendado.isSelected();
-        String nota = (String) cb_Nota.getSelectedItem();
-        int i = cb_Status.getSelectedIndex();
-        int Status = lista_Status.get(i).id; //ID Status
-
-
+            salvaSerie();
+            this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cb_StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_StatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_StatusActionPerformed
+
+    private void cb_NacionalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_NacionalidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_NacionalidadeActionPerformed
+
+    private void cb_CategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_CategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_CategoriaActionPerformed
+
+    private void tb_DuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_DuracaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_DuracaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,11 +374,13 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_Categoria;
     private javax.swing.JComboBox<String> cb_Classificacao;
     private javax.swing.JCheckBox cb_Dublado;
     private javax.swing.JComboBox<String> cb_Estudio;
     private javax.swing.JCheckBox cb_Favorito;
     private javax.swing.JCheckBox cb_Legendado;
+    private javax.swing.JComboBox<String> cb_Nacionalidade;
     private javax.swing.JComboBox<String> cb_Nota;
     private javax.swing.JComboBox<String> cb_Status;
     private javax.swing.JButton jButton1;
@@ -329,6 +390,8 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -343,10 +406,10 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         lista_Status = select.Select_Status();
         for (int i = 0; i < lista_Status.size(); i++) {
+           
             cb_Status.addItem(lista_Status.get(i).Status);
-
+            
         }
-
     }
 
     private void iniciar_Classificacao() {
@@ -368,6 +431,57 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         }
 
+    }
+
+    private void iniciar_Nacionalidade() {
+        Select_Banco select = new Select_Banco();
+        lista_Nacionalidade = select.Select_Nacionalidade();
+
+        for (int i = 0; i < lista_Nacionalidade.size(); i++) {
+            cb_Nacionalidade.addItem(lista_Nacionalidade.get(i).Nacionalidade);
+
+        }
+
+    }
+
+    private void iniciar_Categoria() {
+        Select_Banco select = new Select_Banco();
+        lista_Categoria = select.Select_Categoria();
+
+        for (int i = 0; i < lista_Categoria.size(); i++) {
+            cb_Categoria.addItem(lista_Categoria.get(i).nome_Categoria);
+
+        }
+    }
+
+    private void salvaSerie() {
+                String duracao = tb_Duracao.getText();
+        String nome = tb_Nome.getText();
+        boolean favorito = cb_Favorito.isSelected();
+        boolean dublado = cb_Dublado.isSelected();
+        boolean legendado = cb_Legendado.isSelected();
+        String nota = (String) cb_Nota.getSelectedItem();
+        int iS = cb_Status.getSelectedIndex();//Pega nº posição
+        int Status = lista_Status.get(iS).id; //ID Status
+        int iC = cb_Classificacao.getSelectedIndex();
+        int Classificacao = lista_Classificacao.get(iC).id;
+        int iE = cb_Estudio.getSelectedIndex();
+        int Estudio = lista_Estudio.get(iE).id;
+        int iN = cb_Nacionalidade.getSelectedIndex();
+        int Nacionalidade = lista_Nacionalidade.get(iN).id;
+        int iCT = cb_Categoria.getSelectedIndex();
+        int Categoria = lista_Categoria.get(iCT).id;
+        
+                Series Ser = new Series();
+                Ser.setDublado(dublado);
+                Ser.setDuracao(duracao);
+                Ser.setFavorito(favorito);
+                Ser.setLegendado(legendado);
+                Ser.setNome(nome);
+                Ser.setNota(iCT);
+                
+                Insert_Banco insert = new Insert_Banco();
+                insert.Insert_Series(Ser, iS, iC, iE, iN, iCT);
     }
 
 }

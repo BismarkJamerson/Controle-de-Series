@@ -12,6 +12,7 @@ import Classes.Temporada;
 import Classes.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class Insert_Banco {
 
@@ -77,7 +78,7 @@ public class Insert_Banco {
             ps.execute();
         } catch (SQLException ex) {
             ex.getMessage();
-            System.out.println(ex);
+            JOptionPane.showMessageDialog(null,"Não foi possível salvar série!","ERRO AO SALVAR!!",JOptionPane.CLOSED_OPTION);
         }
     }
 
