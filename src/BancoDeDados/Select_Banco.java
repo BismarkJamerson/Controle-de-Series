@@ -1,5 +1,7 @@
 package BancoDeDados;
 
+import Classes.Classificacao_Etaria;
+import Classes.Estudio;
 import Classes.Sessao;
 import Classes.Status;
 import Classes.Usuario;
@@ -11,87 +13,73 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class Select_Banco {
 
-    
-    public boolean Select_Logar(String Login, String Senha)
-    {
+    public boolean Select_Logar(String Login, String Senha) {
         boolean acesso = false;
-        
+
         try {
-        String sql = "SELECT * FROM Usuario WHERE Login = ? AND Senha = ? ";
-        PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setString(1, Login);
-        ps.setString(2, Senha);
-        ResultSet rs = ps.executeQuery();
-            while (rs.next()) 
-            {
+            String sql = "SELECT * FROM Usuario WHERE Login = ? AND Senha = ? ";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setString(1, Login);
+            ps.setString(2, Senha);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 acesso = true;
             }
-        
+
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally
-        {
+        } finally {
             return acesso;
-        } 
+        }
     }
-    
-      public String Select_Dica(String Login)
-    {
+
+    public String Select_Dica(String Login) {
         String dica = null;
         int id = 0;
-        
+
         try {
-        String sql = "SELECT * FROM Usuario WHERE Login = ?";
-        PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setString(1, Login);
-        ResultSet rs = ps.executeQuery();
-            while (rs.next()) 
-            {
-              dica = rs.getString("Dica_Senha");
-              id = rs.getInt("ID_Usuario");
+            String sql = "SELECT * FROM Usuario WHERE Login = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setString(1, Login);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                dica = rs.getString("Dica_Senha");
+                id = rs.getInt("ID_Usuario");
             }
-        
+
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            return dica;
         }
-        finally
-        {
-          return dica;
-        } 
     }
-      
-        public Usuario Select_Usuario(String Login)
-    {
+
+    public Usuario Select_Usuario(String Login) {
         Usuario use = new Usuario();
-        
+
         try {
-        String sql = "SELECT * FROM Usuario WHERE Login = ?";
-        PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setString(1, Login);
-        ResultSet rs = ps.executeQuery();
-            while (rs.next()) 
-            {
-              use.setId(rs.getInt("ID_Usuario"));
-              use.setDica_senha(rs.getString("Dica_Senha"));          
-              use.setLogin(rs.getString("Login"));
-              use.setSenha(rs.getString("Senha"));
-              Sessao.setLogin(rs.getString("Login"));
+            String sql = "SELECT * FROM Usuario WHERE Login = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setString(1, Login);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                use.setId(rs.getInt("ID_Usuario"));
+                use.setDica_senha(rs.getString("Dica_Senha"));
+                use.setLogin(rs.getString("Login"));
+                use.setSenha(rs.getString("Senha"));
+                Sessao.setLogin(rs.getString("Login"));
             }
-        
+
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            return use;
         }
-        finally
-        {
-          return use;
-        } 
     }
-        
-        public List<Status> Select_Status() {
+
+    public List<Status> Select_Status() {
         List<Status> lista = new ArrayList();
         try {
             String sql = "SELECT * FROM Status ORDER BY Status";
@@ -111,5 +99,47 @@ public class Select_Banco {
             return lista;
         }
     }
-      
+    
+    public List<Classificacao_Etaria> Select_Classificacao() {
+        List<Classificacao_Etaria> lista = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Classificacao_Etaria ORDER BY ID_Classificacao";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Classificacao_Etaria Cls = new Classificacao_Etaria();
+                Cls.setId(rs.getInt("ID_Classificacao"));
+                Cls.setClassificacao_Etaria(rs.getString("Classificacao_Etaria"));
+                lista.add(Cls);
+            }
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+        } finally {
+            return lista;
+        }
+    }
+    
+        public List<Estudio> Select_Estudio() {
+        List<Estudio> lista = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Estudio ORDER BY Nome_Estudio";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Estudio Est = new Estudio();
+                Est.setId(rs.getInt("ID_Estudio"));
+                Est.setNome_Estudio(rs.getString("Nome_Estudio"));
+                lista.add(Est);
+            }
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+        } finally {
+            return lista;
+        }
+    }
+
 }

@@ -24,7 +24,6 @@ public class Update_Banco {
             ps.setString(3, use.getSenha());
             ps.setInt(4, use.getId());
             ps.execute();
-           
 
         } catch (SQLException ex) {
             ex.getMessage();
@@ -112,68 +111,72 @@ public class Update_Banco {
             System.out.println(ex);
         }
     }
-        public void Update_Historico_Usuario(Historico_Usuario His) {
+
+    public void Update_Historico_Usuario(Historico_Usuario His) {
         try {
-            String sql = "UPDATE Historico_Usuario SET Episodio_Atual = ?, Temporada_Atual = ?, Tempo_Atual = ? WHERE ID_Catalogo_Usuario = ?  ";
+            String sql = "UPDATE Historico_Usuario SET Episodio_Atual = ?, Temporada_Atual = ?, Tempo_Atual = ?, Ultimo_Dia = ?, Total_Series = ?, Total_Episodios = ?, Total_Temporadas = ?, getTotal_Tempo = ?  WHERE ID_Catalogo_Usuario = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setInt(1, His.getEpisodio_Atual());
-        ps.setInt(2, His.getTemporada_Atual());
-        ps.setString(3, His.getTempo_Atual());
-        ps.setInt(4, His.getId());
-        
+            ps.setInt(1, His.getEpisodio_Atual());
+            ps.setInt(2, His.getTemporada_Atual());
+            ps.setString(3, His.getTempo_Atual());
+            ps.setDate(4, His.getUltimo_Dia());
+            ps.setInt(5, His.getTotal_Series());
+            ps.setInt(6, His.getTotal_Episodios());
+            ps.setInt(7, His.getTotal_Temporadas());
+            ps.setString(8, His.getTotal_Tempo());
+            ps.setInt(9, His.getId());
+
             ps.execute();
-            
 
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
         }
     }
-        
-        public void Update_Estudio(Estudio Est) {
+
+    public void Update_Estudio(Estudio Est) {
         try {
             String sql = "UPDATE Estudio SET Nome_Estudio = ? WHERE ID_Estudio = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setString(1, Est.getNome_Estudio());
-        ps.setInt(2, Est.getId());
-        
+            ps.setString(1, Est.getNome_Estudio());
+            ps.setInt(2, Est.getId());
+
             ps.execute();
-            
 
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
         }
     }
-        public void Update_Classificacao_Etaria(Classificacao_Etaria ClE) {
+
+    public void Update_Classificacao_Etaria(Classificacao_Etaria ClE) {
         try {
             String sql = "UPDATE Classificacao_Etaria SET Classificacao_Etaria = ? WHERE ID_Classificacao = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setString(1, ClE.getClassificacao_Etaria());
-        ps.setInt(2, ClE.getId());
-        
+            ps.setString(1, ClE.getClassificacao_Etaria());
+            ps.setInt(2, ClE.getId());
+
             ps.execute();
-            
 
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
         }
     }
-        public void Update_Categoria(Categoria Cat) {
+
+    public void Update_Categoria(Categoria Cat) {
         try {
             String sql = "UPDATE Categoria SET Nome_Categoria = ? WHERE ID_Categoria = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-        ps.setString(1, Cat.getNome_Categoria());
-        ps.setInt(2, Cat.getId());
-        
+            ps.setString(1, Cat.getNome_Categoria());
+            ps.setInt(2, Cat.getId());
+
             ps.execute();
-            
 
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
         }
     }
-        
+
 }

@@ -1,6 +1,7 @@
 package Classes;
 
 public class Classificacao_Etaria {
+
     public int id;
     public String Classificacao_Etaria;
 
@@ -27,7 +28,5 @@ public class Classificacao_Etaria {
     public void setClassificacao_Etaria(String Classificacao_Etaria) {
         this.Classificacao_Etaria = Classificacao_Etaria;
     }
-    
-    
-    
+
 }

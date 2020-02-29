@@ -14,7 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Delete_Banco {
-        public void Excluir_Usuario(Usuario Use) {
+
+    public void Excluir_Usuario(Usuario Use) {
         try {
             String sql = "DELETE FROM Usuario WHERE ID_Usuario = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -26,7 +27,8 @@ public class Delete_Banco {
             System.out.println(ex);
         }
     }
-           public void Excluir_Temporada(Temporada Temp) {
+
+    public void Excluir_Temporada(Temporada Temp) {
         try {
             String sql = "DELETE FROM Temporada WHERE ID_Temporada = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -38,8 +40,8 @@ public class Delete_Banco {
             System.out.println(ex);
         }
     }
-           
-        public void Excluir_Status(Status Sta) {
+
+    public void Excluir_Status(Status Sta) {
         try {
             String sql = "DELETE FROM Status WHERE ID_Status = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -51,7 +53,8 @@ public class Delete_Banco {
             System.out.println(ex);
         }
     }
-            public void Excluir_Series(Series Ser) {
+
+    public void Excluir_Series(Series Ser) {
         try {
             String sql = "DELETE FROM Series WHERE ID_Serie = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -63,7 +66,8 @@ public class Delete_Banco {
             System.out.println(ex);
         }
     }
-            public void Excluir_Nacionalidade(Nacionalidade Nac) {
+
+    public void Excluir_Nacionalidade(Nacionalidade Nac) {
         try {
             String sql = "DELETE FROM Nacionalidade WHERE ID_Nacionalidade = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -74,8 +78,9 @@ public class Delete_Banco {
             ex.getMessage();
             System.out.println(ex);
         }
-    } 
-            public void Excluir_Links(Links Lin) {
+    }
+
+    public void Excluir_Links(Links Lin) {
         try {
             String sql = "DELETE FROM Links WHERE ID_Link = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -87,7 +92,8 @@ public class Delete_Banco {
             System.out.println(ex);
         }
     }
-                public void Excluir_Historico_Usuario(Historico_Usuario His) {
+
+    public void Excluir_Historico_Usuario(Historico_Usuario His) {
         try {
             String sql = "DELETE FROM Historico_Usuario WHERE ID_Catalogo_Usuario = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -99,7 +105,8 @@ public class Delete_Banco {
             System.out.println(ex);
         }
     }
-           public void Excluir_Estudio(Estudio Est) {
+
+    public void Excluir_Estudio(Estudio Est) {
         try {
             String sql = "DELETE FROM Estudio WHERE ID_Estudio = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -111,8 +118,8 @@ public class Delete_Banco {
             System.out.println(ex);
         }
     }
-           
-     public void Excluir_Classificacao_Etaria(Classificacao_Etaria Cla) {
+
+    public void Excluir_Classificacao_Etaria(Classificacao_Etaria Cla) {
         try {
             String sql = "DELETE FROM Classificacao_Etaria WHERE ID_Classificacao = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -124,8 +131,8 @@ public class Delete_Banco {
             System.out.println(ex);
         }
     }
-     
-      public void Excluir_Categoria(Categoria Cat) {
+
+    public void Excluir_Categoria(Categoria Cat) {
         try {
             String sql = "DELETE FROM Categoria WHERE ID_Categoria = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -136,5 +143,5 @@ public class Delete_Banco {
             ex.getMessage();
             System.out.println(ex);
         }
-    }    
+    }
 }

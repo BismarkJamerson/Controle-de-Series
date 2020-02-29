@@ -10,12 +10,15 @@ public class Series {
     public int FK_Status;
     public int FK_Categoria;
     public String Imagem;
+    public int FK_Nacionalidade;
+    public int FK_Estudio;
+    public int FK_Classificacao;
 
     public Series() {
         
     }
 
-    public Series(int id, String nome, String Duracao, boolean Favorito, int Nota, boolean Dublado, boolean Legendado, int FK_Status, int FK_Categoria) {
+    public Series(int id, String nome, String Duracao, boolean Favorito, int Nota, boolean Dublado, boolean Legendado, int FK_Status, int FK_Categoria, String Imagem, int FK_Nacionalidade, int FK_Estudio, int FK_Classificacao) {
         this.id = id;
         this.nome = nome;
         this.Duracao = Duracao;
@@ -25,7 +28,37 @@ public class Series {
         this.Legendado = Legendado;
         this.FK_Status = FK_Status;
         this.FK_Categoria = FK_Categoria;
+        this.Imagem = Imagem;
+        this.FK_Nacionalidade = FK_Nacionalidade;
+        this.FK_Estudio = FK_Estudio;
+        this.FK_Classificacao = FK_Classificacao;
     }
+
+    public int getFK_Nacionalidade() {
+        return FK_Nacionalidade;
+    }
+
+    public void setFK_Nacionalidade(int FK_Nacionalidade) {
+        this.FK_Nacionalidade = FK_Nacionalidade;
+    }
+
+    public int getFK_Estudio() {
+        return FK_Estudio;
+    }
+
+    public void setFK_Estudio(int FK_Estudio) {
+        this.FK_Estudio = FK_Estudio;
+    }
+
+    public int getFK_Classificacao() {
+        return FK_Classificacao;
+    }
+
+    public void setFK_Classificacao(int FK_Classificacao) {
+        this.FK_Classificacao = FK_Classificacao;
+    }
+
+   
 
     public String getImagem() {
         return Imagem;
