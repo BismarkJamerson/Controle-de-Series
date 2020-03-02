@@ -60,9 +60,9 @@ public class Insert_Banco {
         }
     }
 
-    public void Insert_Series(Series Ser, int Sta, int Ce, int Est, int Nac, int Cat) {
+    public void Insert_Series(Series Ser, int Sta, int Ce, int Est, int Nac) {
         try {
-            String sql = "INSERT INTO Series (Nome, Duracao, Favorito, Nota, Dublado, Legendado, FK_Status,FK_Classificacao_Etaria, Fk_Estudio,FK_Nacionalidade, FK_Categoria) VALUES (?,?,?,?,?,?,?,?,?,?,?) ";
+            String sql = "INSERT INTO Series (Nome, Duracao, Favorito, Nota, Dublado, Legendado, FK_Status,FK_Classificacao_Etaria, Fk_Estudio,FK_Nacionalidade) VALUES (?,?,?,?,?,?,?,?,?,?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, Ser.getNome());
             ps.setString(2, Ser.getDuracao());
@@ -74,11 +74,12 @@ public class Insert_Banco {
             ps.setInt(8, Ce);
             ps.setInt(9, Est);        //Falta Campo Imagem 
             ps.setInt(10, Nac);
-            ps.setInt(11, Cat);
             ps.execute();
         } catch (SQLException ex) {
             ex.getMessage();
             JOptionPane.showMessageDialog(null,"Não foi possível salvar série!","ERRO AO SALVAR!!",JOptionPane.CLOSED_OPTION);
+        } finally{
+            conexao.getInstance().closeConnect();
         }
     }
 

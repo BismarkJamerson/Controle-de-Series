@@ -4,6 +4,7 @@ import Classes.Categoria;
 import Classes.Classificacao_Etaria;
 import Classes.Estudio;
 import Classes.Nacionalidade;
+import Classes.Series;
 import Classes.Sessao;
 import Classes.Status;
 import Classes.Usuario;
@@ -183,6 +184,26 @@ public class Select_Banco {
             ex.getMessage();
         } finally {
             return lista;
+        }
+    }
+    
+        public Series Select_Series(Series s){
+            Series Ser = new Series();
+            Ser = s;
+            
+            try {
+            String sql = "SELECT * FROM Series WHERE Nome = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setString(1, Ser.getNome());
+            ResultSet rs = ps.executeQuery();     
+            while (rs.next()) {
+                Ser.setId(rs.getInt("ID_Serie"));
+            }               
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            return Ser;
         }
     }
 }

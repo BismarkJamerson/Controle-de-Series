@@ -3,6 +3,8 @@ package BancoDeDados;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class conexao {
 
@@ -32,5 +34,14 @@ public class conexao {
 
     public Connection getConnection() {
         return conn;
+    }
+    
+    public void closeConnect(){
+        try {
+            conn.close();
+            me = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
