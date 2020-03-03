@@ -459,7 +459,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         lista_Status = select.Select_Status();
         for (int i = 0; i < lista_Status.size(); i++) {
 
-            cb_Status.addItem(lista_Status.get(i).Status);
+            cb_Status.addItem(lista_Status.get(i).Status_Producao);
 
         }
     }
@@ -469,7 +469,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         lista_Classificacao = select.Select_Classificacao();
 
         for (int i = 0; i < lista_Classificacao.size(); i++) {
-            cb_Classificacao.addItem(lista_Classificacao.get(i).Classificacao_Etaria);
+            cb_Classificacao.addItem(lista_Classificacao.get(i).Classificacao);
 
         }
     }
@@ -490,7 +490,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         lista_Nacionalidade = select.Select_Nacionalidade();
 
         for (int i = 0; i < lista_Nacionalidade.size(); i++) {
-            cb_Nacionalidade.addItem(lista_Nacionalidade.get(i).Nacionalidade);
+            cb_Nacionalidade.addItem(lista_Nacionalidade.get(i).Pais);
 
         }
 

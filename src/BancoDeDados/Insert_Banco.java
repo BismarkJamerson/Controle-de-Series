@@ -49,9 +49,9 @@ public class Insert_Banco {
 
     public void Insert_Status(Status Sta) {
         try {
-            String sql = "INSERT INTO Status (Status) VALUES (?) ";
+            String sql = "INSERT INTO Status (Status_Producao) VALUES (?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, Sta.getStatus());
+            ps.setString(1, Sta.getStatus_Producao());
 
             ps.execute();
         } catch (SQLException ex) {
@@ -62,7 +62,7 @@ public class Insert_Banco {
 
     public void Insert_Series(Series Ser, int Sta, int Ce, int Est, int Nac) {
         try {
-            String sql = "INSERT INTO Series (Nome, Duracao, Favorito, Nota, Dublado, Legendado, FK_Status,FK_Classificacao_Etaria, Fk_Estudio,FK_Nacionalidade) VALUES (?,?,?,?,?,?,?,?,?,?) ";
+            String sql = "INSERT INTO Series (Nome, Duracao, Favorito, Nota, Dublado, Legendado, FK_Status,FK_Classificacao, Fk_Estudio,FK_Nacionalidade) VALUES (?,?,?,?,?,?,?,?,?,?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, Ser.getNome());
             ps.setString(2, Ser.getDuracao());
@@ -85,9 +85,9 @@ public class Insert_Banco {
 
     public void Insert_Nacionalidade(Nacionalidade Nac) {
         try {
-            String sql = "INSERT INTO Nacionalidade (Nacionalidade) VALUES (?) ";
+            String sql = "INSERT INTO Nacionalidade (Pais) VALUES (?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, Nac.getNacionalidade());
+            ps.setString(1, Nac.getPais());
 
             ps.execute();
         } catch (SQLException ex) {
@@ -98,9 +98,9 @@ public class Insert_Banco {
 
     public void Insert_Links(Links Lin, int Ser) {
         try {
-            String sql = "INSERT INTO Links (Link,FK_Serie) VALUES (?,?) ";
+            String sql = "INSERT INTO Links (Site,FK_Serie) VALUES (?,?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, Lin.getLink());
+            ps.setString(1, Lin.getSite());
             ps.setInt(2, Ser);
 
             ps.execute();
@@ -147,9 +147,9 @@ public class Insert_Banco {
 
     public void Insert_Classificacao_Etaria(Classificacao_Etaria ClE) {
         try {
-            String sql = "INSERT INTO Classificacao_Etaria (Classificacao_Etaria) VALUES (?)";
+            String sql = "INSERT INTO Classificacao_Etaria (Classificacao) VALUES (?)";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, ClE.getClassificacao_Etaria());
+            ps.setString(1, ClE.getClassificacao());
 
             ps.execute();
         } catch (SQLException ex) {

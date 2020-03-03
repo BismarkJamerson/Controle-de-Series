@@ -1,14 +1,14 @@
 package Classes;
 public class Nacionalidade {
     public int id;
-    public String Nacionalidade;
+    public String Pais;
 
     public Nacionalidade() {
     }
 
-    public Nacionalidade(int id, String Nacionalidade) {
+    public Nacionalidade(int id, String Pais) {
         this.id = id;
-        this.Nacionalidade = Nacionalidade;
+        this.Pais = Pais;
     }
 
     public int getId() {
@@ -19,12 +19,12 @@ public class Nacionalidade {
         this.id = id;
     }
 
-    public String getNacionalidade() {
-        return Nacionalidade;
+    public String getPais() {
+        return Pais;
     }
 
-    public void setNacionalidade(String Nacionalidade) {
-        this.Nacionalidade = Nacionalidade;
+    public void setPais(String Pais) {
+        this.Pais = Pais;
     }
     
     
