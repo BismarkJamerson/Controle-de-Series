@@ -15,6 +15,7 @@ import Classes.Series;
 import Classes.Status;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 
@@ -382,7 +383,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_AddActionPerformed
 
     private void bt_RemovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_RemovActionPerformed
-        //removCategorias();
+        removCategorias();
     }//GEN-LAST:event_bt_RemovActionPerformed
 
     /**
@@ -549,24 +550,57 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         lista.addElement(cb_Categoria.getSelectedItem());
         lt_Categoria.setModel(lista);
         cb_Categoria.removeItem(cb_Categoria.getSelectedItem());
-        // lista.add(cb_Categoria.getSelectedItem().toString());
-        // lt_Categoria.setListData(lista);
     }
 
-  /**  private void removCategorias() {
- 
+    private void removCategorias() {
+
         ListModel<String> obj = lt_Categoria.getModel();
-        for (int i = 1; i < obj.getSize(); i++) {
+        List<String> r = new ArrayList<String>();
+        for (int i = 0; i < obj.getSize(); i++) {
 
-            if (obj.getElementAt(i).equals(lista.elements())) {
-                lt_Categoria.remove(i);
+            String a = obj.getElementAt(i);
+            String b = lt_Categoria.getSelectedValue();
 
+            if (!a.equalsIgnoreCase(b)) {
+                r.add(a);
             }
 
         }
-        //lista.addElement(lt_Categoria.getSelectedValue());
-        cb_Categoria.addItem(lt_Categoria.getSelectedValue());
+
+        DefaultListModel resposta = new DefaultListModel();
+
+        for (String x : r) {
+            resposta.addElement(x);
+        }
+
+        if (resposta.size() > 0) {
+            lt_Categoria.setModel(resposta);
+        } else {
+            DefaultListModel vazio = new DefaultListModel();
+            lt_Categoria.setModel(vazio);
+
+        }
+
+        cb_Categoria.removeAllItems();
+        
+
+        for (int i = 0; i < lista_Categoria.size(); i++) {
+            String v = lista_Categoria.get(i).nome_Categoria;
+
+            if (resposta.size() > 0) {
+                for (int l = 0; l < resposta.size(); l++) {
+                    String y = resposta.get(l).toString();
+
+                    if (!y.equalsIgnoreCase(v)) {
+                        cb_Categoria.addItem(lista_Categoria.get(i).nome_Categoria);
+                        break;
+                    }
+                }
+            } else {
+                cb_Categoria.addItem(lista_Categoria.get(i).nome_Categoria);
+            }
+
+        }
 
     }
-**/
 }
