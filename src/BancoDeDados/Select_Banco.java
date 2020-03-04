@@ -85,14 +85,14 @@ public class Select_Banco {
     public List<Status> Select_Status() {
         List<Status> lista = new ArrayList();
         try {
-            String sql = "SELECT * FROM Status ORDER BY Status";
+            String sql = "SELECT * FROM Status ORDER BY Status_Producao";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 Status sta = new Status();
                 sta.setId(rs.getInt("ID_Status"));
-                sta.setStatus(rs.getString("Status"));
+                sta.setStatus_Producao(rs.getString("Status_Producao"));
                 lista.add(sta);
             }
 
@@ -113,7 +113,7 @@ public class Select_Banco {
             while (rs.next()) {
                 Classificacao_Etaria Cls = new Classificacao_Etaria();
                 Cls.setId(rs.getInt("ID_Classificacao"));
-                Cls.setClassificacao_Etaria(rs.getString("Classificacao_Etaria"));
+                Cls.setClassificacao(rs.getString("Classificacao"));
                 lista.add(Cls);
             }
 
@@ -155,7 +155,7 @@ public class Select_Banco {
             while (rs.next()) {
                 Nacionalidade Nac = new Nacionalidade();
                 Nac.setId(rs.getInt("ID_Nacionalidade"));
-                Nac.setNacionalidade(rs.getString("Nacionalidade"));
+                Nac.setPais(rs.getString("Pais"));
                 lista.add(Nac);
             }
 

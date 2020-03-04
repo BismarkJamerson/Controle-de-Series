@@ -1,14 +1,14 @@
 package Classes;
 public class Status {
     public int id;
-    public String Status;
+    public String Status_Producao;
 
     public Status() {
     }
 
-    public Status(int id, String Status) {
+    public Status(int id, String Status_Producao) {
         this.id = id;
-        this.Status = Status;
+        this.Status_Producao = Status_Producao;
     }
 
     public int getId() {
@@ -19,12 +19,12 @@ public class Status {
         this.id = id;
     }
 
-    public String getStatus() {
-        return Status;
+    public String getStatus_Producao() {
+        return Status_Producao;
     }
 
-    public void setStatus(String Status) {
-        this.Status = Status;
+    public void setStatus_Producao(String Status_Producao) {
+        this.Status_Producao = Status_Producao;
     }
     
     

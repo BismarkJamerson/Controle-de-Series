@@ -49,9 +49,9 @@ public class Update_Banco {
 
     public void Update_Status(Status Sta) {
         try {
-            String sql = "UPDATE Status SET Status = ? WHERE ID_Status = ?  ";
+            String sql = "UPDATE Status SET Status_Producao = ? WHERE ID_Status = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, Sta.getStatus());
+            ps.setString(1, Sta.getStatus_Producao());
             ps.setInt(2, Sta.getId());
             ps.execute();
 
@@ -84,9 +84,9 @@ public class Update_Banco {
 
     public void Update_Nacionalidade(Nacionalidade Nac) {
         try {
-            String sql = "UPDATE Nacionalidade SET Nacionalidade = ? WHERE ID_Nacionalidade = ? ";
+            String sql = "UPDATE Nacionalidade SET Pais = ? WHERE ID_Nacionalidade = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, Nac.getNacionalidade());
+            ps.setString(1, Nac.getPais());
             ps.setInt(2, Nac.getId());
 
             ps.execute();
@@ -99,9 +99,9 @@ public class Update_Banco {
 
     public void Update_Links(Links Lin) {
         try {
-            String sql = "UPDATE Links SET Link = ? WHERE ID_Link = ?  ";
+            String sql = "UPDATE Links SET Site = ? WHERE ID_Site = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, Lin.getLink());
+            ps.setString(1, Lin.getSite());
             ps.setInt(2, Lin.getId());
 
             ps.execute();
@@ -151,9 +151,9 @@ public class Update_Banco {
 
     public void Update_Classificacao_Etaria(Classificacao_Etaria ClE) {
         try {
-            String sql = "UPDATE Classificacao_Etaria SET Classificacao_Etaria = ? WHERE ID_Classificacao = ?  ";
+            String sql = "UPDATE Classificacao_Etaria SET Classificacao = ? WHERE ID_Classificacao = ?  ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, ClE.getClassificacao_Etaria());
+            ps.setString(1, ClE.getClassificacao());
             ps.setInt(2, ClE.getId());
 
             ps.execute();
