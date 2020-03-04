@@ -547,9 +547,13 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }
 
     private void addIdCategoria() {
+        int x=cb_Categoria.getSelectedIndex();
+        if(x != 0){
         lista.addElement(cb_Categoria.getSelectedItem());
         lt_Categoria.setModel(lista);
-        cb_Categoria.removeItem(cb_Categoria.getSelectedItem());
+        cb_Categoria.removeItem(cb_Categoria.getSelectedItem());  
+        }
+        
     }
 
     private void removCategorias() {
