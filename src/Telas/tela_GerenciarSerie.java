@@ -13,6 +13,7 @@ import Classes.Estudio;
 import Classes.Nacionalidade;
 import Classes.Series;
 import Classes.Status;
+import Classes.fk_Series_Categorias;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ComboBoxModel;
@@ -75,10 +76,6 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         cb_Nacionalidade = new javax.swing.JComboBox<>();
         cb_Categoria = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lt_Categoria = new javax.swing.JList<>();
-        bt_Add = new javax.swing.JButton();
-        bt_Remov = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -172,22 +169,6 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         jLabel8.setText("Categoria");
 
-        jScrollPane2.setViewportView(lt_Categoria);
-
-        bt_Add.setText("+");
-        bt_Add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_AddActionPerformed(evt);
-            }
-        });
-
-        bt_Remov.setText("-");
-        bt_Remov.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_RemovActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -195,6 +176,10 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cb_Legendado)
+                        .addGap(104, 104, 104)
+                        .addComponent(jButton1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -204,10 +189,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(tb_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                        .addComponent(jLabel8))
+                                    .addComponent(tb_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(tb_Duracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(71, 71, 71)
@@ -229,35 +211,27 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(17, 17, 17)
                                         .addComponent(cb_Nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(cb_Legendado)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cb_Favorito)
-                                .addComponent(cb_Dublado))
-                            .addGap(36, 36, 36)
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cb_Nacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cb_Categoria, 0, 153, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(bt_Add)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cb_Dublado)
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cb_Favorito)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bt_Remov))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(11, 11, 11))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_Nacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,8 +239,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cb_Dublado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_Legendado)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cb_Legendado))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -278,32 +251,28 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(tb_Duracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)
-                                    .addComponent(cb_Classificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bt_Add)
-                                    .addComponent(bt_Remov))
+                                    .addComponent(cb_Classificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(cb_Nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel4)
-                                            .addComponent(cb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6)
-                                            .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel7)
-                                            .addComponent(cb_Nacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(cb_Nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(cb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(cb_Nacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cb_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8)))
-                        .addGap(80, 80, 80))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Adicionar", jPanel2);
@@ -312,7 +281,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 726, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,7 +294,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 726, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,11 +307,13 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5)
+            .addComponent(jTabbedPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -377,14 +348,6 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     private void cb_CategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_CategoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_CategoriaActionPerformed
-
-    private void bt_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_AddActionPerformed
-        addIdCategoria();
-    }//GEN-LAST:event_bt_AddActionPerformed
-
-    private void bt_RemovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_RemovActionPerformed
-        removCategorias();
-    }//GEN-LAST:event_bt_RemovActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,8 +385,6 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_Add;
-    private javax.swing.JButton bt_Remov;
     private javax.swing.JComboBox<String> cb_Categoria;
     private javax.swing.JComboBox<String> cb_Classificacao;
     private javax.swing.JCheckBox cb_Dublado;
@@ -445,9 +406,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JList<String> lt_Categoria;
     private java.awt.Panel panel1;
     private javax.swing.JFormattedTextField tb_Duracao;
     private javax.swing.JTextField tb_Nome;
@@ -512,7 +471,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         boolean favorito = cb_Favorito.isSelected();
         boolean dublado = cb_Dublado.isSelected();
         boolean legendado = cb_Legendado.isSelected();
-        String nota = (String) cb_Nota.getSelectedItem();
+        int nota = Integer.parseInt((String) cb_Nota.getSelectedItem());
         int iS = cb_Status.getSelectedIndex();//Pega nº posição
         int Status = lista_Status.get(iS).id; //ID Status
         int iC = cb_Classificacao.getSelectedIndex();
@@ -521,8 +480,6 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         int Estudio = lista_Estudio.get(iE).id;
         int iN = cb_Nacionalidade.getSelectedIndex();
         int Nacionalidade = lista_Nacionalidade.get(iN).id;
-        //int iCT = cb_Categoria.getSelectedIndex();
-        //int Categoria = lista_Categoria.get(iCT).id;
 
         Series Ser = new Series();
         Ser.setDublado(dublado);
@@ -530,10 +487,10 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         Ser.setFavorito(favorito);
         Ser.setLegendado(legendado);
         Ser.setNome(nome);
-        //Ser.setNota(iCT);
+        Ser.setNota(nota);
 
         Insert_Banco insert = new Insert_Banco();
-        insert.Insert_Series(Ser, iS, iC, iE, iN);
+        insert.Insert_Series(Ser, Status, Classificacao, Estudio, Nacionalidade);
 
         getIdSerie(Ser);
         // getIdCategoria();
@@ -543,64 +500,24 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     private void getIdSerie(Series Ser) {
         Select_Banco select = new Select_Banco();
         select.Select_Series(Ser);
-        System.out.println(Ser.getId());
+        getIdCategoria(Ser);
+
     }
 
-    private void addIdCategoria() {
-        lista.addElement(cb_Categoria.getSelectedItem());
-        lt_Categoria.setModel(lista);
-        cb_Categoria.removeItem(cb_Categoria.getSelectedItem());
-    }
-
-    private void removCategorias() {
-
-        ListModel<String> obj = lt_Categoria.getModel();
-        List<String> r = new ArrayList<String>();
-        for (int i = 0; i < obj.getSize(); i++) {
-
-            String a = obj.getElementAt(i);
-            String b = lt_Categoria.getSelectedValue();
-
-            if (!a.equalsIgnoreCase(b)) {
-                r.add(a);
-            }
-
-        }
-
-        DefaultListModel resposta = new DefaultListModel();
-
-        for (String x : r) {
-            resposta.addElement(x);
-        }
-
-        if (resposta.size() > 0) {
-            lt_Categoria.setModel(resposta);
-        } else {
-            DefaultListModel vazio = new DefaultListModel();
-            lt_Categoria.setModel(vazio);
-
-        }
-
-        cb_Categoria.removeAllItems();
+    private void getIdCategoria(Series Ser) {
+        Categoria C = new Categoria();
+        String cat = (String) cb_Categoria.getSelectedItem();
+        Select_Banco select = new Select_Banco();
+        select.Select_idCategoria(cat);
+        fk_Series_Categorias fkSC = new fk_Series_Categorias();
+        fkSC.setFk_Categorias(C.getId());
+        fkSC.setFk_Series(Ser.getId());
+        Insert_Banco in = new Insert_Banco();
+        in.Insert_fk_Series_Categorias(fkSC);
+        this.setVisible(false);
+        //Falta Atualizar tela
         
-
-        for (int i = 0; i < lista_Categoria.size(); i++) {
-            String v = lista_Categoria.get(i).nome_Categoria;
-
-            if (resposta.size() > 0) {
-                for (int l = 0; l < resposta.size(); l++) {
-                    String y = resposta.get(l).toString();
-
-                    if (!y.equalsIgnoreCase(v)) {
-                        cb_Categoria.addItem(lista_Categoria.get(i).nome_Categoria);
-                        break;
-                    }
-                }
-            } else {
-                cb_Categoria.addItem(lista_Categoria.get(i).nome_Categoria);
-            }
-
-        }
+        
 
     }
 }

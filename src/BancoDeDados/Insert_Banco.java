@@ -10,6 +10,7 @@ import Classes.Series;
 import Classes.Status;
 import Classes.Temporada;
 import Classes.Usuario;
+import Classes.fk_Series_Categorias;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -62,7 +63,7 @@ public class Insert_Banco {
 
     public void Insert_Series(Series Ser, int Sta, int Ce, int Est, int Nac) {
         try {
-            String sql = "INSERT INTO Series (Nome, Duracao, Favorito, Nota, Dublado, Legendado, FK_Status,FK_Classificacao, Fk_Estudio,FK_Nacionalidade) VALUES (?,?,?,?,?,?,?,?,?,?) ";
+            String sql = "INSERT INTO Series (Nome, Duracao, Favorito, Nota, Dublado, Legendado, FK_Status,FK_Classificacao_Etaria, Fk_Estudio,FK_Nacionalidade) VALUES (?,?,?,?,?,?,?,?,?,?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, Ser.getNome());
             ps.setString(2, Ser.getDuracao());
@@ -163,6 +164,19 @@ public class Insert_Banco {
             String sql = "INSERT INTO Categoria (Nome_Categoria) VALUES (?)";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, Cat.getNome_Categoria());
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }
+    }
+    
+    public void Insert_fk_Series_Categorias(fk_Series_Categorias fkSC) {
+        try {
+            String sql = "INSERT INTO Series_Categoria (FK_Categoria, FK_Serie) VALUES (?,?) ";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, fkSC.getFk_Categorias());
+            ps.setInt(2, fkSC.getFk_Series());
             ps.execute();
         } catch (SQLException ex) {
             ex.getMessage();

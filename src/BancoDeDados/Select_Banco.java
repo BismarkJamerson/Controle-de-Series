@@ -206,4 +206,24 @@ public class Select_Banco {
             return Ser;
         }
     }
+        public List<Categoria> Select_idCategoria(String cat) {
+        List<Categoria> lista = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Categoria WHERE Nome_Categoria = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ps.setString(1, cat);
+
+            while (rs.next()) {
+                Categoria Cat = new Categoria();
+                Cat.setId(rs.getInt("ID_Categoria"));
+                lista.add(Cat);
+            }
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+        } finally {
+            return lista;
+        }
+}
 }
