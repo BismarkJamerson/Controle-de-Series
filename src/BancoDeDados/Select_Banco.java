@@ -186,19 +186,19 @@ public class Select_Banco {
             return lista;
         }
     }
-    
-        public Series Select_Series(Series s){
-            Series Ser = new Series();
-            Ser = s;
-            
-            try {
+
+    public Series Select_Series(Series s) {
+        Series Ser = new Series();
+        Ser = s;
+
+        try {
             String sql = "SELECT * FROM Series WHERE Nome = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, Ser.getNome());
-            ResultSet rs = ps.executeQuery();     
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Ser.setId(rs.getInt("ID_Serie"));
-            }               
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
@@ -206,7 +206,8 @@ public class Select_Banco {
             return Ser;
         }
     }
-        public List<Categoria> Select_idCategoria(String cat) {
+
+    public List<Categoria> Select_idCategoria(String cat) {
         List<Categoria> lista = new ArrayList();
         try {
             String sql = "SELECT * FROM Categoria WHERE Nome_Categoria = ?";
@@ -225,5 +226,25 @@ public class Select_Banco {
         } finally {
             return lista;
         }
-}
+    }
+
+    public List<Series> Select_SeriesEdit(Series s) {
+        List<Series> lista = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Series ORDER BY Nome";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Series Ser = new Series();
+                Ser.setId(rs.getInt("ID_Serie"));
+                Ser.setNome(rs.getString("Nome"));
+                lista.add(Ser);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            return lista;
+        }
+    }
 }
