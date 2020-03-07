@@ -7,6 +7,7 @@ package Telas;
 
 import BancoDeDados.Insert_Banco;
 import BancoDeDados.Select_Banco;
+import BancoDeDados.Update_Banco;
 import Classes.Categoria;
 import Classes.Classificacao_Etaria;
 import Classes.Estudio;
@@ -44,7 +45,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         iniciar_EnableButtons(false);
         iniciar_CarregarSeriesEdit();
         lista = new DefaultListModel();
-        
+
     }
 
     /**
@@ -616,7 +617,41 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void bt_Confirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Confirmar1ActionPerformed
-        // TODO add your handling code here:
+        Series Ser = new Series();
+        List<Series> lista = new ArrayList();
+        String x = (String) cb_SelectSerie.getSelectedItem();
+                Select_Banco in = new Select_Banco();
+                lista = in.Select_SeriesEdit1(x);
+                int id = lista.get(0).id;
+                Update_Banco up = new Update_Banco();
+                    // salvar series
+                    String duracao = tb_Duracao1.getText();
+                    String nome = tb_Nome1.getText();
+                    boolean favorito = cb_Favorito1.isSelected();
+                    boolean dublado = cb_Dublado1.isSelected();
+                    boolean legendado = cb_Legendado1.isSelected();
+                    int nota = Integer.parseInt((String) cb_Nota1.getSelectedItem());
+                    int iS = cb_Status1.getSelectedIndex();//Pega nº posição
+                    int Status = lista_Status.get(iS).id; //ID Status
+                    int iC = cb_Classificacao1.getSelectedIndex();
+                    int Classificacao = lista_Classificacao.get(iC).id;
+                    int iE = cb_Estudio1.getSelectedIndex();
+                    int Estudio = lista_Estudio.get(iE).id;
+                    int iN = cb_Nacionalidade1.getSelectedIndex();
+                    int Nacionalidade = lista_Nacionalidade.get(iN).id;
+                        up.Update_Series(duracao, nome, favorito, dublado, legendado, nota, Status, Classificacao, Estudio, Nacionalidade, id);
+                        //falta id categoria
+                                    List<Categoria> listacat = new ArrayList();
+                                    String cat = (String) cb_Categoria1.getSelectedItem();
+                                    Select_Banco select = new Select_Banco();
+                                    listacat = select.Select_idCategoria(cat);
+                                    fk_Series_Categorias fkSC = new fk_Series_Categorias();
+                                    int idCat = listacat.get(0).id;
+                                    fkSC.setFk_Categorias(idCat);
+                                    fkSC.setFk_Series(id);
+                                    up.Update_FkSerCat(fkSC);
+                                        this.setVisible(false);
+
     }//GEN-LAST:event_bt_Confirmar1ActionPerformed
 
     private void cb_Categoria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_Categoria1ActionPerformed
@@ -645,16 +680,21 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int i = 0;
-            
-            if(i==0){
-                String ser = (String)cb_SelectSerie.getSelectedItem();
-                //Set itens nas CB_
-                Select_Banco in = new Select_Banco();
-                
-                
-                iniciar_EnableButtons(true);
-                i++;
-            }
+        Series Ser = new Series();
+        List<Series> lista = new ArrayList();
+        if (i == 0) {
+            iniciar_EnableButtons(true);
+            i++;
+        }
+        String x = (String) cb_SelectSerie.getSelectedItem();
+        //Set itens nas CB_
+        Select_Banco in = new Select_Banco();
+        lista = in.Select_SeriesEdit1(x);
+        tb_Nome1.setText(lista.get(0).nome);
+        tb_Duracao1.setText(lista.get(0).Duracao);
+        cb_Dublado1.setSelected(lista.get(0).Dublado);
+        cb_Favorito1.setSelected(lista.get(0).Favorito);
+        cb_Legendado1.setSelected(lista.get(0).Legendado);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -751,8 +791,8 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         lista_Status = select.Select_Status();
         for (int i = 0; i < lista_Status.size(); i++) {
-
             cb_Status.addItem(lista_Status.get(i).Status_Producao);
+            cb_Status1.addItem(lista_Status.get(i).Status_Producao);
 
         }
     }
@@ -763,6 +803,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         for (int i = 0; i < lista_Classificacao.size(); i++) {
             cb_Classificacao.addItem(lista_Classificacao.get(i).Classificacao);
+            cb_Classificacao1.addItem(lista_Classificacao.get(i).Classificacao);
 
         }
     }
@@ -773,6 +814,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         for (int i = 0; i < lista_Estudio.size(); i++) {
             cb_Estudio.addItem(lista_Estudio.get(i).Nome_Estudio);
+            cb_Estudio1.addItem(lista_Estudio.get(i).Nome_Estudio);
 
         }
 
@@ -784,7 +826,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         for (int i = 0; i < lista_Nacionalidade.size(); i++) {
             cb_Nacionalidade.addItem(lista_Nacionalidade.get(i).Pais);
-
+            cb_Nacionalidade1.addItem(lista_Nacionalidade.get(i).Pais);
         }
 
     }
@@ -795,7 +837,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         for (int i = 0; i < lista_Categoria.size(); i++) {
             cb_Categoria.addItem(lista_Categoria.get(i).nome_Categoria);
-
+            cb_Categoria1.addItem(lista_Categoria.get(i).nome_Categoria);
         }
     }
 
@@ -828,7 +870,6 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         getIdSerie(Ser);
         // getIdCategoria();
-
     }
 
     private void getIdSerie(Series Ser) {
@@ -850,8 +891,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         in.Insert_fk_Series_Categorias(fkSC);
         this.setVisible(false);
         //Falta Atualizar tela
-        
-        
+
 
     }
 
@@ -868,7 +908,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         cb_Status1.setEnabled(a);
         cb_Favorito1.setEnabled(a);
         bt_Confirmar1.setEnabled(a);
-        
+
     }
 
     private void iniciar_CarregarSeriesEdit() {
@@ -877,8 +917,8 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         List<Series> lista = new ArrayList();
         lista = in.Select_SeriesEdit(Ser);
         int x = lista.size();
-        for(int i=0; i < x;i++){
-        cb_SelectSerie.addItem(lista.get(i).nome);    
+        for (int i = 0; i < x; i++) {
+            cb_SelectSerie.addItem(lista.get(i).nome);
         }
     }
 }

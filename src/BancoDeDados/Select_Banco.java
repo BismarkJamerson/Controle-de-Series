@@ -212,9 +212,9 @@ public class Select_Banco {
         try {
             String sql = "SELECT * FROM Categoria WHERE Nome_Categoria = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
             ps.setString(1, cat);
-
+            ResultSet rs = ps.executeQuery();
+           
             while (rs.next()) {
                 Categoria Cat = new Categoria();
                 Cat.setId(rs.getInt("ID_Categoria"));
@@ -224,6 +224,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
+            System.out.println("Selec");
             return lista;
         }
     }
@@ -248,25 +249,33 @@ public class Select_Banco {
         }
     }
     
-        public Series Select_SeriesEdit1(String nome) {
-        Series Ser = new Series();
-
+        public List<Series> Select_SeriesEdit1(String nome) {
+        List<Series> lista = new ArrayList();
         try {
             String sql = "SELECT * FROM Series WHERE Nome = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, nome);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                Series Ser = new Series();
                 Ser.setId(rs.getInt("ID_Serie"));
                 Ser.setNome(rs.getString("Nome"));
+                Ser.setDuracao(rs.getString("Duracao"));
+                Ser.setFavorito(rs.getBoolean("Favorito"));
+                Ser.setNota(rs.getInt("Nota"));
                 Ser.setDublado(rs.getBoolean("Dublado"));
-                Ser.Duracao
+                Ser.setLegendado(rs.getBoolean("Legendado"));
+                Ser.setFK_Status(rs.getInt("FK_Status"));
+                Ser.setFK_Classificacao(rs.getInt("FK_Classificacao_Etaria"));
+                Ser.setFK_Estudio(rs.getInt("FK_Estudio"));
+                Ser.setFK_Nacionalidade(rs.getInt("FK_Nacionalidade"));
+                lista.add(Ser);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            return Ser;
+            return lista;
         }
     }
 }

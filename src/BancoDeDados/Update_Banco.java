@@ -10,6 +10,7 @@ import Classes.Series;
 import Classes.Status;
 import Classes.Temporada;
 import Classes.Usuario;
+import Classes.fk_Series_Categorias;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -61,24 +62,26 @@ public class Update_Banco {
         }
     }
 
-    public void Update_Series(Series Ser) {
+    public void Update_Series(String duracao, String nome, boolean favorito, boolean dublado, boolean legendado, int nota, int Status, int Classificacao, int Estudio, int Nacionalidade, int id) {
         try {
-            String sql = "UPDATE Series SET Nome = ?, Duracao = ?, Favorito = ?, Nota = ?, Imagem = ?, Dublado = ?, Legendado = ? WHERE ID_Series = ?  ";
+            String sql = "UPDATE Series SET Nome = ?, Duracao = ?, Favorito = ?, Nota = ?, Dublado = ?, Legendado = ?, FK_Status = ?, FK_Classificacao_Etaria = ?, FK_Estudio = ?, FK_Nacionalidade=?  WHERE ID_Serie = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, Ser.getNome());
-            ps.setString(2, Ser.getDuracao());
-            ps.setBoolean(3, Ser.isFavorito());
-            ps.setInt(4, Ser.getNota());
-            ps.setString(5, Ser.getImagem());
-            ps.setBoolean(6, Ser.isDublado());
-            ps.setBoolean(7, Ser.isLegendado());
-            ps.setInt(8, Ser.getId());
-
+            ps.setString(1, nome);
+            ps.setString(2, duracao);
+            ps.setBoolean(3, favorito);
+            ps.setInt(4, nota);
+            ps.setBoolean(5, dublado);
+            ps.setBoolean(6, legendado);
+            ps.setInt(7, Status);
+            ps.setInt(8, Classificacao);
+            ps.setInt(9, Estudio);
+            ps.setInt(10, Nacionalidade);
+            ps.setInt(11, id);
             ps.execute();
 
         } catch (SQLException ex) {
             ex.getMessage();
-            System.out.println(ex);
+            System.out.println(ex+" up1");
         }
     }
 
@@ -170,12 +173,26 @@ public class Update_Banco {
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, Cat.getNome_Categoria());
             ps.setInt(2, Cat.getId());
-
+ 
             ps.execute();
 
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }
+    }
+
+    public void  Update_FkSerCat( fk_Series_Categorias fkSC) {
+try {
+            String sql = "UPDATE Series_Categoria SET FK_Categoria = ? WHERE FK_Serie = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, fkSC.fk_Categorias);
+            ps.setInt(2, fkSC.fk_Series);
+            ps.execute();
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex+ " Up");
         }
     }
 
