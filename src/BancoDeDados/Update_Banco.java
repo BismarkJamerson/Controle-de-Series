@@ -6,7 +6,6 @@ import Classes.Estudio;
 import Classes.Historico_Usuario;
 import Classes.Links;
 import Classes.Nacionalidade;
-import Classes.Series;
 import Classes.Status;
 import Classes.Temporada;
 import Classes.Usuario;

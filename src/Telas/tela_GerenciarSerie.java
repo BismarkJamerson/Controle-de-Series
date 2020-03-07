@@ -881,11 +881,13 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
     private void getIdCategoria(Series Ser) {
         Categoria C = new Categoria();
+        List<Categoria> listacat = new ArrayList();
         String cat = (String) cb_Categoria.getSelectedItem();
         Select_Banco select = new Select_Banco();
-        select.Select_idCategoria(cat);
+        listacat = select.Select_idCategoria(cat);
         fk_Series_Categorias fkSC = new fk_Series_Categorias();
-        fkSC.setFk_Categorias(C.getId());
+        int idCat = listacat.get(0).id;
+        fkSC.setFk_Categorias(idCat);
         fkSC.setFk_Series(Ser.getId());
         Insert_Banco in = new Insert_Banco();
         in.Insert_fk_Series_Categorias(fkSC);
