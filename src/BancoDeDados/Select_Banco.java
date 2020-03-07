@@ -247,4 +247,26 @@ public class Select_Banco {
             return lista;
         }
     }
+    
+        public Series Select_SeriesEdit1(String nome) {
+        Series Ser = new Series();
+
+        try {
+            String sql = "SELECT * FROM Series WHERE Nome = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setString(1, nome);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Ser.setId(rs.getInt("ID_Serie"));
+                Ser.setNome(rs.getString("Nome"));
+                Ser.setDublado(rs.getBoolean("Dublado"));
+                Ser.Duracao
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            return Ser;
+        }
+    }
 }

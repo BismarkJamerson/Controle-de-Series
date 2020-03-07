@@ -644,7 +644,17 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_Nota1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        int i = 0;
+            
+            if(i==0){
+                String ser = (String)cb_SelectSerie.getSelectedItem();
+                //Set itens nas CB_
+                Select_Banco in = new Select_Banco();
+                
+                
+                iniciar_EnableButtons(true);
+                i++;
+            }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
