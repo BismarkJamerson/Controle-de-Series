@@ -857,6 +857,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
             tb_Excluir.setText("");
             JOptionPane.showMessageDialog(null, "Excluido com Sucesso!!!");
             cb_SelectSerie1.removeItem(i);
+            //Falta Delete as Fk_seriesCategorias
         }else{
             lb_Delet.setText("Incorreto!");
         }

@@ -294,11 +294,12 @@ public class tela_Principal extends javax.swing.JFrame {
     }
 
     private void imagembutton() {
+        
         String url = "/Imagem/x.jpg";
         URL x = this.getClass().getResource(url);
         ImageIcon img = new ImageIcon(x);
         img.setImage(img.getImage().getScaledInstance(btn_teste.getWidth(), btn_teste.getHeight(), 1));
-        btn_teste.setIcon(img);   
+        btn_teste.setIcon(img);
         
     }
 }
