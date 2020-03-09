@@ -5,6 +5,7 @@
  */
 package Telas;
 
+import BancoDeDados.Delete_Banco;
 import BancoDeDados.Insert_Banco;
 import BancoDeDados.Select_Banco;
 import BancoDeDados.Update_Banco;
@@ -17,8 +18,11 @@ import Classes.Status;
 import Classes.fk_Series_Categorias;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
 /**
@@ -37,15 +41,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     // ArrayList<String> lista =  new ArrayList();
     public tela_GerenciarSerie() {
         initComponents();
-        iniciar_Status();
-        iniciar_Classificacao();
-        iniciar_Estudio();
-        iniciar_Nacionalidade();
-        iniciar_Categoria();
-        iniciar_EnableButtons(false);
-        iniciar_CarregarSeriesEdit();
-        lista = new DefaultListModel();
-
+        iniciar();
     }
 
     /**
@@ -108,6 +104,17 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         cb_SelectSerie = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        panel3 = new java.awt.Panel();
+        jLabel18 = new javax.swing.JLabel();
+        tb_Nome2 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        cb_SelectSerie1 = new javax.swing.JComboBox<>();
+        bt_ok2 = new javax.swing.JButton();
+        bt_Excluir2 = new javax.swing.JButton();
+        bt_Cancelar2 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        tb_Excluir = new javax.swing.JTextField();
+        lb_Delet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("dsdsd");
@@ -414,6 +421,12 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         jLabel17.setText("Selecionar Série");
 
+        cb_SelectSerie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_SelectSerieActionPerformed(evt);
+            }
+        });
+
         jButton4.setText("OK");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -551,15 +564,127 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Editar", jPanel3);
 
+        jPanel4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel4FocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
+        panel3.setLayout(panel3Layout);
+        panel3Layout.setHorizontalGroup(
+            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 82, Short.MAX_VALUE)
+        );
+        panel3Layout.setVerticalGroup(
+            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 112, Short.MAX_VALUE)
+        );
+
+        jLabel18.setText("Nome");
+
+        tb_Nome2.setDragEnabled(true);
+
+        jLabel19.setText("Selecionar Série");
+
+        bt_ok2.setText("OK");
+        bt_ok2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_ok2ActionPerformed(evt);
+            }
+        });
+
+        bt_Excluir2.setText("Excluir");
+        bt_Excluir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_Excluir2ActionPerformed(evt);
+            }
+        });
+
+        bt_Cancelar2.setText("Cancelar");
+        bt_Cancelar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_Cancelar2ActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Para excluir a série selecionada, digite \"EXCLUIR\" no campo a baixo .");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_Excluir2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_Cancelar2))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(cb_SelectSerie1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_ok2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tb_Nome2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))))
+                .addGap(15, 15, 15))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel20))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(tb_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(lb_Delet)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_SelectSerie1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_ok2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tb_Nome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLabel20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_Cancelar2)
+                            .addComponent(bt_Excluir2)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tb_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_Delet)))
+                .addContainerGap())
         );
 
         jTabbedPane5.addTab("Deletar", jPanel4);
@@ -568,11 +693,11 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
 
         pack();
@@ -650,7 +775,8 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                                     fkSC.setFk_Categorias(idCat);
                                     fkSC.setFk_Series(id);
                                     up.Update_FkSerCat(fkSC);
-                                        this.setVisible(false);
+                                    JOptionPane.showMessageDialog(null, "Editado com Sucesso!!!");
+                                    this.setVisible(false);
 
     }//GEN-LAST:event_bt_Confirmar1ActionPerformed
 
@@ -697,6 +823,49 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         cb_Legendado1.setSelected(lista.get(0).Legendado);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void bt_ok2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ok2ActionPerformed
+        int i = 0;
+        Series Ser = new Series();
+        List<Series> lista = new ArrayList();
+        if (i == 0) {
+            iniciar_EnableButtons(true);
+            i++;
+        }
+        String x = (String) cb_SelectSerie1.getSelectedItem();
+        //falta Img
+        Select_Banco in = new Select_Banco();
+        lista = in.Select_SeriesEdit1(x);
+        tb_Nome2.setText(lista.get(0).nome);
+        
+    }//GEN-LAST:event_bt_ok2ActionPerformed
+
+    private void bt_Cancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Cancelar2ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_Cancelar2ActionPerformed
+
+    private void cb_SelectSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_SelectSerieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_SelectSerieActionPerformed
+
+    private void bt_Excluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Excluir2ActionPerformed
+        String x = tb_Excluir.getText().toUpperCase();
+        if(x.equals("EXCLUIR")){
+            String i = (String) cb_SelectSerie1.getSelectedItem();
+            Delete_Banco del = new Delete_Banco();
+            del.Excluir_Series(i);
+            tb_Nome2.setText("");
+            tb_Excluir.setText("");
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!!!");
+            cb_SelectSerie1.removeItem(i);
+        }else{
+            lb_Delet.setText("Incorreto!");
+        }
+    }//GEN-LAST:event_bt_Excluir2ActionPerformed
+
+    private void jPanel4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel4FocusGained
+        tb_Nome2.setEnabled(false);
+    }//GEN-LAST:event_jPanel4FocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -733,7 +902,10 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Cancelar2;
     private javax.swing.JButton bt_Confirmar1;
+    private javax.swing.JButton bt_Excluir2;
+    private javax.swing.JButton bt_ok2;
     private javax.swing.JComboBox<String> cb_Categoria;
     private javax.swing.JComboBox<String> cb_Categoria1;
     private javax.swing.JComboBox<String> cb_Classificacao;
@@ -751,6 +923,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_Nota;
     private javax.swing.JComboBox<String> cb_Nota1;
     private javax.swing.JComboBox<String> cb_SelectSerie;
+    private javax.swing.JComboBox<String> cb_SelectSerie1;
     private javax.swing.JComboBox<String> cb_Status;
     private javax.swing.JComboBox<String> cb_Status1;
     private javax.swing.JButton jButton1;
@@ -766,7 +939,10 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -778,12 +954,16 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JLabel lb_Delet;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
+    private java.awt.Panel panel3;
     private javax.swing.JFormattedTextField tb_Duracao;
     private javax.swing.JFormattedTextField tb_Duracao1;
+    private javax.swing.JTextField tb_Excluir;
     private javax.swing.JTextField tb_Nome;
     private javax.swing.JTextField tb_Nome1;
+    private javax.swing.JTextField tb_Nome2;
     // End of variables declaration//GEN-END:variables
         //
     private void iniciar_Status() {
@@ -891,9 +1071,9 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         fkSC.setFk_Series(Ser.getId());
         Insert_Banco in = new Insert_Banco();
         in.Insert_fk_Series_Categorias(fkSC);
-        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Salvo com Sucesso!!!");
+        this.setVisible(false);       
         //Falta Atualizar tela
-
 
     }
 
@@ -921,6 +1101,20 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         int x = lista.size();
         for (int i = 0; i < x; i++) {
             cb_SelectSerie.addItem(lista.get(i).nome);
+            cb_SelectSerie1.addItem(lista.get(i).nome);
         }
     }
+
+    private void iniciar() {
+        iniciar_Status();
+        iniciar_Classificacao();
+        iniciar_Estudio();
+        iniciar_Nacionalidade();
+        iniciar_Categoria();
+        iniciar_EnableButtons(false);
+        iniciar_CarregarSeriesEdit();
+        lista = new DefaultListModel();
+        tb_Nome2.setEnabled(false);
+    }
+
 }

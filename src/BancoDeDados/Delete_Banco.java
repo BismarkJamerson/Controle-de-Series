@@ -54,12 +54,12 @@ public class Delete_Banco {
         }
     }
 
-    public void Excluir_Series(Series Ser) {
+    public void Excluir_Series(String x) {
         try {
-            String sql = "DELETE FROM Series WHERE ID_Serie = ? ";
+            String sql = "DELETE FROM Series WHERE Nome = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setInt(1, Ser.getId());
-            ps.execute();
+            ps.setString(1, x);
+            ps.execute(); 
 
         } catch (SQLException ex) {
             ex.getMessage();
