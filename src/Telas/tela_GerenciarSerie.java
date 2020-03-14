@@ -745,38 +745,38 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         Series Ser = new Series();
         List<Series> lista = new ArrayList();
         String x = (String) cb_SelectSerie.getSelectedItem();
-                Select_Banco in = new Select_Banco();
-                lista = in.Select_SeriesEdit1(x);
-                int id = lista.get(0).id;
-                Update_Banco up = new Update_Banco();
-                    // salvar series
-                    String duracao = tb_Duracao1.getText();
-                    String nome = tb_Nome1.getText();
-                    boolean favorito = cb_Favorito1.isSelected();
-                    boolean dublado = cb_Dublado1.isSelected();
-                    boolean legendado = cb_Legendado1.isSelected();
-                    int nota = Integer.parseInt((String) cb_Nota1.getSelectedItem());
-                    int iS = cb_Status1.getSelectedIndex();//Pega nº posição
-                    int Status = lista_Status.get(iS).id; //ID Status
-                    int iC = cb_Classificacao1.getSelectedIndex();
-                    int Classificacao = lista_Classificacao.get(iC).id;
-                    int iE = cb_Estudio1.getSelectedIndex();
-                    int Estudio = lista_Estudio.get(iE).id;
-                    int iN = cb_Nacionalidade1.getSelectedIndex();
-                    int Nacionalidade = lista_Nacionalidade.get(iN).id;
-                        up.Update_Series(duracao, nome, favorito, dublado, legendado, nota, Status, Classificacao, Estudio, Nacionalidade, id);
-                        //falta id categoria
-                                    List<Categoria> listacat = new ArrayList();
-                                    String cat = (String) cb_Categoria1.getSelectedItem();
-                                    Select_Banco select = new Select_Banco();
-                                    listacat = select.Select_idCategoria(cat);
-                                    fk_Series_Categorias fkSC = new fk_Series_Categorias();
-                                    int idCat = listacat.get(0).id;
-                                    fkSC.setFk_Categorias(idCat);
-                                    fkSC.setFk_Series(id);
-                                    up.Update_FkSerCat(fkSC);
-                                    JOptionPane.showMessageDialog(null, "Editado com Sucesso!!!");
-                                    this.setVisible(false);
+        Select_Banco in = new Select_Banco();
+        lista = in.Select_SeriesEdit1(x);
+        int id = lista.get(0).id;
+        Update_Banco up = new Update_Banco();
+        // salvar series
+        String duracao = tb_Duracao1.getText();
+        String nome = tb_Nome1.getText();
+        boolean favorito = cb_Favorito1.isSelected();
+        boolean dublado = cb_Dublado1.isSelected();
+        boolean legendado = cb_Legendado1.isSelected();
+        int nota = Integer.parseInt((String) cb_Nota1.getSelectedItem());
+        int iS = cb_Status1.getSelectedIndex();//Pega nº posição
+        int Status = lista_Status.get(iS).id; //ID Status
+        int iC = cb_Classificacao1.getSelectedIndex();
+        int Classificacao = lista_Classificacao.get(iC).id;
+        int iE = cb_Estudio1.getSelectedIndex();
+        int Estudio = lista_Estudio.get(iE).id;
+        int iN = cb_Nacionalidade1.getSelectedIndex();
+        int Nacionalidade = lista_Nacionalidade.get(iN).id;
+        up.Update_Series(duracao, nome, favorito, dublado, legendado, nota, Status, Classificacao, Estudio, Nacionalidade, id);
+        //falta id categoria
+        List<Categoria> listacat = new ArrayList();
+        String cat = (String) cb_Categoria1.getSelectedItem();
+        Select_Banco select = new Select_Banco();
+        listacat = select.Select_idCategoria(cat);
+        fk_Series_Categorias fkSC = new fk_Series_Categorias();
+        int idCat = listacat.get(0).id;
+        fkSC.setFk_Categorias(idCat);
+        fkSC.setFk_Series(id);
+        up.Update_FkSerCat(fkSC);
+        JOptionPane.showMessageDialog(null, "Editado com Sucesso!!!");
+        this.setVisible(false);
 
     }//GEN-LAST:event_bt_Confirmar1ActionPerformed
 
@@ -828,7 +828,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         Series Ser = new Series();
         List<Series> lista = new ArrayList();
         if (i == 0) {
-            iniciar_EnableButtons(true);
+            //iniciar_EnableButtons(true);
             i++;
         }
         String x = (String) cb_SelectSerie1.getSelectedItem();
@@ -836,7 +836,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         Select_Banco in = new Select_Banco();
         lista = in.Select_SeriesEdit1(x);
         tb_Nome2.setText(lista.get(0).nome);
-        
+
     }//GEN-LAST:event_bt_ok2ActionPerformed
 
     private void bt_Cancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Cancelar2ActionPerformed
@@ -849,16 +849,22 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
     private void bt_Excluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Excluir2ActionPerformed
         String x = tb_Excluir.getText().toUpperCase();
-        if(x.equals("EXCLUIR")){
+        if (x.equals("EXCLUIR")) {
+            List<Series> listaID = new ArrayList();
             String i = (String) cb_SelectSerie1.getSelectedItem();
             Delete_Banco del = new Delete_Banco();
             del.Excluir_Series(i);
             tb_Nome2.setText("");
             tb_Excluir.setText("");
-            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!!!");
             cb_SelectSerie1.removeItem(i);
-            //Falta Delete as Fk_seriesCategorias
-        }else{
+            cb_SelectSerie.removeItem(i);
+           /* Select_Banco sec = new Select_Banco();
+            listaID = sec.Select_SeriesEdit1(i);
+            int idSer = listaID.get(0).id;
+            del.Excluir_fk_SerCat(idSer);
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!!!");
+            //Falta Delete as Fk_seriesCategorias*/
+        } else {
             lb_Delet.setText("Incorreto!");
         }
     }//GEN-LAST:event_bt_Excluir2ActionPerformed
@@ -1073,7 +1079,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         Insert_Banco in = new Insert_Banco();
         in.Insert_fk_Series_Categorias(fkSC);
         JOptionPane.showMessageDialog(null, "Salvo com Sucesso!!!");
-        this.setVisible(false);       
+        this.setVisible(false);
         //Falta Atualizar tela
 
     }

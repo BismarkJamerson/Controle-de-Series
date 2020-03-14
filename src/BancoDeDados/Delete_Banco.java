@@ -10,6 +10,7 @@ import Classes.Series;
 import Classes.Status;
 import Classes.Temporada;
 import Classes.Usuario;
+import Classes.fk_Series_Categorias;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -137,6 +138,18 @@ public class Delete_Banco {
             String sql = "DELETE FROM Categoria WHERE ID_Categoria = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setInt(1, Cat.getId());
+            ps.execute();
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }
+    }
+    public void Excluir_fk_SerCat(int fkSC) {
+        try {
+            String sql = "DELETE FROM Series_Categoria WHERE FK_Serie = ? ";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, fkSC);
             ps.execute();
 
         } catch (SQLException ex) {
