@@ -10,11 +10,18 @@ import Classes.Categoria;
 import Classes.Sessao;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +29,9 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -47,6 +57,7 @@ public class tela_Principal extends javax.swing.JFrame {
         pn_Favorito = new javax.swing.JPanel();
         pn_Principal = new javax.swing.JPanel();
         btn_teste = new javax.swing.JButton();
+        bt_teste = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pn_Categorias = new javax.swing.JPanel();
@@ -104,13 +115,25 @@ public class tela_Principal extends javax.swing.JFrame {
             }
         });
 
+        bt_teste.setText("teste img");
+        bt_teste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_testeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_PrincipalLayout = new javax.swing.GroupLayout(pn_Principal);
         pn_Principal.setLayout(pn_PrincipalLayout);
         pn_PrincipalLayout.setHorizontalGroup(
             pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_PrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_teste, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_PrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_teste, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pn_PrincipalLayout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(bt_teste)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn_PrincipalLayout.setVerticalGroup(
@@ -118,6 +141,8 @@ public class tela_Principal extends javax.swing.JFrame {
             .addGroup(pn_PrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btn_teste, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bt_teste)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -220,6 +245,25 @@ public class tela_Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_testeActionPerformed
 
+    private void bt_testeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_testeActionPerformed
+        try {
+            JFileChooser file = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG Images", "jpg");
+            file.setFileFilter(filter);
+            int i = file.showSaveDialog(null);
+            File arquivo = file.getSelectedFile();
+                        
+            BufferedImage imagem = ImageIO.read(arquivo);// crio a imagem
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();// crio um OS de array de bytes
+            ImageIO.write(imagem, "jpg", baos);// Uso o write pra escrever os dados da imagem no OS do array de bytes
+            baos.flush();
+            byte[] x = baos.toByteArray();// pego o array de bytes
+            System.out.print(Arrays.toString(x));
+        }catch (HeadlessException | IOException e) {
+        
+        }
+    }//GEN-LAST:event_bt_testeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -259,6 +303,7 @@ public class tela_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_Login;
     private javax.swing.JButton bt_geren_ser;
     private javax.swing.JButton bt_gerencLogin;
+    private javax.swing.JButton bt_teste;
     private javax.swing.JButton btn_teste;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -309,7 +354,7 @@ public class tela_Principal extends javax.swing.JFrame {
         FlowLayout experimentLayout = new FlowLayout();
         pn_Categorias.setLayout(experimentLayout);
         pn_Categorias.setComponentOrientation(
-        ComponentOrientation.RIGHT_TO_LEFT);
+                ComponentOrientation.RIGHT_TO_LEFT);
         pn_Categorias.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);
         for (int i = 1; i < listCat.size(); i++) {
             String nome = listCat.get(i).nome_Categoria;
