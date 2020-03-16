@@ -9,6 +9,15 @@ public class Sessao {
     public static tela_Principal prin;
     public static String login;
     public static boolean confirm = false;
+    public static byte[] img;
+
+    public static void setImg(byte[] img) {
+        Sessao.img = img;
+    }
+
+    public static byte[] getImg() {
+        return img;
+    }
 
     public static boolean isConfirm() {
         return confirm;

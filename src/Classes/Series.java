@@ -9,7 +9,7 @@ public class Series {
     public boolean Legendado;
     public int FK_Status;
     public int FK_Categoria;
-    public String Imagem;
+    public byte[] Imagem;
     public int FK_Nacionalidade;
     public int FK_Estudio;
     public int FK_Classificacao;
@@ -18,7 +18,7 @@ public class Series {
         
     }
 
-    public Series(int id, String nome, String Duracao, boolean Favorito, int Nota, boolean Dublado, boolean Legendado, int FK_Status, int FK_Categoria, String Imagem, int FK_Nacionalidade, int FK_Estudio, int FK_Classificacao) {
+    public Series(int id, String nome, String Duracao, boolean Favorito, int Nota, boolean Dublado, boolean Legendado, int FK_Status, int FK_Categoria, byte[] Imagem, int FK_Nacionalidade, int FK_Estudio, int FK_Classificacao) {
         this.id = id;
         this.nome = nome;
         this.Duracao = Duracao;
@@ -60,11 +60,11 @@ public class Series {
 
    
 
-    public String getImagem() {
+    public byte[] getImagem() {
         return Imagem;
     }
 
-    public void setImagem(String Imagem) {
+    public void setImagem(byte[] Imagem) {
         this.Imagem = Imagem;
     }
 

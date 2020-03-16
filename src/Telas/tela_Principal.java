@@ -373,7 +373,7 @@ public class tela_Principal extends javax.swing.JFrame {
                                 getContentPane().add(btn);
                                 btnS.setName(nomeS);
                                 btnS.setText(nomeS);
-                                btnS.setBounds(10, 22 * i, 80, 20);
+                                btnS.setBounds(5, 120 * i, 80, 120);
                                 pn_Principal.add(btnS);
                                 // Dimencionar botão
                                 //set img

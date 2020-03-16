@@ -61,9 +61,9 @@ public class Insert_Banco {
         }
     }
 
-    public void Insert_Series(Series Ser, int Sta, int Ce, int Est, int Nac) {
+    public void Insert_Series(Series Ser, int Sta, int Ce, int Est, int Nac, byte[] img) {
         try {
-            String sql = "INSERT INTO Series (Nome, Duracao, Favorito, Nota, Dublado, Legendado, FK_Status,FK_Classificacao_Etaria, Fk_Estudio,FK_Nacionalidade) VALUES (?,?,?,?,?,?,?,?,?,?) ";
+            String sql = "INSERT INTO Series (Nome, Duracao, Favorito, Nota, Dublado, Legendado, FK_Status,FK_Classificacao_Etaria, Fk_Estudio,FK_Nacionalidade, Imagem) VALUES (?,?,?,?,?,?,?,?,?,?,?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, Ser.getNome());
             ps.setString(2, Ser.getDuracao());
@@ -75,6 +75,7 @@ public class Insert_Banco {
             ps.setInt(8, Ce);
             ps.setInt(9, Est);        //Falta Campo Imagem 
             ps.setInt(10, Nac);
+            ps.setBytes(11, img);
             ps.execute();
         } catch (SQLException ex) {
             ex.getMessage();
