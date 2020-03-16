@@ -34,6 +34,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            conexao.getInstance().closeConnect();
             return acesso;
         }
     }
@@ -55,6 +56,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            conexao.getInstance().closeConnect();
             return dica;
         }
     }
@@ -78,6 +80,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            conexao.getInstance().closeConnect();
             return use;
         }
     }
@@ -99,6 +102,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
@@ -120,6 +124,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
@@ -141,6 +146,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
@@ -162,6 +168,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
@@ -183,6 +190,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
@@ -203,6 +211,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            conexao.getInstance().closeConnect();
             return Ser;
         }
     }
@@ -224,6 +233,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
@@ -244,6 +254,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
@@ -274,6 +285,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
@@ -281,7 +293,7 @@ public class Select_Banco {
             List<Series> lista = new ArrayList();
         try {
             String sql = "SELECT * FROM Series_Categoria "
-                    + "INNER JOIN Serie,Categoria "
+                    + "INNER JOIN Series,Categoria "
                     + "WHERE ID_Categoria = ? AND FK_Categoria = ? GROUP BY ID_Serie";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setInt(1, id);
@@ -306,6 +318,7 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            conexao.getInstance().closeConnect();
             return lista;
         }
     }
