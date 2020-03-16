@@ -224,7 +224,6 @@ public class Select_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
-            System.out.println("Selec");
             return lista;
         }
     }
@@ -255,6 +254,38 @@ public class Select_Banco {
             String sql = "SELECT * FROM Series WHERE Nome = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, nome);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Series Ser = new Series();
+                Ser.setId(rs.getInt("ID_Serie"));
+                Ser.setNome(rs.getString("Nome"));
+                Ser.setDuracao(rs.getString("Duracao"));
+                Ser.setFavorito(rs.getBoolean("Favorito"));
+                Ser.setNota(rs.getInt("Nota"));
+                Ser.setDublado(rs.getBoolean("Dublado"));
+                Ser.setLegendado(rs.getBoolean("Legendado"));
+                Ser.setFK_Status(rs.getInt("FK_Status"));
+                Ser.setFK_Classificacao(rs.getInt("FK_Classificacao_Etaria"));
+                Ser.setFK_Estudio(rs.getInt("FK_Estudio"));
+                Ser.setFK_Nacionalidade(rs.getInt("FK_Nacionalidade"));
+                lista.add(Ser);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            return lista;
+        }
+    }
+        public List<Series> Select_Serie_Categorias(int id) {
+            List<Series> lista = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Series_Categoria "
+                    + "INNER JOIN Serie,Categoria "
+                    + "WHERE ID_Categoria = ? AND FK_Categoria = ? GROUP BY ID_Serie";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.setInt(2, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Series Ser = new Series();

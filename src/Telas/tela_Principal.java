@@ -7,31 +7,19 @@ package Telas;
 
 import BancoDeDados.Select_Banco;
 import Classes.Categoria;
+import Classes.Series;
 import Classes.Sessao;
+import Controle.Convert;
+import java.awt.Button;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
-import java.awt.HeadlessException;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -246,22 +234,15 @@ public class tela_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_testeActionPerformed
 
     private void bt_testeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_testeActionPerformed
-        try {
-            JFileChooser file = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG Images", "jpg");
-            file.setFileFilter(filter);
-            int i = file.showSaveDialog(null);
-            File arquivo = file.getSelectedFile();
-                        
-            BufferedImage imagem = ImageIO.read(arquivo);// crio a imagem
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();// crio um OS de array de bytes
-            ImageIO.write(imagem, "jpg", baos);// Uso o write pra escrever os dados da imagem no OS do array de bytes
-            baos.flush();
-            byte[] x = baos.toByteArray();// pego o array de bytes
-            System.out.print(Arrays.toString(x));
-        }catch (HeadlessException | IOException e) {
         
-        }
+        String URL = Convert.caminhoImg();
+        byte[] cIpB = Convert.converterImagemParaByte(URL);//salvar em bd
+        byte[] x = null ;//Byte vindo do banco 
+        ImageIcon imgI = Convert.getImagem(cIpB);
+              
+        imgI.setImage(imgI.getImage().getScaledInstance(btn_teste.getWidth(), btn_teste.getHeight(), 1));
+        btn_teste.setIcon(imgI);
+        
     }//GEN-LAST:event_bt_testeActionPerformed
 
     /**
@@ -354,18 +335,35 @@ public class tela_Principal extends javax.swing.JFrame {
         FlowLayout experimentLayout = new FlowLayout();
         pn_Categorias.setLayout(experimentLayout);
         pn_Categorias.setComponentOrientation(
-                ComponentOrientation.RIGHT_TO_LEFT);
+        ComponentOrientation.RIGHT_TO_LEFT);
         pn_Categorias.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);
-        for (int i = 1; i < listCat.size(); i++) {
+        int i =1;
+        for (i = 1; i < listCat.size(); i++) {
             String nome = listCat.get(i).nome_Categoria;
             int id = listCat.get(i).id;
             JButton btn = new JButton(nome);
             getContentPane().add(btn);
+            btn.setName(nome);
             btn.setText(nome);
             btn.setBounds(10, 22 * i, 80, 20);
             pn_Categorias.add(btn);
             pn_Categorias.setLayout(new FlowLayout());
-
+                    btn.addActionListener(new ActionListener() { 
+                      public void actionPerformed(java.awt.event.ActionEvent evt) {
+                         List<Categoria> lista = new ArrayList();
+                         List<Series> listaS = new ArrayList();
+                         String nome = btn.getName();
+                         System.out.println(nome); 
+                         Select_Banco sec = new Select_Banco();
+                         lista = sec.Select_idCategoria(nome); 
+                         int id = lista.get(0).id;
+                         listaS = sec.Select_Serie_Categorias(id);
+                         
+                         
+                         
+                      }});                    
+            
         }
     }
 }
+
