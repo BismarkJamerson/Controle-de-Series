@@ -279,6 +279,7 @@ public class Select_Banco {
                 Ser.setFK_Classificacao(rs.getInt("FK_Classificacao_Etaria"));
                 Ser.setFK_Estudio(rs.getInt("FK_Estudio"));
                 Ser.setFK_Nacionalidade(rs.getInt("FK_Nacionalidade"));
+                Ser.setImagem(rs.getBytes("Imagem"));
                 lista.add(Ser);
             }
 
