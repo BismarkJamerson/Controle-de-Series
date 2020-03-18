@@ -9,6 +9,7 @@ import BancoDeDados.Select_Banco;
 import Classes.Categoria;
 import Classes.Series;
 import Classes.Sessao;
+import Controle.Acction;
 import Controle.Convert;
 import java.awt.Button;
 import java.awt.ComponentOrientation;
@@ -51,6 +52,7 @@ public class tela_Principal extends javax.swing.JFrame {
         bt_Login = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         pn_Principal = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,15 +158,28 @@ public class tela_Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_PrincipalLayout = new javax.swing.GroupLayout(pn_Principal);
         pn_Principal.setLayout(pn_PrincipalLayout);
         pn_PrincipalLayout.setHorizontalGroup(
             pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
+            .addGroup(pn_PrincipalLayout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(jButton1)
+                .addContainerGap(327, Short.MAX_VALUE))
         );
         pn_PrincipalLayout.setVerticalGroup(
             pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 238, Short.MAX_VALUE)
+            .addGroup(pn_PrincipalLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(jButton1)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(pn_Principal);
@@ -246,6 +261,11 @@ public class tela_Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bt_testeActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tela_Serie s = new tela_Serie();
+        s.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -287,6 +307,7 @@ public class tela_Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_gerencLogin;
     private javax.swing.JButton bt_teste;
     private javax.swing.JButton btn_teste;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -375,15 +396,22 @@ public class tela_Principal extends javax.swing.JFrame {
                                 btnS.setText(nomeS);
                                 btnS.setBounds(5, 120 * i, 80, 120);
                                 pn_Principal.add(btnS);
+                                    Acction a = new Acction();
+                                    a.botao(btnS);
                                 // Dimencionar botão
                                 //set img
                                 //
                                 ;}
                                 pn_Principal.repaint();
                          
-                      }});                    
-            
+                      }
+
+                
+            });                    
+
         }
-    }
+    }            
+
 }
+
 
