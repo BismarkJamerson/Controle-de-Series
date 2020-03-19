@@ -5,8 +5,19 @@
  */
 package Telas;
 
+import BancoDeDados.Insert_Banco;
+import BancoDeDados.Select_Banco;
+import BancoDeDados.Update_Banco;
+import Classes.Classificacao_Etaria;
+import Classes.Estudio;
+import Classes.Historico_Series;
+import Classes.Historico_Usuario;
+import Classes.Nacionalidade;
 import Classes.Series;
+import Classes.Sessao;
+import Classes.Status;
 import Controle.Convert;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 
@@ -21,9 +32,10 @@ public class tela_Serie extends javax.swing.JFrame {
      */
     public tela_Serie() {
         initComponents();
-        
+
     }
-        public tela_Serie(List<Series> a) {
+
+    public tela_Serie(List<Series> a) {
         initComponents();
         iniciar(a);
     }
@@ -53,11 +65,6 @@ public class tela_Serie extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tb_Nome = new javax.swing.JTextField();
         tb_Duracao = new javax.swing.JFormattedTextField();
-        cb_Nota = new javax.swing.JComboBox<>();
-        cb_Status = new javax.swing.JComboBox<>();
-        cb_Classificacao = new javax.swing.JComboBox<>();
-        cb_Estudio = new javax.swing.JComboBox<>();
-        cb_Nacionalidade = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -68,6 +75,11 @@ public class tela_Serie extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        cb_Classificacao = new javax.swing.JTextField();
+        cb_Estudio = new javax.swing.JTextField();
+        cb_Nacionalidade = new javax.swing.JTextField();
+        cb_Status = new javax.swing.JTextField();
+        cb_nota = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,25 +154,6 @@ public class tela_Serie extends javax.swing.JFrame {
             }
         });
 
-        cb_Nota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        cb_Nota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_NotaActionPerformed(evt);
-            }
-        });
-
-        cb_Status.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_StatusActionPerformed(evt);
-            }
-        });
-
-        cb_Nacionalidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_NacionalidadeActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Nacionalidade");
 
         jLabel6.setText("Estudio");
@@ -210,24 +203,21 @@ public class tela_Serie extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(cb_Status))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cb_Nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(58, 58, 58)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cb_nota, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(17, 27, Short.MAX_VALUE)
-                                        .addComponent(jLabel6)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel7)
-                                        .addGap(1, 1, 1)
-                                        .addComponent(cb_Nacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(5, 5, 5))))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_Nacionalidade)
+                                    .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -238,17 +228,18 @@ public class tela_Serie extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(tb_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(tb_Duracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(71, 71, 71)
                                                 .addComponent(jLabel9)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cb_Classificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(cb_Classificacao))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
+                                        .addGap(19, 19, 19)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(17, 17, 17)
                                                 .addComponent(lb_temporada)
@@ -256,9 +247,8 @@ public class tela_Serie extends javax.swing.JFrame {
                                                 .addComponent(bt_MenenosTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(bt_MaisTemp))
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel2))
-                                        .addGap(43, 43, 43)
+                                            .addComponent(jLabel5))
+                                        .addGap(86, 86, 86)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(4, 4, 4)
@@ -272,26 +262,17 @@ public class tela_Serie extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(bt_MaisEp))
                                             .addComponent(jLabel3))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(0, 21, Short.MAX_VALUE))
+                                .addGap(0, 51, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(jButton6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(bt_img, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_Favorito)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_Dublado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_Legendado))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -304,30 +285,21 @@ public class tela_Serie extends javax.swing.JFrame {
                             .addComponent(cb_Classificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cb_Nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel11))
+                            .addComponent(jLabel11)
+                            .addComponent(cb_Estudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel12)
-                                .addComponent(cb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel7)
                                 .addComponent(cb_Nacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7)))
+                                .addComponent(cb_Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(bt_MaisTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(bt_MenenosTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5)
-                                        .addComponent(lb_temporada))))
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,12 +307,28 @@ public class tela_Serie extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(bt_MenosEp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel8)
-                                        .addComponent(lb_ep)))))))
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tb_link, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lb_ep))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bt_MaisTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(bt_MenenosTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5)
+                                        .addComponent(lb_temporada)))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tb_link, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(bt_img, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_Favorito)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_Dublado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_Legendado)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -352,48 +340,53 @@ public class tela_Serie extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_imgActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        int nTemp = Integer.parseInt(lb_temporada.getText());
+        int nEp = Integer.parseInt(lb_ep.getText());
+        Select_Banco in = new Select_Banco();
+        List<Series> lista = new ArrayList();
+        lista = in.Select_SeriesEdit1(tb_Nome.getText());
+        int idS = lista.get(0).id;
+        int idU = Sessao.getId();
+        Historico_Usuario HU = in.Select_Historico_User(idU, idS);
+        if (HU == null) {
+            Insert_Banco i = new Insert_Banco();
+            i.Insert_Historico_Usuario(nTemp, nEp, Sessao.getId());
+            Historico_Series hS = in.Select_HistoricoUser(idS);
+            int idH = hS.getFK_Historico();
+            i.Insert_Historico_Series(idH, idS);
+        }else{
+            Update_Banco up = new Update_Banco();
+            up.Update_Historico_Usuario(nTemp, nEp, HU.getId());
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void bt_MaisTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_MaisTempActionPerformed
-       int x = Integer.parseInt(lb_temporada.getText());
-       x += 01;
-       lb_temporada.setText(Integer.toString(x));
+        int x = Integer.parseInt(lb_temporada.getText());
+        x += 01;
+        lb_temporada.setText(Integer.toString(x));
     }//GEN-LAST:event_bt_MaisTempActionPerformed
 
     private void bt_MenenosTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_MenenosTempActionPerformed
-       int x = Integer.parseInt(lb_temporada.getText());
-       x--;
-       lb_temporada.setText(Integer.toString(x));
+        int x = Integer.parseInt(lb_temporada.getText());
+        x--;
+        lb_temporada.setText(Integer.toString(x));
     }//GEN-LAST:event_bt_MenenosTempActionPerformed
 
     private void bt_MenosEpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_MenosEpActionPerformed
-       int x = Integer.parseInt(lb_ep.getText());
-       x--;
-       lb_ep.setText(Integer.toString(x));
+        int x = Integer.parseInt(lb_ep.getText());
+        x--;
+        lb_ep.setText(Integer.toString(x));
     }//GEN-LAST:event_bt_MenosEpActionPerformed
 
     private void bt_MaisEpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_MaisEpActionPerformed
-       int x = Integer.parseInt(lb_ep.getText());
-       x++;
-       lb_ep.setText(Integer.toString(x));
+        int x = Integer.parseInt(lb_ep.getText());
+        x++;
+        lb_ep.setText(Integer.toString(x));
     }//GEN-LAST:event_bt_MaisEpActionPerformed
 
     private void tb_DuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_DuracaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tb_DuracaoActionPerformed
-
-    private void cb_NotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_NotaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_NotaActionPerformed
-
-    private void cb_StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_StatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_StatusActionPerformed
-
-    private void cb_NacionalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_NacionalidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_NacionalidadeActionPerformed
 
     private void cb_DubladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_DubladoActionPerformed
         // TODO add your handling code here:
@@ -440,14 +433,14 @@ public class tela_Serie extends javax.swing.JFrame {
     private javax.swing.JButton bt_MenenosTemp;
     private javax.swing.JButton bt_MenosEp;
     private javax.swing.JButton bt_img;
-    private javax.swing.JComboBox<String> cb_Classificacao;
+    private javax.swing.JTextField cb_Classificacao;
     private javax.swing.JCheckBox cb_Dublado;
-    private javax.swing.JComboBox<String> cb_Estudio;
+    private javax.swing.JTextField cb_Estudio;
     private javax.swing.JCheckBox cb_Favorito;
     private javax.swing.JCheckBox cb_Legendado;
-    private javax.swing.JComboBox<String> cb_Nacionalidade;
-    private javax.swing.JComboBox<String> cb_Nota;
-    private javax.swing.JComboBox<String> cb_Status;
+    private javax.swing.JTextField cb_Nacionalidade;
+    private javax.swing.JTextField cb_Status;
+    private javax.swing.JTextField cb_nota;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -474,12 +467,32 @@ public class tela_Serie extends javax.swing.JFrame {
         cb_Dublado.setSelected(a.get(0).Dublado);
         cb_Favorito.setSelected(a.get(0).Favorito);
         cb_Legendado.setSelected(a.get(0).Legendado);
-        ImageIcon x = Convert.getImagem(a.get(0).Imagem);
-        x.setImage(x.getImage().getScaledInstance(bt_img.getWidth(), bt_img.getHeight(), 1));
-        bt_img.setText("");
-        bt_img.setIcon(x);
-        
-        
-        
+        cb_nota.setText(Integer.toString(a.get(0).Nota));
+        ImageIcon i = Convert.getImagem(a.get(0).Imagem);       
+        //Get itens lb_ep e lb_Temp
+        if (i != null) {
+            ImageIcon x = Convert.getImagem(a.get(0).Imagem);
+            x.setImage(x.getImage().getScaledInstance(bt_img.getWidth(), bt_img.getHeight(), 1));
+            bt_img.setText("");
+            bt_img.setIcon(x);
+        }
+        List<Status> listaStatus = new ArrayList();
+        List<Classificacao_Etaria> listaClass = new ArrayList();
+        List<Estudio> listaEstudio = new ArrayList();
+        List<Nacionalidade> listaNac = new ArrayList();
+        int Status = a.get(0).FK_Status;
+        int Classif = a.get(0).FK_Classificacao;
+        int Estudio = a.get(0).FK_Estudio;
+        int Nacio = a.get(0).FK_Nacionalidade;
+        Select_Banco sec = new Select_Banco();
+        listaStatus = sec.Select_Status1(Status);
+        cb_Status.setText(listaStatus.get(0).Status_Producao);
+        listaClass = sec.Select_Classificacao_Etaria1(Classif);
+        cb_Classificacao.setText(listaClass.get(0).Classificacao);
+        listaEstudio = sec.Select_Estudio1(Estudio);
+        cb_Estudio.setText(listaEstudio.get(0).Nome_Estudio);
+        listaNac = sec.Select_Nacionalidade1(Nacio);
+        cb_Nacionalidade.setText(listaNac.get(0).Pais);
+
     }
 }

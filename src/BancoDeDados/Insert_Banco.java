@@ -28,6 +28,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 
@@ -45,6 +47,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 
@@ -58,6 +62,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 
@@ -95,6 +101,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 
@@ -109,6 +117,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 
@@ -131,6 +141,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 
@@ -144,6 +156,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 
@@ -157,6 +171,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 
@@ -169,6 +185,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
     
@@ -182,6 +200,38 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
+        }
+    }
+    
+    public void Insert_Historico_Usuario(int temp, int ep, int use) {
+        try {
+            String sql = "INSERT INTO Historico_Usuario (Temporada_Atual, Episodio_Atual, FK_Usuario) VALUES (?,?,?)";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, temp);
+            ps.setInt(2, ep);
+            ps.setInt(3, use);
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
+        }
+   }     
+        public void Insert_Historico_Series (int fkH, int fkS) {
+        try {
+            String sql = "INSERT INTO Historico_Series (FK_Historico, FK_Serie) VALUES (?,?)";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, fkH);
+            ps.setInt(2, fkS);;
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }  finally {
+            conexao.getInstance().closeConnect(); 
         }
     }
 }

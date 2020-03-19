@@ -181,7 +181,7 @@ public class Update_Banco {
         }
     }
 
-    public void  Update_FkSerCat( fk_Series_Categorias fkSC) {
+    public void  Update_FkSerCat(fk_Series_Categorias fkSC) {
 try {
             String sql = "UPDATE Series_Categoria SET FK_Categoria = ? WHERE FK_Serie = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -194,5 +194,18 @@ try {
             System.out.println(ex+ " Up");
         }
     }
-
+    
+    public void Update_Historico_Usuario(int temp, int ep, int id) {
+        try {
+            String sql = "UPDATE Historico_Usuario SET Temporada_Atual = ?, Episodio_Atual = ? WHERE ID_Historico)";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, temp);
+            ps.setInt(2, ep);
+            ps.setInt(3, id);
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }
+ }
 }

@@ -3,6 +3,8 @@ package BancoDeDados;
 import Classes.Categoria;
 import Classes.Classificacao_Etaria;
 import Classes.Estudio;
+import Classes.Historico_Series;
+import Classes.Historico_Usuario;
 import Classes.Nacionalidade;
 import Classes.Series;
 import Classes.Sessao;
@@ -323,4 +325,122 @@ public class Select_Banco {
             return lista;
         }
     }
+        public List<Status> Select_Status1(int s) {
+        List<Status> listaStatus = new ArrayList();
+        
+        try {
+            String sql = "SELECT Status_Producao FROM Status WHERE ID_Status = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, s);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Status Sta = new Status();
+                Sta.setStatus_Producao(rs.getString("Status_Producao"));
+                listaStatus.add(Sta);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect();           
+            return listaStatus;
+        }
+    }
+        
+        public List<Classificacao_Etaria> Select_Classificacao_Etaria1(int s) {
+        List<Classificacao_Etaria> listaClass = new ArrayList();
+        try {
+            String sql = "SELECT Classificacao FROM Classificacao_Etaria WHERE ID_Classificacao = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, s);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Classificacao_Etaria Class = new Classificacao_Etaria();
+                Class.setClassificacao(rs.getString("Classificacao"));
+                listaClass.add(Class);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect(); 
+            return listaClass;
+        }
+    } 
+        
+        public List<Estudio> Select_Estudio1(int s) {
+        List<Estudio> listaEst = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Estudio WHERE ID_Estudio = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, s);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Estudio Est = new Estudio();
+                Est.setNome_Estudio(rs.getString("Nome_Estudio"));
+                listaEst.add(Est);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect(); 
+            return listaEst;
+        }
+    }             
+           public List<Nacionalidade> Select_Nacionalidade1(int s) {
+        List<Nacionalidade> listaNacio = new ArrayList();
+        try {
+            String sql = "SELECT * FROM Nacionalidade WHERE ID_Nacionalidade = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, s);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Nacionalidade Est = new Nacionalidade();
+                Est.setPais(rs.getString("Pais"));
+                listaNacio.add(Est);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect(); 
+            return listaNacio;
+        }
+    }
+    public Historico_Usuario Select_Historico_User (int idU, int idS) {
+        Historico_Usuario HU = null;
+        try {
+            String sql = "SELECT * FROM Historico_Series INNER JOIN Historico_Usuario,Usuario,Series WHERE FK_Serie = ? AND ID_Usuario = ?   GROUP BY FK_Serie;";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, idS);
+            ps.setInt(2, idU);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                HU.setEpisodio_Atual(rs.getInt("Episodio_Atual"));
+                HU.setTemporada_Atual(rs.getInt("Temporada_Atual"));
+                HU.setId(rs.getInt("ID_Historico"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect(); 
+            return HU;
+        }
+    } 
+
+
+        public Historico_Series Select_HistoricoUser(int id) {
+        Historico_Series His = new Historico_Series();
+        try {
+            String sql = "SELECT * FROM Historico_Series WHERE FK_Serie= ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                His.setFK_Historico(rs.getInt("FK_Historico"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect();
+            return His;
+        }
+    }             
 }
