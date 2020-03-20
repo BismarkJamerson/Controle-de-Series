@@ -311,6 +311,7 @@ public class Select_Banco {
                 Ser.setNota(rs.getInt("Nota"));
                 Ser.setDublado(rs.getBoolean("Dublado"));
                 Ser.setLegendado(rs.getBoolean("Legendado"));
+                Ser.setImagem(rs.getBytes("Imagem"));
                 Ser.setFK_Status(rs.getInt("FK_Status"));
                 Ser.setFK_Classificacao(rs.getInt("FK_Classificacao_Etaria"));
                 Ser.setFK_Estudio(rs.getInt("FK_Estudio"));
@@ -412,11 +413,17 @@ public class Select_Banco {
             ps.setInt(1, idS);
             ps.setInt(2, idU);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                HU.setEpisodio_Atual(rs.getInt("Episodio_Atual"));
-                HU.setTemporada_Atual(rs.getInt("Temporada_Atual"));
-                HU.setId(rs.getInt("ID_Historico"));
-            }
+                while (rs.next()) {
+                    HU = new Historico_Usuario();
+                    HU.setEpisodio_Atual(rs.getInt("Episodio_Atual"));
+                    HU.setTemporada_Atual(rs.getInt("Temporada_Atual"));
+                    HU.setId(rs.getInt("ID_Historico"));
+            }if(HU == null){
+                    HU.id=0;
+                    HU = new Historico_Usuario();
+                    HU.setEpisodio_Atual(00);
+                    HU.setTemporada_Atual(00);
+            } 
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -442,5 +449,35 @@ public class Select_Banco {
             conexao.getInstance().closeConnect();
             return His;
         }
-    }             
+    } 
+        
+        public Historico_Usuario Select_Historico_User1 (int idU, int idS) {
+        Historico_Usuario HU = null;
+        try {
+            String sql = "SELECT * FROM Historico_Series INNER JOIN Historico_Usuario,Usuario,Series WHERE FK_Serie = ? AND ID_Usuario = ? AND FK_Usuario= ? AND ID_Serie =?  GROUP BY FK_Serie;";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, idS);
+            ps.setInt(2, idU);
+            ps.setInt(3, idU);
+            ps.setInt(4, idS);
+            ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    HU = new Historico_Usuario();
+                    HU.setEpisodio_Atual(rs.getInt("Episodio_Atual"));
+                    HU.setTemporada_Atual(rs.getInt("Temporada_Atual"));
+                    HU.setId(rs.getInt("ID_Historico"));
+                    Sessao.setHU(rs.getInt("ID_Historico"));
+            }if(HU==null){
+                    HU = new Historico_Usuario();
+                    HU.setEpisodio_Atual(00);
+                    HU.setTemporada_Atual(00);
+                    Sessao.setHU(rs.getInt(0));
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect(); 
+            return HU;
+        }
+}
 }

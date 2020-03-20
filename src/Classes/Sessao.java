@@ -10,7 +10,18 @@ public class Sessao {
     public static String login;
     public static boolean confirm = false;
     public static byte[] img;
+    public static int HU;
 
+    public static int getHU() {
+        return HU;
+    }
+
+    public static void setHU(int HU) {
+        Sessao.HU = HU;
+    }
+
+    
+    
     public static void setImg(byte[] img) {
         Sessao.img = img;
     }

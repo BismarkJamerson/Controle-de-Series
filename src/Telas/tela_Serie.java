@@ -348,15 +348,15 @@ public class tela_Serie extends javax.swing.JFrame {
         int idS = lista.get(0).id;
         int idU = Sessao.getId();
         Historico_Usuario HU = in.Select_Historico_User(idU, idS);
-        if (HU == null) {
+        if (HU.id==0) {
             Insert_Banco i = new Insert_Banco();
             i.Insert_Historico_Usuario(nTemp, nEp, Sessao.getId());
             Historico_Series hS = in.Select_HistoricoUser(idS);
             int idH = hS.getFK_Historico();
             i.Insert_Historico_Series(idH, idS);
-        }else{
+        } else {
             Update_Banco up = new Update_Banco();
-            up.Update_Historico_Usuario(nTemp, nEp, HU.getId());
+            up.Update_Historico_Usuario(nTemp, nEp, Sessao.getHU());
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -468,8 +468,21 @@ public class tela_Serie extends javax.swing.JFrame {
         cb_Favorito.setSelected(a.get(0).Favorito);
         cb_Legendado.setSelected(a.get(0).Legendado);
         cb_nota.setText(Integer.toString(a.get(0).Nota));
-        ImageIcon i = Convert.getImagem(a.get(0).Imagem);       
-        //Get itens lb_ep e lb_Temp
+        ImageIcon i = Convert.getImagem(a.get(0).Imagem);
+            Select_Banco in = new Select_Banco();
+            List<Series> lista = new ArrayList();
+            lista = in.Select_SeriesEdit1(tb_Nome.getText());
+            int idS = lista.get(0).id;
+            int idU = Sessao.getId();
+            Historico_Usuario HU = in.Select_Historico_User1(idU, idS);                           
+            String ep = Integer.toString(HU.getEpisodio_Atual());
+            String temp = Integer.toString(HU.getTemporada_Atual());
+                lb_ep.setText(ep);
+                lb_temporada.setText(temp);
+                
+                    
+           //Get itens lb_ep e lb_Temp
+
         if (i != null) {
             ImageIcon x = Convert.getImagem(a.get(0).Imagem);
             x.setImage(x.getImage().getScaledInstance(bt_img.getWidth(), bt_img.getHeight(), 1));

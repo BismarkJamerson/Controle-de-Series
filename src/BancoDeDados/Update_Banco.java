@@ -197,7 +197,7 @@ try {
     
     public void Update_Historico_Usuario(int temp, int ep, int id) {
         try {
-            String sql = "UPDATE Historico_Usuario SET Temporada_Atual = ?, Episodio_Atual = ? WHERE ID_Historico)";
+            String sql = "UPDATE Historico_Usuario SET Temporada_Atual = ?, Episodio_Atual = ? WHERE ID_Historico = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setInt(1, temp);
             ps.setInt(2, ep);

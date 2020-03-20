@@ -158,6 +158,10 @@ public class tela_Principal extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setAutoscrolls(true);
+
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,8 +379,7 @@ public class tela_Principal extends javax.swing.JFrame {
                       public void actionPerformed(java.awt.event.ActionEvent evt) {
                          List<Categoria> lista = new ArrayList();
                          List<Series> listaS = new ArrayList();
-                         String nome = btn.getName();
-                         System.out.println(nome); 
+                         String nome = btn.getName(); 
                          Select_Banco sec = new Select_Banco();
                          lista = sec.Select_idCategoria(nome); 
                          int id = lista.get(0).id;
@@ -388,19 +391,25 @@ public class tela_Principal extends javax.swing.JFrame {
                             pn_Principal.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);
                            // pn_Principal.removeAll();
                                 for (int i = 0; i < listaS.size(); i++) {
-                                String nomeS = listaS.get(i).nome;
-                                int idS = listaS.get(i).id;
-                                JButton btnS = new JButton(nomeS);
-                                getContentPane().add(btn);
-                                btnS.setName(nomeS);
-                                btnS.setText(nomeS);
-                                btnS.setBounds(5, 120 * i, 80, 120);
-                                pn_Principal.add(btnS);
-                                    Acction a = new Acction();
-                                    a.botao(btnS);
-                                // Dimencionar botão
-                                //set img
-                                //
+                                    String nomeS = listaS.get(i).nome;
+                                    int idS = listaS.get(i).id;
+                                    JButton btnS = new JButton(nomeS);
+                                    getContentPane().add(btn);
+                                    btnS.setName(nomeS);
+                                    btnS.setText(nomeS);
+                                    /*ImageIcon im = Convert.getImagem(listaS.get(0).Imagem);
+                                        if (im != null) {
+                                        im.setImage(im.getImage().getScaledInstance(btnS.getWidth(), btnS.getHeight(), 1));
+                                        btnS.setText("");
+                                        btnS.setIcon(im);
+                                    }*/
+                                        btnS.setBounds(5, 120 * i, 80, 120);
+                                        pn_Principal.add(btnS);
+                                            Acction a = new Acction();
+                                            a.botao(btnS);
+                                            // Dimencionar botão
+                                            //set img
+                                            //
                                 ;}
                                 pn_Principal.repaint();
                          
