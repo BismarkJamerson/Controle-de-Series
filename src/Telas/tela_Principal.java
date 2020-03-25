@@ -29,6 +29,7 @@ import javax.swing.JButton;
 public class tela_Principal extends javax.swing.JFrame {
 
     public tela_Principal() {
+
         initComponents();
         iniciar();
         imagembutton();
@@ -43,16 +44,15 @@ public class tela_Principal extends javax.swing.JFrame {
         pn_Gerenciar = new javax.swing.JPanel();
         bt_gerencLogin = new javax.swing.JButton();
         bt_geren_ser = new javax.swing.JButton();
-        pn_Favorito = new javax.swing.JPanel();
-        btn_teste = new javax.swing.JButton();
-        bt_teste = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        sc_pane1 = new javax.swing.JScrollPane();
         pn_Categorias = new javax.swing.JPanel();
         bt_Login = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         pn_Principal = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        bt_teste = new javax.swing.JButton();
+        btn_teste = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,51 +77,16 @@ public class tela_Principal extends javax.swing.JFrame {
             .addGroup(pn_GerenciarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_gerencLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_geren_ser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(bt_geren_ser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bt_gerencLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pn_GerenciarLayout.setVerticalGroup(
             pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_GerenciarLayout.createSequentialGroup()
                 .addComponent(bt_geren_ser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(bt_gerencLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btn_teste.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_testeActionPerformed(evt);
-            }
-        });
-
-        bt_teste.setText("teste img");
-        bt_teste.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_testeActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pn_FavoritoLayout = new javax.swing.GroupLayout(pn_Favorito);
-        pn_Favorito.setLayout(pn_FavoritoLayout);
-        pn_FavoritoLayout.setHorizontalGroup(
-            pn_FavoritoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_FavoritoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_teste, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_gerencLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_FavoritoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bt_teste))
-        );
-        pn_FavoritoLayout.setVerticalGroup(
-            pn_FavoritoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_FavoritoLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(btn_teste, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bt_teste)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -135,8 +100,8 @@ public class tela_Principal extends javax.swing.JFrame {
             .addGap(0, 29, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setToolTipText("");
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        sc_pane1.setToolTipText("");
+        sc_pane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         javax.swing.GroupLayout pn_CategoriasLayout = new javax.swing.GroupLayout(pn_Categorias);
         pn_Categorias.setLayout(pn_CategoriasLayout);
@@ -149,7 +114,7 @@ public class tela_Principal extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(pn_Categorias);
+        sc_pane1.setViewportView(pn_Categorias);
 
         bt_Login.setText("Login");
         bt_Login.addActionListener(new java.awt.event.ActionListener() {
@@ -169,21 +134,45 @@ public class tela_Principal extends javax.swing.JFrame {
             }
         });
 
+        bt_teste.setText("teste img");
+        bt_teste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_testeActionPerformed(evt);
+            }
+        });
+
+        btn_teste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_testeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_PrincipalLayout = new javax.swing.GroupLayout(pn_Principal);
         pn_Principal.setLayout(pn_PrincipalLayout);
         pn_PrincipalLayout.setHorizontalGroup(
             pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_PrincipalLayout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jButton1)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addGroup(pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_PrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_teste, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(188, 188, 188)
+                        .addComponent(jButton1))
+                    .addGroup(pn_PrincipalLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(bt_teste)))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         pn_PrincipalLayout.setVerticalGroup(
             pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_PrincipalLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jButton1)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_teste, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(33, 33, 33)
+                .addComponent(bt_teste)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(pn_Principal);
@@ -193,17 +182,14 @@ public class tela_Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_Login)))
-                    .addComponent(pn_Favorito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_Login))
+                        .addGap(22, 22, 22)
+                        .addComponent(sc_pane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pn_Gerenciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -220,15 +206,12 @@ public class tela_Principal extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pn_Gerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pn_Gerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sc_pane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pn_Favorito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())))
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
 
         pack();
@@ -313,12 +296,11 @@ public class tela_Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_teste;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pn_Categorias;
-    private javax.swing.JPanel pn_Favorito;
     private javax.swing.JPanel pn_Gerenciar;
     private javax.swing.JPanel pn_Principal;
+    private javax.swing.JScrollPane sc_pane1;
     // End of variables declaration//GEN-END:variables
 
     private void iniciar() {

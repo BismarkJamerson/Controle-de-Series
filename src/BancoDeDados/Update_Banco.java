@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class Update_Banco {
 
-    public void Update_Usuario(Usuario use) {
+   public void Update_Usuario(Usuario use) {
         try {
             String sql = "UPDATE Usuario SET Dica_Senha = ?, Login = ?, Senha = ? WHERE ID_Usuario = ? ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -29,7 +29,7 @@ public class Update_Banco {
             ex.getMessage();
             System.out.println(ex);
         }
-    }
+    } 
 
     public void Update_Temporada(Temporada Temp) {
         try {
@@ -208,4 +208,19 @@ try {
             System.out.println(ex);
         }
  }
-}
+        
+       public void Update_Link(int id, String site) {
+        try {
+            String sql = "UPDATE Links SET Site = ? WHERE ID_Link = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setString(1, site);
+            ps.setInt(2, id);
+            ps.execute();
+
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }
+    }     
+ }
+

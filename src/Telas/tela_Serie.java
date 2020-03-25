@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Telas;
 
 import BancoDeDados.Insert_Banco;
@@ -12,6 +7,7 @@ import Classes.Classificacao_Etaria;
 import Classes.Estudio;
 import Classes.Historico_Series;
 import Classes.Historico_Usuario;
+import Classes.Links;
 import Classes.Nacionalidade;
 import Classes.Series;
 import Classes.Sessao;
@@ -91,6 +87,11 @@ public class tela_Serie extends javax.swing.JFrame {
         });
 
         tb_link.setText("https://");
+        tb_link.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_linkActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Atualizar Historico");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -354,9 +355,17 @@ public class tela_Serie extends javax.swing.JFrame {
             Historico_Series hS = in.Select_HistoricoUser(idS);
             int idH = hS.getFK_Historico();
             i.Insert_Historico_Series(idH, idS);
+            String link = tb_link.getText();
+            i.Insert_Links(link);
+            Links lin = in.Select_Link(link);
+            i.Insert_Series_Link(idS, lin.getId());
         } else {
             Update_Banco up = new Update_Banco();
             up.Update_Historico_Usuario(nTemp, nEp, Sessao.getHU());
+            String link = tb_link.getText();
+            Links lin = in.Select_Link(link);
+            up.Update_Link(lin.getId(), link);
+            
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -391,6 +400,10 @@ public class tela_Serie extends javax.swing.JFrame {
     private void cb_DubladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_DubladoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_DubladoActionPerformed
+
+    private void tb_linkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_linkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_linkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -469,11 +482,14 @@ public class tela_Serie extends javax.swing.JFrame {
         cb_Legendado.setSelected(a.get(0).Legendado);
         cb_nota.setText(Integer.toString(a.get(0).Nota));
         ImageIcon i = Convert.getImagem(a.get(0).Imagem);
-            Select_Banco in = new Select_Banco();
+            Select_Banco in = new Select_Banco();   
             List<Series> lista = new ArrayList();
             lista = in.Select_SeriesEdit1(tb_Nome.getText());
             int idS = lista.get(0).id;
             int idU = Sessao.getId();
+            int idL = in.Select_Series_Link(idS);
+            String link = in.Select_Link2(idL);
+            tb_link.setText(link);
             Historico_Usuario HU = in.Select_Historico_User1(idU, idS);                           
             String ep = Integer.toString(HU.getEpisodio_Atual());
             String temp = Integer.toString(HU.getTemporada_Atual());

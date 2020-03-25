@@ -106,12 +106,11 @@ public class Insert_Banco {
         }
     }
 
-    public void Insert_Links(Links Lin, int Ser) {
+    public void Insert_Links(String Lin) {
         try {
-            String sql = "INSERT INTO Links (Site,FK_Serie) VALUES (?,?) ";
+            String sql = "INSERT INTO Links (Site) VALUES (?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
-            ps.setString(1, Lin.getSite());
-            ps.setInt(2, Ser);
+            ps.setString(1, Lin);
 
             ps.execute();
         } catch (SQLException ex) {
@@ -233,5 +232,21 @@ public class Insert_Banco {
         }  finally {
             conexao.getInstance().closeConnect(); 
         }
+}       
+        public void Insert_Series_Link(int idS, int idL) {
+        try {
+            String sql = "INSERT INTO Series_Link (FK_Serie, FK_Link) VALUES (?,?) ";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, idS);
+            ps.setInt(2, idL);
+
+            ps.execute();
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println(ex);
+        }finally {
+            conexao.getInstance().closeConnect(); 
+        }
     }
-}
+ }
+

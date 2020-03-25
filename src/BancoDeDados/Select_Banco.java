@@ -5,6 +5,7 @@ import Classes.Classificacao_Etaria;
 import Classes.Estudio;
 import Classes.Historico_Series;
 import Classes.Historico_Usuario;
+import Classes.Links;
 import Classes.Nacionalidade;
 import Classes.Series;
 import Classes.Sessao;
@@ -479,5 +480,65 @@ public class Select_Banco {
             conexao.getInstance().closeConnect(); 
             return HU;
         }
+    }            
+
+        public Links Select_Link(String lin) {
+        Links link = new Links();
+
+        try {
+            String sql = "SELECT * FROM Links WHERE Site = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setString(1, lin);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                link.setId(rs.getInt("ID_Link"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect();
+            return link;
+        }
+    }
+   
+        public int Select_Series_Link (int idS) {
+        int id = 0;
+
+        try {
+            String sql = "SELECT FK_Link FROM Series_Link WHERE FK_Serie = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, idS);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("FK_Link");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect();
+            return id;
+        }
+    }  
+       
+    public String Select_Link2(int idL) {
+        String link = "";
+        try {
+            String sql = "SELECT * FROM Links WHERE ID_Link = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, idL);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                link = rs.getString("Site");
+            }
+        } catch (SQLException ex) {
+            link="";
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect();
+            return link;
+        }
+    }    
+        
 }
-}
+        
