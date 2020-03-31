@@ -538,7 +538,43 @@ public class Select_Banco {
             conexao.getInstance().closeConnect();
             return link;
         }
-    }    
+    }  
+    
+     public boolean Select_Link_Series(int idS) {
+         boolean x = false;
+        try {
+            String sql = "SELECT * FROM Series_Link WHERE FK_Serie = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, idS);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                x = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect();
+            return x;
+        }
+    }      
         
+        public int Select_Link_Series2(int idS) {
+            int fk=0;
+        try {
+            String sql = "SELECT * FROM Series_Link WHERE FK_Serie = ?";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, idS);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                fk = rs.getInt("FK_Link");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect();
+            return fk;
+        }
+    }
+       
 }
         

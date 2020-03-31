@@ -354,18 +354,11 @@ public class tela_Serie extends javax.swing.JFrame {
             i.Insert_Historico_Usuario(nTemp, nEp, Sessao.getId());
             Historico_Series hS = in.Select_HistoricoUser(idS);
             int idH = hS.getFK_Historico();
-            i.Insert_Historico_Series(idH, idS);
-            String link = tb_link.getText();
-            i.Insert_Links(link);
-            Links lin = in.Select_Link(link);
-            i.Insert_Series_Link(idS, lin.getId());
+            salvarLink(idH, idS);
         } else {
             Update_Banco up = new Update_Banco();
             up.Update_Historico_Usuario(nTemp, nEp, Sessao.getHU());
-            String link = tb_link.getText();
-            Links lin = in.Select_Link(link);
-            up.Update_Link(lin.getId(), link);
-            
+            salvarLink(0, idS);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -487,9 +480,14 @@ public class tela_Serie extends javax.swing.JFrame {
             lista = in.Select_SeriesEdit1(tb_Nome.getText());
             int idS = lista.get(0).id;
             int idU = Sessao.getId();
-            int idL = in.Select_Series_Link(idS);
-            String link = in.Select_Link2(idL);
-            tb_link.setText(link);
+                    
+            boolean v = in.Select_Link_Series(idS);
+            if (v) {
+                int idLink = in.Select_Link_Series2(idS);
+                String lin = in.Select_Link2(idLink);
+                tb_link.setText(lin);
+            }
+           
             Historico_Usuario HU = in.Select_Historico_User1(idU, idS);                           
             String ep = Integer.toString(HU.getEpisodio_Atual());
             String temp = Integer.toString(HU.getTemporada_Atual());
@@ -523,5 +521,25 @@ public class tela_Serie extends javax.swing.JFrame {
         listaNac = sec.Select_Nacionalidade1(Nacio);
         cb_Nacionalidade.setText(listaNac.get(0).Pais);
 
+    }
+
+    private void salvarLink(int idH, int idS) {
+        Select_Banco in =new Select_Banco();
+        boolean x = in.Select_Link_Series(idS);
+
+        if(!x){
+            Insert_Banco i = new Insert_Banco();
+            i.Insert_Historico_Series(idH, idS);
+            String link = tb_link.getText();
+            i.Insert_Links(link);
+            Links lin = in.Select_Link(link);
+            i.Insert_Series_Link(idS, lin.getId());
+        }else{
+            Update_Banco up = new Update_Banco();
+            String link = tb_link.getText();
+            int idLink = in.Select_Link_Series2(idS);
+            up.Update_Link(idLink, link);
+
+        }
     }
 }
