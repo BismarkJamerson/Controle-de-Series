@@ -371,7 +371,7 @@ public class tela_Principal extends javax.swing.JFrame {
                             pn_Principal.setComponentOrientation(
                             ComponentOrientation.RIGHT_TO_LEFT);
                             pn_Principal.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);
-                           // pn_Principal.removeAll();
+                            pn_Principal.removeAll();
                                 for (int i = 0; i < listaS.size(); i++) {
                                     String nomeS = listaS.get(i).nome;
                                     int idS = listaS.get(i).id;
@@ -385,10 +385,23 @@ public class tela_Principal extends javax.swing.JFrame {
                                         btnS.setText("");
                                         btnS.setIcon(im);
                                     }*/
-                                        btnS.setBounds(5, 120 * i, 80, 120);
+                                        btnS.setBounds(10, 22, 80, 80);
                                         pn_Principal.add(btnS);
                                             Acction a = new Acction();
                                             a.botao(btnS);
+                                            //String url = "/Imagem/x.jpg";
+                                            //URL x = this.getClass().getResource(url);
+                                            ImageIcon img = Convert.getImagem(listaS.get(0).Imagem);
+                                                if (img != null) {
+                                                img.setImage(img.getImage().getScaledInstance(btnS.getWidth(), btnS.getHeight(), 1));
+                                                btnS.setIcon(img);
+                                                }else{
+                                                String url = "/Imagem/x.jpg";
+                                                URL x = this.getClass().getResource(url);
+                                                img = new ImageIcon(x);
+                                                img.setImage(img.getImage().getScaledInstance(btnS.getWidth(), btnS.getHeight(), 1));
+                                                btnS.setIcon(img);
+                                                }
                                             // Dimencionar botão
                                             //set img
                                             //

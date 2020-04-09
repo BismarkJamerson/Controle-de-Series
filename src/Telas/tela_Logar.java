@@ -150,15 +150,12 @@ public class tela_Logar extends javax.swing.JFrame {
                     tela_Principal prin = Sessao.getPrin();
                     prin.atualizar_Tela();
                     this.setVisible(false);
-                
             }else{
                 lb_DicaTxt.setText(select.Select_Dica(login));
                 lb_Dica.setVisible(true);
                 lb_DicaTxt.setVisible(true);
                 lb_Erro.setVisible(true);
-            }
-        
-        
+            }  
     }//GEN-LAST:event_bt_AcessarActionPerformed
 
     private void tb_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_LoginActionPerformed

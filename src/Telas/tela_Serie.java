@@ -539,7 +539,6 @@ public class tela_Serie extends javax.swing.JFrame {
             String link = tb_link.getText();
             int idLink = in.Select_Link_Series2(idS);
             up.Update_Link(idLink, link);
-
         }
     }
 }
