@@ -45,7 +45,8 @@ public class cadastro_User extends javax.swing.JFrame {
         tb_Senha = new javax.swing.JPasswordField();
         tb_ConfSenha = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jScrollPane1.setViewportView(tb_Dica);
 

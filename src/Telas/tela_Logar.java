@@ -39,7 +39,8 @@ public class tela_Logar extends javax.swing.JFrame {
         lb_Dica = new javax.swing.JLabel();
         lb_DicaTxt = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         bt_Acessar.setText("Acessar");
         bt_Acessar.setToolTipText("");
@@ -150,6 +151,8 @@ public class tela_Logar extends javax.swing.JFrame {
                     tela_Principal prin = Sessao.getPrin();
                     prin.atualizar_Tela();
                     this.setVisible(false);
+                    Sessao.prin.setTitle("Usuario Logado: " + use.login);
+                    Sessao.prin.bt_Login.setText("logoff");
             }else{
                 lb_DicaTxt.setText(select.Select_Dica(login));
                 lb_Dica.setVisible(true);

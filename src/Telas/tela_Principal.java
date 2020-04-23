@@ -74,18 +74,19 @@ public class tela_Principal extends javax.swing.JFrame {
         pn_Gerenciar.setLayout(pn_GerenciarLayout);
         pn_GerenciarLayout.setHorizontalGroup(
             pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_GerenciarLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_GerenciarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bt_geren_ser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_gerencLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(bt_gerencLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pn_GerenciarLayout.setVerticalGroup(
             pn_GerenciarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_GerenciarLayout.createSequentialGroup()
                 .addComponent(bt_geren_ser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_gerencLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE)
+                .addComponent(bt_gerencLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -161,7 +162,7 @@ public class tela_Principal extends javax.swing.JFrame {
                     .addGroup(pn_PrincipalLayout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addComponent(bt_teste)))
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         pn_PrincipalLayout.setVerticalGroup(
             pn_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +173,7 @@ public class tela_Principal extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGap(33, 33, 33)
                 .addComponent(bt_teste)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(pn_Principal);
@@ -180,7 +181,7 @@ public class tela_Principal extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,12 +189,11 @@ public class tela_Principal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bt_Login))
-                        .addGap(22, 22, 22)
-                        .addComponent(sc_pane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pn_Gerenciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(sc_pane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pn_Gerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,16 +202,16 @@ public class tela_Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(bt_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(pn_Gerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sc_pane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, 0)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                .addGap(9, 9, 9))
         );
 
         pack();
@@ -223,8 +223,19 @@ public class tela_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_geren_serActionPerformed
 
     private void bt_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_LoginActionPerformed
-        tela_Logar login = new tela_Logar();
-        login.setVisible(true);
+        if(bt_Login.getText() == "logoff"){
+                    Sessao.setId(-1);
+                    Sessao.setUse(null);
+                    this.setVisible(true);
+                    Sessao.setHU(-1);
+                    Sessao.setLogin(null);
+                    Sessao.prin.setTitle("");
+                    Sessao.prin.bt_Login.setText("Login");
+        }else{
+            tela_Logar login = new tela_Logar();
+            login.setVisible(true);  
+        }
+               
     }//GEN-LAST:event_bt_LoginActionPerformed
 
     private void bt_gerencLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gerencLoginActionPerformed
@@ -237,15 +248,14 @@ public class tela_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_testeActionPerformed
 
     private void bt_testeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_testeActionPerformed
-        
+
         String URL = Convert.caminhoImg();
         byte[] cIpB = Convert.converterImagemParaByte(URL);//salvar em bd
-        byte[] x = null ;//Byte vindo do banco 
+        byte[] x = null ;//Byte vindo do banco
         ImageIcon imgI = Convert.getImagem(cIpB);
-              
+
         imgI.setImage(imgI.getImage().getScaledInstance(btn_teste.getWidth(), btn_teste.getHeight(), 1));
         btn_teste.setIcon(imgI);
-        
     }//GEN-LAST:event_bt_testeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -289,7 +299,7 @@ public class tela_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_Login;
+    public javax.swing.JButton bt_Login;
     private javax.swing.JButton bt_geren_ser;
     private javax.swing.JButton bt_gerencLogin;
     private javax.swing.JButton bt_teste;
@@ -304,6 +314,7 @@ public class tela_Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void iniciar() {
+        pn_Principal.removeAll();
         Sessao.setId(0);
         Sessao.setPrin(this);
         atualizar_Tela();
@@ -359,6 +370,7 @@ public class tela_Principal extends javax.swing.JFrame {
             pn_Categorias.setLayout(new FlowLayout());
                     btn.addActionListener(new ActionListener() { 
                       public void actionPerformed(java.awt.event.ActionEvent evt) {
+                         pn_Principal.removeAll();
                          List<Categoria> lista = new ArrayList();
                          List<Series> listaS = new ArrayList();
                          String nome = btn.getName(); 
@@ -370,13 +382,11 @@ public class tela_Principal extends javax.swing.JFrame {
                             pn_Principal.setLayout(experimentLayout);
                             pn_Principal.setComponentOrientation(
                             ComponentOrientation.RIGHT_TO_LEFT);
-                            pn_Principal.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);
-                            pn_Principal.removeAll();
+                            pn_Principal.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);                            
                                 for (int i = 0; i < listaS.size(); i++) {
                                     String nomeS = listaS.get(i).nome;
                                     int idS = listaS.get(i).id;
                                     JButton btnS = new JButton(nomeS);
-                                    getContentPane().add(btn);
                                     btnS.setName(nomeS);
                                     btnS.setText(nomeS);
                                     /*ImageIcon im = Convert.getImagem(listaS.get(0).Imagem);
@@ -391,7 +401,7 @@ public class tela_Principal extends javax.swing.JFrame {
                                             a.botao(btnS);
                                             //String url = "/Imagem/x.jpg";
                                             //URL x = this.getClass().getResource(url);
-                                            ImageIcon img = Convert.getImagem(listaS.get(0).Imagem);
+                                            ImageIcon img = Convert.getImagem(listaS.get(i).Imagem);
                                                 if (img != null) {
                                                 img.setImage(img.getImage().getScaledInstance(btnS.getWidth(), btnS.getHeight(), 1));
                                                 btnS.setIcon(img);

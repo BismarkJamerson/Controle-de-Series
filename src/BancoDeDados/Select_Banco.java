@@ -226,7 +226,7 @@ public class Select_Banco {
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setString(1, cat);
             ResultSet rs = ps.executeQuery();
-           
+
             while (rs.next()) {
                 Categoria Cat = new Categoria();
                 Cat.setId(rs.getInt("ID_Categoria"));
@@ -261,8 +261,8 @@ public class Select_Banco {
             return lista;
         }
     }
-    
-        public List<Series> Select_SeriesEdit1(String nome) {
+
+    public List<Series> Select_SeriesEdit1(String nome) {
         List<Series> lista = new ArrayList();
         try {
             String sql = "SELECT * FROM Series WHERE Nome = ?";
@@ -293,15 +293,13 @@ public class Select_Banco {
             return lista;
         }
     }
-        public List<Series> Select_Serie_Categorias(int id) {
-            List<Series> lista = new ArrayList();
+
+    public List<Series> Select_Serie_Categorias(int id) {
+        List<Series> lista = new ArrayList();
         try {
-            String sql = "SELECT * FROM Series_Categoria "
-                    + "INNER JOIN Series,Categoria "
-                    + "WHERE ID_Categoria = ? AND FK_Categoria = ? GROUP BY ID_Serie";
+            String sql = "SELECT * FROM Series_Categoria INNER JOIN Series,Categoria WHERE ID_Categoria = ? AND FK_Categoria = ID_Categoria AND ID_Serie = FK_Serie";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setInt(1, id);
-            ps.setInt(2, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Series Ser = new Series();
@@ -327,9 +325,10 @@ public class Select_Banco {
             return lista;
         }
     }
-        public List<Status> Select_Status1(int s) {
+
+    public List<Status> Select_Status1(int s) {
         List<Status> listaStatus = new ArrayList();
-        
+
         try {
             String sql = "SELECT Status_Producao FROM Status WHERE ID_Status = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -343,12 +342,12 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            conexao.getInstance().closeConnect();           
+            conexao.getInstance().closeConnect();
             return listaStatus;
         }
     }
-        
-        public List<Classificacao_Etaria> Select_Classificacao_Etaria1(int s) {
+
+    public List<Classificacao_Etaria> Select_Classificacao_Etaria1(int s) {
         List<Classificacao_Etaria> listaClass = new ArrayList();
         try {
             String sql = "SELECT Classificacao FROM Classificacao_Etaria WHERE ID_Classificacao = ?";
@@ -363,12 +362,12 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            conexao.getInstance().closeConnect(); 
+            conexao.getInstance().closeConnect();
             return listaClass;
         }
-    } 
-        
-        public List<Estudio> Select_Estudio1(int s) {
+    }
+
+    public List<Estudio> Select_Estudio1(int s) {
         List<Estudio> listaEst = new ArrayList();
         try {
             String sql = "SELECT * FROM Estudio WHERE ID_Estudio = ?";
@@ -383,11 +382,12 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            conexao.getInstance().closeConnect(); 
+            conexao.getInstance().closeConnect();
             return listaEst;
         }
-    }             
-           public List<Nacionalidade> Select_Nacionalidade1(int s) {
+    }
+
+    public List<Nacionalidade> Select_Nacionalidade1(int s) {
         List<Nacionalidade> listaNacio = new ArrayList();
         try {
             String sql = "SELECT * FROM Nacionalidade WHERE ID_Nacionalidade = ?";
@@ -402,39 +402,40 @@ public class Select_Banco {
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            conexao.getInstance().closeConnect(); 
+            conexao.getInstance().closeConnect();
             return listaNacio;
         }
     }
-    public Historico_Usuario Select_Historico_User (int idU, int idS) {
+
+    public Historico_Usuario Select_Historico_User(int idU, int idS) {
         Historico_Usuario HU = null;
         try {
-            String sql = "SELECT * FROM Historico_Series INNER JOIN Historico_Usuario,Usuario,Series WHERE FK_Serie = ? AND ID_Usuario = ?   GROUP BY FK_Serie;";
+            String sql = "SELECT * FROM Historico_Series INNER JOIN Historico_Usuario,Usuario,Series WHERE FK_Serie = ? AND ID_Usuario = ? AND FK_Historico = ID_Historico AND ID_Serie = FK_Serie ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setInt(1, idS);
             ps.setInt(2, idU);
             ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    HU = new Historico_Usuario();
-                    HU.setEpisodio_Atual(rs.getInt("Episodio_Atual"));
-                    HU.setTemporada_Atual(rs.getInt("Temporada_Atual"));
-                    HU.setId(rs.getInt("ID_Historico"));
-            }if(HU == null){
-                    HU.id=0;
-                    HU = new Historico_Usuario();
-                    HU.setEpisodio_Atual(00);
-                    HU.setTemporada_Atual(00);
-            } 
+            while (rs.next()) {
+                HU = new Historico_Usuario();
+                HU.setEpisodio_Atual(rs.getInt("Episodio_Atual"));
+                HU.setTemporada_Atual(rs.getInt("Temporada_Atual"));
+                HU.setId(rs.getInt("ID_Historico"));
+            }
+            if (HU == null) {
+                HU.id = 0;
+                HU = new Historico_Usuario();
+                HU.setEpisodio_Atual(00);
+                HU.setTemporada_Atual(00);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            conexao.getInstance().closeConnect(); 
+            conexao.getInstance().closeConnect();
             return HU;
         }
-    } 
+    }
 
-
-        public Historico_Series Select_HistoricoUser(int id) {
+    public Historico_Series Select_HistoricoUser(int id) {
         Historico_Series His = new Historico_Series();
         try {
             String sql = "SELECT * FROM Historico_Series WHERE FK_Serie= ?";
@@ -450,39 +451,45 @@ public class Select_Banco {
             conexao.getInstance().closeConnect();
             return His;
         }
-    } 
-        
-        public Historico_Usuario Select_Historico_User1 (int idU, int idS) {
+    }
+
+    public Historico_Usuario Select_Historico_User1(int idU, int idS) {
         Historico_Usuario HU = null;
         try {
-            String sql = "SELECT * FROM Historico_Series INNER JOIN Historico_Usuario,Usuario,Series WHERE FK_Serie = ? AND ID_Usuario = ? AND FK_Usuario= ? AND ID_Serie =?  GROUP BY FK_Serie;";
+            String sql = "SELECT * FROM Historico_Series INNER JOIN Historico_Usuario,Usuario,Series WHERE FK_Serie = ? AND ID_Usuario = ? AND FK_Serie = ID_Serie AND FK_Historico = ID_Historico AND ID_Usuario = FK_Usuario ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setInt(1, idS);
             ps.setInt(2, idU);
-            ps.setInt(3, idU);
-            ps.setInt(4, idS);
             ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    HU = new Historico_Usuario();
-                    HU.setEpisodio_Atual(rs.getInt("Episodio_Atual"));
-                    HU.setTemporada_Atual(rs.getInt("Temporada_Atual"));
-                    HU.setId(rs.getInt("ID_Historico"));
-                    Sessao.setHU(rs.getInt("ID_Historico"));
-            }if(HU==null){
-                    HU = new Historico_Usuario();
-                    HU.setEpisodio_Atual(00);
-                    HU.setTemporada_Atual(00);
-                    Sessao.setHU(rs.getInt(0));
-            } 
+            while (rs.next()) {
+                HU = new Historico_Usuario();
+                HU.setEpisodio_Atual(rs.getInt("Episodio_Atual"));
+                HU.setTemporada_Atual(rs.getInt("Temporada_Atual"));
+                HU.setId(rs.getInt("ID_Historico"));
+                Sessao.setHU(rs.getInt("ID_Historico"));
+            }
+            if (HU == null) {
+                int idH = Select_ID_Historico();
+                HU = new Historico_Usuario();
+                HU.setEpisodio_Atual(00);
+                HU.setTemporada_Atual(00);
+                HU.setFK_Usuario(idU);
+                HU.id = idH;
+                
+                Insert_Banco IS = new Insert_Banco();
+                IS.Insert_Historico_Usuario(HU, idU, idS);
+                IS.Insert_Historico_Series(idH, idS);
+                Sessao.setHU(idH);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            conexao.getInstance().closeConnect(); 
+            conexao.getInstance().closeConnect();
             return HU;
         }
-    }            
+    }
 
-        public Links Select_Link(String lin) {
+    public Links Select_Link(String lin) {
         Links link = new Links();
 
         try {
@@ -501,8 +508,8 @@ public class Select_Banco {
             return link;
         }
     }
-   
-        public int Select_Series_Link (int idS) {
+
+    public int Select_Series_Link(int idS) {
         int id = 0;
 
         try {
@@ -519,12 +526,12 @@ public class Select_Banco {
             conexao.getInstance().closeConnect();
             return id;
         }
-    }  
-       
+    }
+
     public String Select_Link2(int idL) {
-        String link = "";
+        String link = "null";
         try {
-            String sql = "SELECT * FROM Links WHERE ID_Link = ?";
+            String sql = "SELECT * FROM Links INNER JOIN Series_Link WHERE FK_Serie = ? AND FK_Link = ID_Link";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setInt(1, idL);
             ResultSet rs = ps.executeQuery();
@@ -532,16 +539,16 @@ public class Select_Banco {
                 link = rs.getString("Site");
             }
         } catch (SQLException ex) {
-            link="";
+            link = "null";
             Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             conexao.getInstance().closeConnect();
             return link;
         }
-    }  
-    
-     public boolean Select_Link_Series(int idS) {
-         boolean x = false;
+    }
+
+    public boolean Select_Link_Series(int idS) {
+        boolean x = false;
         try {
             String sql = "SELECT * FROM Series_Link WHERE FK_Serie = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -556,10 +563,10 @@ public class Select_Banco {
             conexao.getInstance().closeConnect();
             return x;
         }
-    }      
-        
-        public int Select_Link_Series2(int idS) {
-            int fk=0;
+    }
+
+    public int Select_Link_Series2(int idS) {
+        int fk = 0;
         try {
             String sql = "SELECT * FROM Series_Link WHERE FK_Serie = ?";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -575,6 +582,26 @@ public class Select_Banco {
             return fk;
         }
     }
-       
+
+    public int Select_ID_Historico() {
+        int valor = 0;
+
+        try {
+            String sql = "SELECT * FROM Historico_Usuario ORDER BY ID_Historico DESC";
+            PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                valor = rs.getInt("ID_Historico");
+                valor++;
+                break;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Select_Banco.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexao.getInstance().closeConnect();
+            return valor;
+        }
+    }
+    
 }
-        

@@ -122,8 +122,9 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         lb_Delet = new javax.swing.JLabel();
         bt_img2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("dsdsd");
+        setResizable(false);
 
         jTabbedPane5.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 

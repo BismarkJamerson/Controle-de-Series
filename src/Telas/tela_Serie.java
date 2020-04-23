@@ -77,7 +77,8 @@ public class tela_Serie extends javax.swing.JFrame {
         cb_Status = new javax.swing.JTextField();
         cb_nota = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         bt_img.setText("img");
         bt_img.addActionListener(new java.awt.event.ActionListener() {
@@ -481,11 +482,13 @@ public class tela_Serie extends javax.swing.JFrame {
             int idS = lista.get(0).id;
             int idU = Sessao.getId();
                     
-            boolean v = in.Select_Link_Series(idS);
-            if (v) {
-                int idLink = in.Select_Link_Series2(idS);
-                String lin = in.Select_Link2(idLink);
-                tb_link.setText(lin);
+            String link = "null";
+            link = in.Select_Link2(idS);
+            
+            if (link != "null") {
+                tb_link.setText(link);
+            }else{
+                tb_link.setText("HTTP://");
             }
            
             Historico_Usuario HU = in.Select_Historico_User1(idU, idS);                           

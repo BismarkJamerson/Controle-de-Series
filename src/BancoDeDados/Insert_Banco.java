@@ -28,8 +28,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
 
@@ -47,8 +47,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
 
@@ -62,8 +62,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
 
@@ -85,8 +85,8 @@ public class Insert_Banco {
             ps.execute();
         } catch (SQLException ex) {
             ex.getMessage();
-            JOptionPane.showMessageDialog(null,"Não foi possível salvar série!","ERRO AO SALVAR!!",JOptionPane.CLOSED_OPTION);
-        } finally{
+            JOptionPane.showMessageDialog(null, "Não foi possível salvar série!", "ERRO AO SALVAR!!", JOptionPane.CLOSED_OPTION);
+        } finally {
             conexao.getInstance().closeConnect();
         }
     }
@@ -101,8 +101,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
 
@@ -116,32 +116,32 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
 
     public void Insert_Historico_Usuario(Historico_Usuario His, int Use, int Ser) {
         try {
-            String sql = "INSERT INTO Historico_Usuario (Episodio_Atual, Temporada_Atual, Tempo_Atual, FK_Usuario, FK_Serie, Ultimo_Dia, Total_Series, Total_Episodios, Total_Temporadas, Total_Tempo) VALUES (?,?,?,?,?,?,?,?,?,?) ";
+            String sql = "INSERT INTO Historico_Usuario (Episodio_Atual, Temporada_Atual, Tempo_Atual, FK_Usuario, Ultimo_Dia, Total_Series, Total_Episodios, Total_Temporadas, Total_Tempo,ID_Historico) VALUES (?,?,?,?,?,?,?,?,?,?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ps.setInt(1, His.getEpisodio_Atual());
             ps.setInt(2, His.getTemporada_Atual());
             ps.setString(3, His.getTempo_Atual());
             ps.setInt(4, Use);
-            ps.setInt(5, Ser);
-            ps.setDate(6, His.getUltimo_Dia());
-            ps.setInt(7, His.getTotal_Series());
-            ps.setInt(8, His.getTotal_Episodios());
-            ps.setInt(9, His.getTotal_Temporadas());
-            ps.setString(10, His.getTotal_Tempo());
+            ps.setDate(5, His.getUltimo_Dia());
+            ps.setInt(6, His.getTotal_Series());
+            ps.setInt(7, His.getTotal_Episodios());
+            ps.setInt(8, His.getTotal_Temporadas());
+            ps.setString(9, His.getTotal_Tempo());
+            ps.setInt(10, His.id);
 
             ps.execute();
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
 
@@ -155,8 +155,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
 
@@ -170,8 +170,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
 
@@ -184,11 +184,11 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
-    
+
     public void Insert_fk_Series_Categorias(fk_Series_Categorias fkSC) {
         try {
             String sql = "INSERT INTO Series_Categoria (FK_Categoria, FK_Serie) VALUES (?,?) ";
@@ -199,11 +199,11 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
-    
+
     public void Insert_Historico_Usuario(int temp, int ep, int use) {
         try {
             String sql = "INSERT INTO Historico_Usuario (Temporada_Atual, Episodio_Atual, FK_Usuario) VALUES (?,?,?)";
@@ -215,11 +215,12 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
-   }     
-        public void Insert_Historico_Series (int fkH, int fkS) {
+    }
+
+    public void Insert_Historico_Series(int fkH, int fkS) {
         try {
             String sql = "INSERT INTO Historico_Series (FK_Historico, FK_Serie) VALUES (?,?)";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -229,11 +230,12 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }  finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
-}       
-        public void Insert_Series_Link(int idS, int idL) {
+    }
+
+    public void Insert_Series_Link(int idS, int idL) {
         try {
             String sql = "INSERT INTO Series_Link (FK_Serie, FK_Link) VALUES (?,?) ";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
@@ -244,9 +246,8 @@ public class Insert_Banco {
         } catch (SQLException ex) {
             ex.getMessage();
             System.out.println(ex);
-        }finally {
-            conexao.getInstance().closeConnect(); 
+        } finally {
+            conexao.getInstance().closeConnect();
         }
     }
- }
-
+}

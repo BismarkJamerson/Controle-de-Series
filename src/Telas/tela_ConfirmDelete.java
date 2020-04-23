@@ -40,7 +40,8 @@ public class tela_ConfirmDelete extends javax.swing.JFrame {
         tb_ConfirmeDelete = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Para confirmar a exclusão da conta, digite \"DELETAR\" no campo a baixo.");
 
