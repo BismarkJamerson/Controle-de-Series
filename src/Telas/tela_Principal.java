@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -33,7 +34,7 @@ public class tela_Principal extends javax.swing.JFrame {
         initComponents();
         iniciar();
         imagembutton();
-        loadCat();
+        
 
     }
 
@@ -204,23 +205,16 @@ public class tela_Principal extends javax.swing.JFrame {
                         .addComponent(bt_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pn_Gerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sc_pane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(pn_Gerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sc_pane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                 .addGap(9, 9, 9))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bt_geren_serActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_geren_serActionPerformed
-        tela_GerenciarSerie i = new tela_GerenciarSerie();
-        i.setVisible(true);
-    }//GEN-LAST:event_bt_geren_serActionPerformed
 
     private void bt_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_LoginActionPerformed
         if(bt_Login.getText() == "logoff"){
@@ -231,17 +225,16 @@ public class tela_Principal extends javax.swing.JFrame {
                     Sessao.setLogin(null);
                     Sessao.prin.setTitle("");
                     Sessao.prin.bt_Login.setText("Login");
+                    pn_Categorias.removeAll();
+                    bt_geren_ser.setEnabled(false);
+                    bt_gerencLogin.setEnabled(false);
+                    
         }else{
             tela_Logar login = new tela_Logar();
             login.setVisible(true);  
         }
                
     }//GEN-LAST:event_bt_LoginActionPerformed
-
-    private void bt_gerencLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gerencLoginActionPerformed
-        tela_GerencLogin gL = new tela_GerencLogin();
-        gL.setVisible(true);
-    }//GEN-LAST:event_bt_gerencLoginActionPerformed
 
     private void btn_testeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_testeActionPerformed
 
@@ -262,6 +255,16 @@ public class tela_Principal extends javax.swing.JFrame {
         tela_Serie s = new tela_Serie();
         s.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bt_geren_serActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_geren_serActionPerformed
+        tela_GerenciarSerie i = new tela_GerenciarSerie();
+        i.setVisible(true);
+    }//GEN-LAST:event_bt_geren_serActionPerformed
+
+    private void bt_gerencLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gerencLoginActionPerformed
+        tela_GerencLogin gL = new tela_GerencLogin();
+        gL.setVisible(true);
+    }//GEN-LAST:event_bt_gerencLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,7 +311,7 @@ public class tela_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pn_Categorias;
-    private javax.swing.JPanel pn_Gerenciar;
+    public javax.swing.JPanel pn_Gerenciar;
     private javax.swing.JPanel pn_Principal;
     private javax.swing.JScrollPane sc_pane1;
     // End of variables declaration//GEN-END:variables
@@ -348,7 +351,7 @@ public class tela_Principal extends javax.swing.JFrame {
 
     }
 
-    private void loadCat() {
+    public void loadCat() {
         Select_Banco sel = new Select_Banco();
         List<Categoria> listCat = new ArrayList();
         listCat = sel.Select_Categoria();
@@ -357,9 +360,10 @@ public class tela_Principal extends javax.swing.JFrame {
         pn_Categorias.setComponentOrientation(
         ComponentOrientation.RIGHT_TO_LEFT);
         pn_Categorias.setVerifyInputWhenFocusTarget(rootPaneCheckingEnabled);
-        int i =1;
-        for (i = 1; i < listCat.size(); i++) {
+        int i =0;
+        for (i = 0; i < listCat.size(); i++) {
             String nome = listCat.get(i).nome_Categoria;
+            if(nome.length() == 1){ break; }
             int id = listCat.get(i).id;
             JButton btn = new JButton(nome);
             getContentPane().add(btn);
@@ -396,6 +400,8 @@ public class tela_Principal extends javax.swing.JFrame {
                                         btnS.setIcon(im);
                                     }*/
                                         btnS.setBounds(10, 22, 80, 80);
+                                        btnS.setVerticalTextPosition(SwingConstants.BOTTOM);
+                                    btnS.setHorizontalTextPosition(SwingConstants.CENTER);
                                         pn_Principal.add(btnS);
                                             Acction a = new Acction();
                                             a.botao(btnS);

@@ -153,6 +153,9 @@ public class tela_Logar extends javax.swing.JFrame {
                     this.setVisible(false);
                     Sessao.prin.setTitle("Usuario Logado: " + use.login);
                     Sessao.prin.bt_Login.setText("logoff");
+                    Sessao.prin.bt_Login.setVisible(true);
+            Sessao.prin.pn_Gerenciar.setEnabled(true);
+            Sessao.prin.loadCat();
             }else{
                 lb_DicaTxt.setText(select.Select_Dica(login));
                 lb_Dica.setVisible(true);

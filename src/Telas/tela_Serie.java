@@ -143,6 +143,8 @@ public class tela_Serie extends javax.swing.JFrame {
 
         jLabel8.setText("00/");
 
+        tb_Nome.setEnabled(false);
+
         try {
             tb_Duracao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
@@ -150,6 +152,7 @@ public class tela_Serie extends javax.swing.JFrame {
         }
         tb_Duracao.setText("00:00");
         tb_Duracao.setToolTipText("");
+        tb_Duracao.setEnabled(false);
         tb_Duracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tb_DuracaoActionPerformed(evt);
@@ -163,8 +166,10 @@ public class tela_Serie extends javax.swing.JFrame {
         jLabel9.setText("Classificação");
 
         cb_Favorito.setText("Favorito");
+        cb_Favorito.setEnabled(false);
 
         cb_Dublado.setText("Dublado");
+        cb_Dublado.setEnabled(false);
         cb_Dublado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_DubladoActionPerformed(evt);
@@ -172,6 +177,7 @@ public class tela_Serie extends javax.swing.JFrame {
         });
 
         cb_Legendado.setText("Legendado");
+        cb_Legendado.setEnabled(false);
 
         jLabel1.setText("Nome");
 
@@ -180,6 +186,16 @@ public class tela_Serie extends javax.swing.JFrame {
         jLabel11.setText("Nota");
 
         jLabel12.setText("Status");
+
+        cb_Classificacao.setEnabled(false);
+
+        cb_Estudio.setEnabled(false);
+
+        cb_Nacionalidade.setEnabled(false);
+
+        cb_Status.setEnabled(false);
+
+        cb_nota.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -350,6 +366,7 @@ public class tela_Serie extends javax.swing.JFrame {
         int idS = lista.get(0).id;
         int idU = Sessao.getId();
         Historico_Usuario HU = in.Select_Historico_User(idU, idS);
+        
         if (HU.id==0) {
             Insert_Banco i = new Insert_Banco();
             i.Insert_Historico_Usuario(nTemp, nEp, Sessao.getId());

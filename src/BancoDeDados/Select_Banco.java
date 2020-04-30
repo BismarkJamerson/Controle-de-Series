@@ -179,7 +179,7 @@ public class Select_Banco {
     public List<Categoria> Select_Categoria() {
         List<Categoria> lista = new ArrayList();
         try {
-            String sql = "SELECT * FROM Categoria ORDER BY Nome_Categoria";
+            String sql = "SELECT * FROM Categoria ORDER BY Nome_Categoria DESC";
             PreparedStatement ps = conexao.getInstance().getConnection().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 

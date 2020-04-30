@@ -313,6 +313,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tb_Nome">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="tb_Duracao">
       <Properties>
@@ -321,6 +324,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="00:00"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tb_DuracaoActionPerformed"/>
@@ -344,11 +348,13 @@
     <Component class="javax.swing.JCheckBox" name="cb_Favorito">
       <Properties>
         <Property name="text" type="java.lang.String" value="Favorito"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cb_Dublado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dublado"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_DubladoActionPerformed"/>
@@ -357,6 +363,7 @@
     <Component class="javax.swing.JCheckBox" name="cb_Legendado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Legendado"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -380,14 +387,29 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cb_Classificacao">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cb_Estudio">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cb_Nacionalidade">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cb_Status">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cb_nota">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

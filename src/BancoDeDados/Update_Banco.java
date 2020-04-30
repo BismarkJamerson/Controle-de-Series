@@ -6,6 +6,7 @@ import Classes.Estudio;
 import Classes.Historico_Usuario;
 import Classes.Links;
 import Classes.Nacionalidade;
+import Classes.Series;
 import Classes.Status;
 import Classes.Temporada;
 import Classes.Usuario;
@@ -83,7 +84,7 @@ public class Update_Banco {
             System.out.println(ex+" up1");
         }
     }
-
+    
     public void Update_Nacionalidade(Nacionalidade Nac) {
         try {
             String sql = "UPDATE Nacionalidade SET Pais = ? WHERE ID_Nacionalidade = ? ";

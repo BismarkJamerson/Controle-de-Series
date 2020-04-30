@@ -51,16 +51,13 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="pn_Gerenciar" min="-2" max="-2" attributes="0"/>
-                          <Component id="sc_pane1" min="-2" pref="55" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="pn_Gerenciar" min="-2" max="-2" attributes="0"/>
+                      <Component id="sc_pane1" min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="346" max="32767" attributes="0"/>
+              <Component id="jScrollPane2" pref="237" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -68,6 +65,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pn_Gerenciar">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
