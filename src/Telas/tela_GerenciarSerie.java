@@ -81,7 +81,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         cb_Nacionalidade = new javax.swing.JComboBox<>();
         cb_Categoria = new javax.swing.JComboBox<>();
         lb_Categoria = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        bt_Cancelar = new javax.swing.JButton();
         bt_img = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         bt_Cancelar1 = new javax.swing.JButton();
@@ -202,10 +202,10 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         lb_Categoria.setText("Categoria");
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bt_Cancelar.setText("Cancelar");
+        bt_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bt_CancelarActionPerformed(evt);
             }
         });
 
@@ -259,7 +259,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                                 .addGap(121, 121, 121)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))))
+                                .addComponent(bt_Cancelar))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_Dublado)
@@ -334,7 +334,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(bt_Cancelar))
                 .addGap(17, 17, 17))
         );
 
@@ -707,9 +707,9 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bt_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CancelarActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bt_CancelarActionPerformed
 
     private void cb_CategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_CategoriaActionPerformed
         // TODO add your handling code here:
@@ -943,6 +943,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Cancelar;
     private javax.swing.JButton bt_Cancelar1;
     private javax.swing.JButton bt_Cancelar2;
     private javax.swing.JButton bt_Confirmar1;
