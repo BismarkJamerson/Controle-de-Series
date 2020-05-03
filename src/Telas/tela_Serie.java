@@ -16,6 +16,8 @@ import Controle.Convert;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 
 /**
  *
@@ -376,6 +378,7 @@ public class tela_Serie extends javax.swing.JFrame {
         } else {
             Update_Banco up = new Update_Banco();
             up.Update_Historico_Usuario(nTemp, nEp, Sessao.getHU());
+            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!", "Atualizado",JOptionPane.INFORMATION_MESSAGE);
             salvarLink(0, idS);
         }
     }//GEN-LAST:event_jButton6ActionPerformed

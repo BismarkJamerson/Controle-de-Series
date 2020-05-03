@@ -228,7 +228,8 @@ public class tela_Principal extends javax.swing.JFrame {
                     pn_Categorias.removeAll();
                     bt_geren_ser.setEnabled(false);
                     bt_gerencLogin.setEnabled(false);
-                    
+                    pn_Principal.removeAll();
+                    repaint();
         }else{
             tela_Logar login = new tela_Logar();
             login.setVisible(true);  
@@ -312,7 +313,7 @@ public class tela_Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pn_Categorias;
     public javax.swing.JPanel pn_Gerenciar;
-    private javax.swing.JPanel pn_Principal;
+    public javax.swing.JPanel pn_Principal;
     private javax.swing.JScrollPane sc_pane1;
     // End of variables declaration//GEN-END:variables
 

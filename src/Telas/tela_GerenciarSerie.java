@@ -84,7 +84,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         bt_img = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        bt_Cancelar1 = new javax.swing.JButton();
         bt_Confirmar1 = new javax.swing.JButton();
         cb_Categoria1 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -340,10 +340,10 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Adicionar", jPanel2);
 
-        jButton3.setText("Cancelar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bt_Cancelar1.setText("Cancelar");
+        bt_Cancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bt_Cancelar1ActionPerformed(evt);
             }
         });
 
@@ -504,7 +504,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                                 .addGap(96, 96, 96)
                                 .addComponent(bt_Confirmar1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)))
+                                .addComponent(bt_Cancelar1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -532,7 +532,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cb_Legendado1)
                             .addComponent(bt_Confirmar1)
-                            .addComponent(jButton3)))
+                            .addComponent(bt_Cancelar1)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
@@ -741,9 +741,9 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_DubladoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bt_Cancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Cancelar1ActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bt_Cancelar1ActionPerformed
 
     private void bt_Confirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Confirmar1ActionPerformed
         Series Ser = new Series();
@@ -781,6 +781,8 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         up.Update_FkSerCat(fkSC);
         JOptionPane.showMessageDialog(null, "Editado com Sucesso!!!");
         this.setVisible(false);
+        Sessao.prin.pn_Principal.removeAll();
+        Sessao.prin.pn_Principal.repaint();
 
     }//GEN-LAST:event_bt_Confirmar1ActionPerformed
 
@@ -875,6 +877,9 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
             bt_img2.setIcon(null);
             bt_img2.setText("Imagem"); 
             bt_img2.setEnabled(false);
+            Sessao.prin.pn_Principal.removeAll();
+            Sessao.prin.pn_Principal.repaint();
+            JOptionPane.showMessageDialog(null, "Excluido!", "Excluido",JOptionPane.INFORMATION_MESSAGE);
            /* Select_Banco sec = new Select_Banco();
             listaID = sec.Select_SeriesEdit1(i);
             int idSer = listaID.get(0).id;
@@ -938,6 +943,7 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Cancelar1;
     private javax.swing.JButton bt_Cancelar2;
     private javax.swing.JButton bt_Confirmar1;
     private javax.swing.JButton bt_Excluir2;
@@ -967,7 +973,6 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_Status1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1128,6 +1133,8 @@ public class tela_GerenciarSerie extends javax.swing.JFrame {
         cb_Status1.setEnabled(a);
         cb_Favorito1.setEnabled(a);
         bt_Confirmar1.setEnabled(a);
+        bt_Cancelar1.setEnabled(a);
+        bt_img1.setEnabled(a);
 
     }
 
