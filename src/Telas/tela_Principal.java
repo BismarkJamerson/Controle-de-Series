@@ -425,9 +425,7 @@ public class tela_Principal extends javax.swing.JFrame {
                                 ;}
                                 pn_Principal.repaint();
                          
-                      }
-
-                
+                      }               
             });                    
 
         }
